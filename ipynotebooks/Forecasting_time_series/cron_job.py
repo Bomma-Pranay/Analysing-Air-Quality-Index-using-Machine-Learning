@@ -37,12 +37,11 @@ def setData(station, station_location):
         # Write to the file only when (station, time) is not already existing in the file.
         
         new_timestamp = (res["data"][0]['time']['stime'])
-        csv_file_path = 'output.csv'
+        csv_file_path = 'ipynotebooks/Forecasting_time_series/output.csv'
 
         # Check if the new timestamp is already present
         with open(csv_file_path, 'r') as csv_file:
             csv_reader = csv.reader(csv_file)
-            print("csv_reader",csv_reader)
             # Assuming the timestamp is in the 3rd column
             existing_timestamps = [row[2] for row in csv_reader]
         
@@ -54,11 +53,6 @@ def setData(station, station_location):
         else:
             print(f'Timestamp {new_timestamp} already present in {csv_file_path}, not appending.')
 
-#         csv_file_path = 'output.csv'
-#         with open(csv_file_path, 'a', newline='') as csv_file:
-#             csv_writer = csv.writer(csv_file)
-#             csv_writer.writerows([result])
-#         print(f'The data has been written to {csv_file_path}')
     else:
         print(f"Error: {response.status_code} - {response.text}")
 
