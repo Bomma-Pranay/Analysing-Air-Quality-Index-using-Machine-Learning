@@ -37,7 +37,7 @@ def setData(station, station_location):
         # Write to the file only when (station, time) is not already existing in the file.
         
         new_timestamp = (res["data"][0]['time']['stime'])
-        csv_file_path = 'ipynotebooks/Forecasting_time_series/output.csv'
+        csv_file_path = 'output.csv'
 
         # Check if the new timestamp is already present
         with open(csv_file_path, 'r') as csv_file:
