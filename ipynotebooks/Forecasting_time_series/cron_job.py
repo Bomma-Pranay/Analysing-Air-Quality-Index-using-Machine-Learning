@@ -40,8 +40,9 @@ def get_api_token():
 def setData(station, output_file):
     try:
         print(f"os.getcwd()=> {os.getcwd()}")
+        cwd = os.getcwd()
         # Create a "logs" directory if it doesn't exist
-        logs_directory = "/logs"
+        logs_directory = cwd + "/logs"
         os.makedirs(logs_directory, exist_ok=True)
 
         # Set up logging configuration
@@ -65,7 +66,8 @@ def setData(station, output_file):
             # Write to the file only when (station, time) is not already existing in the file.
 
             new_timestamp = (res["data"][0]['time']['stime'])
-            csv_file_path = output_file + '.csv'
+            csv_file_path = cwd + output_file + '.csv'
+            print(f'csv_file_path=> {csv_file_path}')
 
             # Check if the new timestamp is already present
             with open(csv_file_path, 'r') as csv_file:
