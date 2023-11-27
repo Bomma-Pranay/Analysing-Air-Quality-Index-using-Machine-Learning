@@ -26,20 +26,28 @@ VIKAS_SADAN = "Vikas Sadan"
 VIKAS_SADAN_STATION = "Vikas Sadan Gurgaon"
 VIKAS_SADAN_OUTPUT = "data/cron_job_data/vikas_sadan_cron_output"
 
+def get_api_token():
+    try:
+        return os.environ['API_TOKEN']
+    except KeyError:
+         # If running locally, use an alternative method to get the API token
+        return input("Enter your API token: ")
+    
 # Incase if api fails, write to file with previous day
 # In 2nd cron daily job, Incase if api fails, write to file with previous day
 
 def setData(station, output_file):
     try:
         # Create a "logs" directory if it doesn't exist
-        logs_directory = "logs"
+        logs_directory = "../../logs"
         os.makedirs(logs_directory, exist_ok=True)
 
         # Set up logging configuration
         log_file_path = os.path.join(logs_directory, f"{datetime.now().strftime('%d-%m-%Y')}.log")
         logging.basicConfig(filename=log_file_path, level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
-        url = "https://api.waqi.info/search/?token=7c0e1c5a796cf1a14edf4bf1462a99e9b37d8bdf&keyword=" + station
+        TOKEN = get_api_token()
+        url = "https://api.waqi.info/search/?token=" + TOKEN + "&keyword=" + station
         response = requests.get(url)
         if response.status_code == 200:
             res = response.json()
@@ -70,7 +78,7 @@ def setData(station, output_file):
         else:
             logging.info(f"Error: {response.status_code} - {response.text}")
     except Exception as e:
-        logging.info(f"Exception {e} has occured for station=> {station}, result => {result}")
+        logging.info(f"Exception {type(e).__name__} has occured for station=> {station}")
         
 # Initialize new file with ,,, or else you will get error
 

@@ -11,7 +11,8 @@ env:
 jobs:
   scrape-latest:
     runs-on: ubuntu-latest
-
+    env:
+        API_TOKEN: ${{ secrets.API_TOKEN }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
@@ -20,6 +21,10 @@ jobs:
         with:
           python-version: '3.7'
       - name: Install requirements
-        run: pip install -r ipynotebooks/Forecasting_time_series/requirements.txt
-      - name: Cron job
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r ipynotebooks/Forecasting_time_series/requirements.txt
+      - name: Set API token
+        run: echo "API_TOKEN=${{ secrets.API_TOKEN }}" >> $GITHUB_ENV
+      - name: Run the cron job script
         run: python ipynotebooks/Forecasting_time_series/cron_job.py
