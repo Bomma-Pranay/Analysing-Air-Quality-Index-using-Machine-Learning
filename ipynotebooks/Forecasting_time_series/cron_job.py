@@ -9,22 +9,22 @@ import os
 # NISE
 NISE = "nise gwal"
 NISE_STATION = "NISE Gwal Pahari, Gurugram, India"
-NISE_OUTPUT = "data/cron_job_data/nise_cron_output"
+NISE_OUTPUT = "/data/cron_job_data/nise_cron_output"
 
 # Sector 51
 SECTOR_51 = "Sector-51, Gurugram"
 SECTOR_51_STATION = "Sector-51, Gurugram, India"
-SECTOR_51_OUTPUT = "data/cron_job_data/sector_51_cron_output"
+SECTOR_51_OUTPUT = "/data/cron_job_data/sector_51_cron_output"
 
 # Teri gram
 TERI_GRAM = "Teri Gram"
 TERI_GRAM_STATION = "Teri Gram, Gurugram"
-TERI_GRAM_OUTPUT = "data/cron_job_data/teri_gram_cron_output"
+TERI_GRAM_OUTPUT = "/data/cron_job_data/teri_gram_cron_output"
 
 # Vikas Sadan
 VIKAS_SADAN = "Vikas Sadan"
 VIKAS_SADAN_STATION = "Vikas Sadan Gurgaon"
-VIKAS_SADAN_OUTPUT = "data/cron_job_data/vikas_sadan_cron_output"
+VIKAS_SADAN_OUTPUT = "/data/cron_job_data/vikas_sadan_cron_output"
 
 def get_api_token():
     try:
@@ -39,8 +39,9 @@ def get_api_token():
 
 def setData(station, output_file):
     try:
+        print(f"os.getcwd()=> {os.getcwd()}")
         # Create a "logs" directory if it doesn't exist
-        logs_directory = "../../logs"
+        logs_directory = "/logs"
         os.makedirs(logs_directory, exist_ok=True)
 
         # Set up logging configuration
