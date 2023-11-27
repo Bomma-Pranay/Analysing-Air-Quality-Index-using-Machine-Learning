@@ -30,6 +30,7 @@ def get_api_token():
     try:
         return os.environ['API_TOKEN']
     except KeyError:
+        print("KeyError")
          # If running locally, use an alternative method to get the API token
         return input("Enter your API token: ")
     
@@ -46,7 +47,9 @@ def setData(station, output_file):
         log_file_path = os.path.join(logs_directory, f"{datetime.now().strftime('%d-%m-%Y')}.log")
         logging.basicConfig(filename=log_file_path, level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
+        print(f"log_file_path: {log_file_path}")
         TOKEN = get_api_token()
+        print(f'TOKEN: {TOKEN}')
         url = "https://api.waqi.info/search/?token=" + TOKEN + "&keyword=" + station
         response = requests.get(url)
         if response.status_code == 200:
@@ -56,6 +59,7 @@ def setData(station, output_file):
                 result.append(res["data"][0]['aqi'])
                 result.append(res["data"][0]['station']['name'])
                 result.append(pd.to_datetime(res["data"][0]['time']['stime']))
+            print(f"station=> {station}, result => {result}")
             logging.info(f"station=> {station}, result => {result}")
             # Write to the file only when (station, time) is not already existing in the file.
 
@@ -72,12 +76,16 @@ def setData(station, output_file):
                 with open(csv_file_path, 'a', newline='') as csv_file:
                     csv_writer = csv.writer(csv_file)
                     csv_writer.writerow(result)
+                print(f'The data has been written to {csv_file_path} with Timestamp: {new_timestamp}')
                 logging.info(f'The data has been written to {csv_file_path} with Timestamp: {new_timestamp}')
             else:
+                print(f'Timestamp {new_timestamp} already present in {csv_file_path}, not appending.')
                 logging.info(f'Timestamp {new_timestamp} already present in {csv_file_path}, not appending.')
         else:
             logging.info(f"Error: {response.status_code} - {response.text}")
+            print(f"Error: {response.status_code} - {response.text}")
     except Exception as e:
+        print(f"Exception {type(e).__name__} has occured for station=> {station}")
         logging.info(f"Exception {type(e).__name__} has occured for station=> {station}")
         
 # Initialize new file with ,,, or else you will get error
