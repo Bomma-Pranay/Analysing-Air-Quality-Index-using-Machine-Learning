@@ -103,10 +103,10 @@ def setData(station, output_file):
         
 # Initialize new file with ,,, or else you will get error
 
-# setData(NISE,  NISE_OUTPUT)
-# setData(SECTOR_51, SECTOR_51_OUTPUT)
-# setData(TERI_GRAM, TERI_GRAM_OUTPUT)
-# setData(VIKAS_SADAN, VIKAS_SADAN_OUTPUT)
+setData(NISE,  NISE_OUTPUT)
+setData(SECTOR_51, SECTOR_51_OUTPUT)
+setData(TERI_GRAM, TERI_GRAM_OUTPUT)
+setData(VIKAS_SADAN, VIKAS_SADAN_OUTPUT)
 
 # Testing if this logging code works
 logger = logging.getLogger(__name__)
