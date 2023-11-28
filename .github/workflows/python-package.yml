@@ -28,7 +28,7 @@ jobs:
         run: echo "API_TOKEN=${{ secrets.API_TOKEN }}" >> $GITHUB_ENV
       - name: Run the cron job script
         run: python ipynotebooks/Forecasting_time_series/cron_job.py
-       - name: Commit and push changes
+      - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
