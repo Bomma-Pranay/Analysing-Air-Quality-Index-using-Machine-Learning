@@ -103,7 +103,27 @@ def setData(station, output_file):
         
 # Initialize new file with ,,, or else you will get error
 
-setData(NISE,  NISE_OUTPUT)
-setData(SECTOR_51, SECTOR_51_OUTPUT)
-setData(TERI_GRAM, TERI_GRAM_OUTPUT)
-setData(VIKAS_SADAN, VIKAS_SADAN_OUTPUT)
+# setData(NISE,  NISE_OUTPUT)
+# setData(SECTOR_51, SECTOR_51_OUTPUT)
+# setData(TERI_GRAM, TERI_GRAM_OUTPUT)
+# setData(VIKAS_SADAN, VIKAS_SADAN_OUTPUT)
+
+# Testing if this logging code works
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+logger_file_handler = logging.handlers.RotatingFileHandler(
+    "status.log",
+    maxBytes=1024 * 1024,
+    backupCount=1,
+    encoding="utf8",
+)
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+logger_file_handler.setFormatter(formatter)
+logger.addHandler(logger_file_handler)
+print(f'logger: {logger}')
+r = requests.get('https://weather.talkpython.fm/api/weather/?city=Berlin&country=DE')
+if r.status_code == 200:
+    data = r.json()
+    temperature = data["forecast"]["temp"]
+    print(f'Weather in Berlin: {temperature}')
+    logger.info(f'Weather in Berlin: {temperature}')
