@@ -94,3 +94,27 @@
 2023-11-28 17:03:25,921 - __main__ - INFO - Weather in Berlin: -2.54
 2023-11-28 17:03:25,921 - __main__ - INFO - Weather in Berlin: -2.54
 2023-11-28 17:03:25,921 - __main__ - INFO - Weather in Berlin: -2.54
+2023-11-28 18:07:57,274 - __main__ - INFO - station=> nise gwal, result => ['159', 'NISE Gwal Pahari, Gurugram, India', Timestamp('2023-11-28 23:00:00')]
+2023-11-28 18:07:57,274 - __main__ - INFO - The data has been written to data/cron_job_data/nise_cron_output.csv with Timestamp: 2023-11-28 23:00:00
+2023-11-28 18:07:57,984 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['200', 'Sector-51, Gurugram, India', Timestamp('2023-11-28 23:00:00')]
+2023-11-28 18:07:57,984 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['200', 'Sector-51, Gurugram, India', Timestamp('2023-11-28 23:00:00')]
+2023-11-28 18:07:57,985 - __main__ - INFO - The data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2023-11-28 23:00:00
+2023-11-28 18:07:57,985 - __main__ - INFO - The data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2023-11-28 23:00:00
+2023-11-28 18:07:58,701 - __main__ - INFO - station=> Teri Gram, result => ['136', 'Teri Gram, Gurugram, India', Timestamp('2023-11-28 23:00:00')]
+2023-11-28 18:07:58,701 - __main__ - INFO - station=> Teri Gram, result => ['136', 'Teri Gram, Gurugram, India', Timestamp('2023-11-28 23:00:00')]
+2023-11-28 18:07:58,701 - __main__ - INFO - station=> Teri Gram, result => ['136', 'Teri Gram, Gurugram, India', Timestamp('2023-11-28 23:00:00')]
+2023-11-28 18:07:58,701 - __main__ - INFO - The data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2023-11-28 23:00:00
+2023-11-28 18:07:58,701 - __main__ - INFO - The data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2023-11-28 23:00:00
+2023-11-28 18:07:58,701 - __main__ - INFO - The data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2023-11-28 23:00:00
+2023-11-28 18:07:59,393 - __main__ - INFO - station=> Vikas Sadan, result => ['156', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2023-11-28 23:00:00')]
+2023-11-28 18:07:59,393 - __main__ - INFO - station=> Vikas Sadan, result => ['156', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2023-11-28 23:00:00')]
+2023-11-28 18:07:59,393 - __main__ - INFO - station=> Vikas Sadan, result => ['156', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2023-11-28 23:00:00')]
+2023-11-28 18:07:59,393 - __main__ - INFO - station=> Vikas Sadan, result => ['156', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2023-11-28 23:00:00')]
+2023-11-28 18:07:59,393 - __main__ - INFO - The data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2023-11-28 23:00:00
+2023-11-28 18:07:59,393 - __main__ - INFO - The data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2023-11-28 23:00:00
+2023-11-28 18:07:59,393 - __main__ - INFO - The data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2023-11-28 23:00:00
+2023-11-28 18:07:59,393 - __main__ - INFO - The data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2023-11-28 23:00:00
+2023-11-28 18:07:59,503 - __main__ - INFO - Weather in Berlin: -2.85
+2023-11-28 18:07:59,503 - __main__ - INFO - Weather in Berlin: -2.85
+2023-11-28 18:07:59,503 - __main__ - INFO - Weather in Berlin: -2.85
+2023-11-28 18:07:59,503 - __main__ - INFO - Weather in Berlin: -2.85
