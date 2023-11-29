@@ -40,18 +40,9 @@ def get_api_token():
 
 def setData(station, output_file):
     try:
-        
-#         # Create a "logs" directory if it doesn't exist
-#         logs_directory = "logs"
-#         os.makedirs(logs_directory, exist_ok=True)
-
-#         # Set up logger configuration
-#         log_file_path = os.path.join(logs_directory, f"{datetime.now().strftime('%d-%m-%Y')}.log")
-#         logger.basicConfig(filename=log_file_path, level=logger.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
-
+        # Logging
         logger = logging.getLogger(__name__)
-
-        logger.setLevel(logging.DEBUG)
+        logger.setLevel(logging.INFO)
         logger_file_handler = logging.handlers.RotatingFileHandler(
             f"logs/{datetime.now().strftime('%d-%m-%Y')}.log",
             maxBytes=1024 * 1024,
@@ -61,9 +52,11 @@ def setData(station, output_file):
         formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
         logger_file_handler.setFormatter(formatter)
         logger.addHandler(logger_file_handler)
-        print(f"logger {logger}" )
         
+        # Get API token
         TOKEN = get_api_token()
+
+        # Get the API response
         url = "https://api.waqi.info/search/?token=" + TOKEN + "&keyword=" + station
         response = requests.get(url)
         if response.status_code == 200:
@@ -75,6 +68,7 @@ def setData(station, output_file):
                 result.append(pd.to_datetime(res["data"][0]['time']['stime']))
             logger.info(f"station=> {station}, result => {result}")
             print(f"station=> {station}, result => {result}")
+            
             # Write to the file only when (station, time) is not already existing in the file.
 
             new_timestamp = (res["data"][0]['time']['stime'])
@@ -90,40 +84,20 @@ def setData(station, output_file):
                 with open(csv_file_path, 'a', newline='') as csv_file:
                     csv_writer = csv.writer(csv_file)
                     csv_writer.writerow(result)
-                print(f"station=> {station}, result => {result}")
+                print(f'The data has been written to {csv_file_path} with Timestamp: {new_timestamp}')
                 logger.info(f'The data has been written to {csv_file_path} with Timestamp: {new_timestamp}')
             else:
                 print(f'Timestamp {new_timestamp} already present in {csv_file_path}, not appending.')
                 logger.info(f'Timestamp {new_timestamp} already present in {csv_file_path}, not appending.')
         else:
+            print(f"Error: {response.status_code} - {response.text}")
             logger.info(f"Error: {response.status_code} - {response.text}")
     except Exception as e:
         print(f"Exception {type(e).__name__} has occured for station=> {station}")
         logger.info(f"Exception {type(e).__name__} has occured for station=> {station}")
-        
-# Initialize new file with ,,, or else you will get error
 
-setData(NISE,  NISE_OUTPUT)
-setData(SECTOR_51, SECTOR_51_OUTPUT)
-setData(TERI_GRAM, TERI_GRAM_OUTPUT)
-setData(VIKAS_SADAN, VIKAS_SADAN_OUTPUT)
-
-# Testing if this logging code works
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-logger_file_handler = logging.handlers.RotatingFileHandler(
-    "status.log",
-    maxBytes=1024 * 1024,
-    backupCount=1,
-    encoding="utf8",
-)
-formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-logger_file_handler.setFormatter(formatter)
-logger.addHandler(logger_file_handler)
-print(f'logger: {logger}')
-r = requests.get('https://weather.talkpython.fm/api/weather/?city=Berlin&country=DE')
-if r.status_code == 200:
-    data = r.json()
-    temperature = data["forecast"]["temp"]
-    print(f'Weather in Berlin: {temperature}')
-    logger.info(f'Weather in Berlin: {temperature}')
+if __name__ == "__main__":
+    setData(NISE,  NISE_OUTPUT)
+    setData(SECTOR_51, SECTOR_51_OUTPUT)
+    setData(TERI_GRAM, TERI_GRAM_OUTPUT)
+    setData(VIKAS_SADAN, VIKAS_SADAN_OUTPUT)
