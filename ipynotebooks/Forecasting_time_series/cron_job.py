@@ -27,6 +27,8 @@ VIKAS_SADAN = "Vikas Sadan"
 VIKAS_SADAN_STATION = "Vikas Sadan Gurgaon"
 VIKAS_SADAN_OUTPUT = "data/cron_job_data/vikas_sadan_cron_output"
 
+stations = [(NISE,  NISE_OUTPUT), (SECTOR_51, SECTOR_51_OUTPUT), (TERI_GRAM, TERI_GRAM_OUTPUT), (VIKAS_SADAN, VIKAS_SADAN_OUTPUT)]
+
 def get_api_token():
     try:
         return os.environ['API_TOKEN']
@@ -38,24 +40,8 @@ def get_api_token():
 # Incase if api fails, write to file with previous day
 # In 2nd cron daily job, Incase if api fails, write to file with previous day
 
-def setData(station, output_file):
+def setData(station, output_file, logger, TOKEN):
     try:
-        # Logging
-        logger = logging.getLogger(__name__)
-        logger.setLevel(logging.INFO)
-        logger_file_handler = logging.handlers.RotatingFileHandler(
-            f"logs/{datetime.now().strftime('%d-%m-%Y')}.log",
-            maxBytes=1024 * 1024,
-            backupCount=1,
-            encoding="utf8",
-        )
-        formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-        logger_file_handler.setFormatter(formatter)
-        logger.addHandler(logger_file_handler)
-        
-        # Get API token
-        TOKEN = get_api_token()
-
         # Get the API response
         url = "https://api.waqi.info/search/?token=" + TOKEN + "&keyword=" + station
         response = requests.get(url)
@@ -96,8 +82,27 @@ def setData(station, output_file):
         print(f"Exception {type(e).__name__} has occured for station=> {station}")
         logger.info(f"Exception {type(e).__name__} has occured for station=> {station}")
 
+def setLogger():
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.INFO)
+    logger_file_handler = logging.handlers.RotatingFileHandler(
+        f"logs/{datetime.now().strftime('%d-%m-%Y')}.log",
+        maxBytes=1024 * 1024,
+        backupCount=1,
+        encoding="utf8",
+    )
+    formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+    logger_file_handler.setFormatter(formatter)
+    logger.addHandler(logger_file_handler)
+    return logger
+
 if __name__ == "__main__":
-    setData(NISE,  NISE_OUTPUT)
-    setData(SECTOR_51, SECTOR_51_OUTPUT)
-    setData(TERI_GRAM, TERI_GRAM_OUTPUT)
-    setData(VIKAS_SADAN, VIKAS_SADAN_OUTPUT)
+
+    # Logging
+    logger = setLogger()
+    
+    # Get API token
+    TOKEN = get_api_token()
+
+    for station, station_location in stations:
+        setData(station,  station_location, logger, TOKEN)
