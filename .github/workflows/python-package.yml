@@ -28,19 +28,6 @@ jobs:
         run: echo "API_TOKEN=${{ secrets.API_TOKEN }}" >> $GITHUB_ENV
       - name: Run the cron job script
         run: python ipynotebooks/Forecasting_time_series/cron_job.py
-              
-      - name: Debug Info
-        run: |
-          echo "GitHub Workspace: $GITHUB_WORKSPACE"
-          ls -al $GITHUB_WORKSPACE
-      - name: Debug Working Directory
-        run: |
-          echo "Current directory: $(pwd)"
-
-      # - name: Commit and Push Changes
-      #   uses: ad-m/push-to-github-action@v2
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: commit files
         run: |
           git config --local user.email "action@github.com"
@@ -54,8 +41,3 @@ jobs:
           git add -A
           git commit -m "Update logs" || true
           git push      
-      # - name: push changes
-      #   uses: ad-m/github-push-action@v0.6.0
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     branch: main 
