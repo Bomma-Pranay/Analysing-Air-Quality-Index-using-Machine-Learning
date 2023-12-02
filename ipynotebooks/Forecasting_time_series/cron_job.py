@@ -56,6 +56,13 @@ def setData(station, output_file, logger, TOKEN):
             logger.info(f"station=> {station}, result => {result}")
             print(f"station=> {station}, result => {result}")
             
+            # If AQI is not a number, dont write it and return
+            try:
+                int(result[0])
+            except Exception as exception:
+                logger.info(f"AQI is not an integer. Exception {type(exception).__name__} has occured for station=> {station}")
+                return
+            
             # Write to the file only when (station, time) is not already existing in the file.
 
             new_timestamp = (res["data"][0]['time']['stime'])
