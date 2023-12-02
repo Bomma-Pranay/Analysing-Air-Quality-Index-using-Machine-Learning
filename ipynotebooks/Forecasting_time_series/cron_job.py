@@ -10,22 +10,23 @@ import logging.handlers
 # NISE
 NISE = "nise gwal"
 NISE_STATION = "NISE Gwal Pahari, Gurugram, India"
-NISE_OUTPUT = "../../data/cron_job_data/nise_cron_output"
+NISE_OUTPUT = "data/cron_job_data/nise_cron_output"
 
 # Sector 51
 SECTOR_51 = "Sector-51, Gurugram"
 SECTOR_51_STATION = "Sector-51, Gurugram, India"
-SECTOR_51_OUTPUT = "../../data/cron_job_data/sector_51_cron_output"
+SECTOR_51_OUTPUT = "data/cron_job_data/sector_51_cron_output"
+SECTOR_51_DAILY_AQI = 'data/cleaned_data/Forecasting_time_series/sector_51_daily_aqi.csv'
 
 # Teri gram
 TERI_GRAM = "Teri Gram"
 TERI_GRAM_STATION = "Teri Gram, Gurugram"
-TERI_GRAM_OUTPUT = "../../data/cron_job_data/teri_gram_cron_output"
+TERI_GRAM_OUTPUT = "data/cron_job_data/teri_gram_cron_output"
 
 # Vikas Sadan
 VIKAS_SADAN = "Vikas Sadan"
 VIKAS_SADAN_STATION = "Vikas Sadan Gurgaon"
-VIKAS_SADAN_OUTPUT = "../../data/cron_job_data/vikas_sadan_cron_output"
+VIKAS_SADAN_OUTPUT = "data/cron_job_data/vikas_sadan_cron_output"
 
 stations = [(NISE,  NISE_OUTPUT), (SECTOR_51, SECTOR_51_OUTPUT), (TERI_GRAM, TERI_GRAM_OUTPUT), (VIKAS_SADAN, VIKAS_SADAN_OUTPUT)]
 
@@ -96,15 +97,17 @@ def setLogger():
     logger.addHandler(logger_file_handler)
     return logger
 
-def writeData(station_location):
-    df_api = pd.read_csv(station_location + ".csv")
+def writeData(station_hourly_aqi, station_daily_aqi):
+    df_api = pd.read_csv(station_hourly_aqi + ".csv")
     df_api['Time'] = pd.to_datetime(df_api['Time'])
     df_api.set_index('Time', inplace=True)
-    df_api.resample('D').mean()
+    df_api = df_api.resample('D').mean()
+    df_api['AQI'] = round(df_api['AQI'])
     today = datetime.now().date()
     yesterday = today - timedelta(days=1)
-    yesterday_aqi = df_api[yesterday:yesterday]
-    print(yesterday_aqi)
+    with open(station_daily_aqi, 'a', newline='') as csv_file:
+        csv_writer = csv.writer(csv_file)    
+        csv_writer.writerow([pd.read_csv(station_daily_aqi).iloc[-1,0] + 1, yesterday, df_api[yesterday:yesterday].AQI.values[0]])
 
 if __name__ == "__main__":
 
@@ -118,7 +121,7 @@ if __name__ == "__main__":
         setData(station,  station_location, logger, TOKEN)
     
     # If the day changes, append it to original data
-
+    writeData(SECTOR_51_OUTPUT, SECTOR_51_DAILY_AQI)
 #     if datetime.now().hour == 1:     # It means 1 AM
 #         for station, station_location in stations:
 #             writeData(station_location)
