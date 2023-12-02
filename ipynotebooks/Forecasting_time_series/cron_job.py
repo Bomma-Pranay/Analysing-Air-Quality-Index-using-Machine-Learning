@@ -54,7 +54,7 @@ def setData(station, output_file, logger, TOKEN):
                 result.append(res["data"][0]['station']['name'])
                 result.append(pd.to_datetime(res["data"][0]['time']['stime']))
             logger.info(f"station=> {station}, result => {result}")
-            print(f"{datetime.now()} - station=> {station}, result => {result}")
+            print(f"station=> {station}, result => {result}")
             
             # Write to the file only when (station, time) is not already existing in the file.
 
@@ -72,16 +72,16 @@ def setData(station, output_file, logger, TOKEN):
                     csv_writer = csv.writer(csv_file)
                     csv_writer.writerow(result)
                 print(f'The data has been written to {csv_file_path} with Timestamp: {new_timestamp}')
-                logger.info(f'{datetime.now()} - The data has been written to {csv_file_path} with Timestamp: {new_timestamp}')
+                logger.info(f'The data has been written to {csv_file_path} with Timestamp: {new_timestamp}')
             else:
                 print(f'Timestamp {new_timestamp} already present in {csv_file_path}, not appending.')
-                logger.info(f'{datetime.now()} - Timestamp {new_timestamp} already present in {csv_file_path}, not appending.')
+                logger.info(f'Timestamp {new_timestamp} already present in {csv_file_path}, not appending.')
         else:
             print(f"Error: {response.status_code} - {response.text}")
-            logger.info(f"{datetime.now()} - Error: {response.status_code} - {response.text}")
+            logger.info(f"Error: {response.status_code} - {response.text}")
     except Exception as e:
         print(f"Exception {type(e).__name__} has occured for station=> {station}")
-        logger.info(f"{datetime.now()} - Exception {type(e).__name__} has occured for station=> {station}")
+        logger.info(f"Exception {type(e).__name__} has occured for station=> {station}")
 
 def setLogger():
     logger = logging.getLogger(__name__)
@@ -96,18 +96,26 @@ def setLogger():
     logger_file_handler.setFormatter(formatter)
     logger.addHandler(logger_file_handler)
     return logger
-
 def writeData(station_hourly_aqi, station_daily_aqi):
     df_api = pd.read_csv(station_hourly_aqi + ".csv")
     df_api['Time'] = pd.to_datetime(df_api['Time'])
     df_api.set_index('Time', inplace=True)
-    df_api = df_api.resample('D').mean()
+    df_api = df_api['AQI'].resample('D').mean()
+    df_api = pd.DataFrame(df_api)
+    print(f"df_api columns {df_api.columns}")
     df_api['AQI'] = round(df_api['AQI'])
     today = datetime.now().date()
     yesterday = today - timedelta(days=1)
+
+    temp_daily_aqi = pd.read_csv(station_daily_aqi)
+    print(f'temp_daily_aqi columns {temp_daily_aqi.columns}')
+    temp_daily_aqi['Date'] = pd.to_datetime(temp_daily_aqi['Date'])
+    temp_daily_aqi.set_index('Date', inplace=True)
+
     with open(station_daily_aqi, 'a', newline='') as csv_file:
-        csv_writer = csv.writer(csv_file)    
-        csv_writer.writerow([pd.read_csv(station_daily_aqi).iloc[-1,0] + 1, yesterday, df_api[yesterday:yesterday].AQI.values[0]])
+        if len(temp_daily_aqi[yesterday:yesterday]) == 0: # Write only if it does not exist already
+            csv_writer = csv.writer(csv_file)    
+            csv_writer.writerow([pd.read_csv(station_daily_aqi).iloc[-1,0] + 1, yesterday, df_api[yesterday:yesterday].AQI.values[0]])
 
 if __name__ == "__main__":
 
