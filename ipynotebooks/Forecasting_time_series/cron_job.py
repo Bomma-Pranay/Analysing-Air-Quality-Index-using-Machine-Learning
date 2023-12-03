@@ -119,10 +119,11 @@ def writeData(station_hourly_aqi, station_daily_aqi):
     temp_daily_aqi['Date'] = pd.to_datetime(temp_daily_aqi['Date'])
     temp_daily_aqi.set_index('Date', inplace=True)
 
+    print(f"temp_daily_aqi[{yesterday}]=> {temp_daily_aqi[yesterday:yesterday]}")
     with open(station_daily_aqi, 'a', newline='') as csv_file:
         if len(temp_daily_aqi[yesterday:yesterday]) == 0: # Write only if it does not exist already
             csv_writer = csv.writer(csv_file)    
-            csv_writer.writerow([pd.read_csv(station_daily_aqi).iloc[-1,0] + 1, yesterday, df_api[yesterday:yesterday].AQI.values[0]])
+            csv_writer.writerow([temp_daily_aqi.iloc[-1,0] + 1, yesterday, df_api[yesterday:yesterday].AQI.values[0]])
 
 if __name__ == "__main__":
 
@@ -136,7 +137,8 @@ if __name__ == "__main__":
         setData(station,  station_location, logger, TOKEN)
     
      # If the day changes, append it to original data
-    writeData(SECTOR_51_OUTPUT, SECTOR_51_DAILY_AQI)
-#     if datetime.now().hour == 1:     # It means 1 AM
+    
+    if datetime.now().hour == 1:     # It means 1 AM
+        writeData(SECTOR_51_OUTPUT, SECTOR_51_DAILY_AQI)
 #         for station, station_location in stations:
 #             writeData(station_location)
