@@ -1,11 +1,38 @@
 import requests
-import pandas as pd
 import pprint
 import csv
 from datetime import datetime, timedelta
 import logging
 import os
 import logging.handlers
+
+# Data analysis
+import pandas as pd 
+
+# Data Visualization
+import matplotlib.pyplot as plt 
+import seaborn as sns
+import plotly.express as px 
+
+# Time Series
+from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+from statsmodels.tsa.stattools import acf, pacf
+from datetime import datetime, timedelta
+from statsmodels.tsa.arima.model import ARIMA 
+from statsmodels.tsa.statespace.sarimax import SARIMAX
+from pmdarima import auto_arima
+import statsmodels.api as sm
+
+# For printing multiple outputs
+from IPython.core.interactiveshell import InteractiveShell
+InteractiveShell.ast_node_interactivity = "all"
+
+# Visualization parameters
+sns.set(rc={"figure.dpi":100, 'savefig.dpi':300})
+sns.set_context('notebook')
+sns.set_style("ticks")
+from IPython.display import set_matplotlib_formats
+%config InlineBackend.figure_format = 'retina'
 
 # NISE
 NISE = "nise gwal"
@@ -103,6 +130,7 @@ def setLogger():
     logger_file_handler.setFormatter(formatter)
     logger.addHandler(logger_file_handler)
     return logger
+
 def writeData(station_hourly_aqi, station_daily_aqi):
     df_api = pd.read_csv(station_hourly_aqi + ".csv")
     df_api['Time'] = pd.to_datetime(df_api['Time'])
@@ -138,7 +166,7 @@ if __name__ == "__main__":
     
      # If the day changes, append it to original data
     
-    if datetime.now().hour == 1:     # It means 1 AM
+    if datetime.now().hour == 20:     # It means 1 AM IST (20 is GitHub action runner time)
         writeData(SECTOR_51_OUTPUT, SECTOR_51_DAILY_AQI)
 #         for station, station_location in stations:
 #             writeData(station_location)
