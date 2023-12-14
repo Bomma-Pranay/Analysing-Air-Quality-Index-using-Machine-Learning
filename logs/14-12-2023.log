@@ -1,0 +1,8 @@
+2023-12-14 00:28:40,025 - __main__ - INFO - station=> nise gwal, result => ['-', 'NISE Gwal Pahari, Gurugram, India', Timestamp('2023-12-12 13:00:00')]
+2023-12-14 00:28:40,025 - __main__ - INFO - AQI is not an integer. Exception ValueError has occured for station=> nise gwal
+2023-12-14 00:28:40,731 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['-', 'Sector-51, Gurugram, India', Timestamp('2023-12-12 13:00:00')]
+2023-12-14 00:28:40,732 - __main__ - INFO - AQI is not an integer. Exception ValueError has occured for station=> Sector-51, Gurugram
+2023-12-14 00:28:41,422 - __main__ - INFO - station=> Teri Gram, result => ['-', 'Teri Gram, Gurugram, India', Timestamp('2023-12-12 13:00:00')]
+2023-12-14 00:28:41,422 - __main__ - INFO - AQI is not an integer. Exception ValueError has occured for station=> Teri Gram
+2023-12-14 00:28:42,128 - __main__ - INFO - station=> Vikas Sadan, result => ['-', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2023-12-12 13:00:00')]
+2023-12-14 00:28:42,128 - __main__ - INFO - AQI is not an integer. Exception ValueError has occured for station=> Vikas Sadan
