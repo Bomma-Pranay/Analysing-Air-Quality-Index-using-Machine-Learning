@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>AirCast</title>
+	<link rel="shortcut icon" type="image/*" href="favicon.png" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="AirCast">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+		</script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+	<script src="index.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-TPMQ9921ZL"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.min.js"
+		integrity="sha512-bzjaf85dHTL4H0BvkAJ/Jbvxqf1rDj+jVpCNe3oxQj/RXSnkx1HnKhqIcmMWghxEAbXsYgddrc38saWpltlkug=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+	<link href="hover.css" rel="stylesheet">
+	<script>
+		$(document).ready(function () {
+			$(".hamburger").click(function () {
+				$(this).toggleClass("is-active");
+			});
+		});
+	</script>
+	<script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+</head>
+
+<body onload="loaded()" style="padding-right: 0px; background-color: black;">
+
+	<div class="row" id="loading" style="color: white; width: 100%; height: 100%; 
+
+	display: flex; justify-content: center; align-items: center;
+	font-size: 3em;
+	position: fixed;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	border: 5px double;
+	border-color: rgb(255, 255, 255) transparent;
+	animation:
+	1.6s cubic-bezier(0.68, 1.12, 1, 1) 0s infinite normal none running spin;
+	">
+		<div id="LoaderId">
+			<!-- Loading... -->
+		</div>
+		<script>
+
+			$("#loading").css("top", parseInt(screen.height / 2))
+			$("#loading").css("left", parseInt(screen.width / 2) - 30)
+
+		</script>
+
+	</div>
+	<script>
+
+		let scene, camera, renderer, starGeo, stars;
+		var screenW = window.innerWidth;
+		var screenH = window.innerHeight;
+		var spdx = 0, spdy = 0; mouseX = 0, mouseY = 0, mouseDown = false;
+
+		document.addEventListener('mousemove', function (event) {
+			mouseX = event.clientX;
+			mouseY = event.clientY;
+		}, false);
+
+		document.body.addEventListener("mousedown", function (event) {
+			mouseDown = true
+		}, false);
+
+		document.body.addEventListener("mouseup", function (event) {
+			mouseDown = false
+		}, false);
+
+		function init() {
+			scene = new THREE.Scene();
+			camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1, 1000000);
+			camera.position.z = 1;
+			camera.rotation.x = Math.PI / 2;
+
+			renderer = new THREE.WebGLRenderer();
+			renderer.setSize(window.innerWidth, window.innerHeight);
+			document.body.appendChild(renderer.domElement);
+
+
+			//Second star
+			starGeo = new THREE.Geometry();
+			for (let i = 0; i < 1000; i++) {
+				star = new THREE.Vector3(
+					Math.random() * 600 - 300,
+					Math.random() * 600 - 300,
+					Math.random() * 600 - 300
+				);
+				star.velocity = 0;
+				star.acceleration = 0.02;
+				starGeo.vertices.push(star);
+			}
+			let sprite = new THREE.TextureLoader().load('star.png');
+			let starMaterial = new THREE.PointsMaterial({
+				color: 0xffffff,
+				size: 0.7,
+				map: sprite
+			});
+
+			stars = new THREE.Points(starGeo, starMaterial);
+			scene.add(stars);
+
+			//Second star
+			starGeo = new THREE.Geometry();
+			for (let i = 0; i < 25; i++) {
+				star = new THREE.Vector3(
+
+					Math.random() * 600 - 300,
+					Math.random() * 600 - 300,
+					Math.random() * 600 - 300
+				);
+				star.velocity = 0.2;
+				star.acceleration = 0.2;
+				starGeo.vertices.push(star);
+			}
+			let sprite2 = new THREE.TextureLoader().load('star.png');
+			let starMaterial2 = new THREE.PointsMaterial({
+				color: 0xf25e06,
+				size: 2,
+				map: sprite2
+			});
+
+			stars2 = new THREE.Points(starGeo, starMaterial2);
+			scene.add(stars2);
+			animate();
+		}
+
+		function onWindowResize() {
+			camera.aspect = window.innerWidth / window.innerHeight;
+			camera.updateProjectMatrix();
+			renderer.setSize(window.innerWidth, window.innerHeight);
+		}
+
+		function animate() {
+
+			camera.rotation.x = mouseX * 0.0005
+			camera.rotation.y = mouseY * 0.0005
+			starGeo.vertices.forEach(p => {
+				p.velocity += .001;
+				p.opacity = Math.random();
+				p.y -= p.velocity;
+				if (p.y < -200) {
+					p.y = 200;
+					p.velocity = 0;
+				}
+			});
+			starGeo.verticesNeedUpdate = true;
+			stars.rotation.y += 0.0002;
+			stars.opacity = Math.random() / 2;
+
+			spdy = (screenH / 2 - mouseY) / 40;
+			spdx = (screenW / 2 - mouseX) / 40;
+			if (mouseDown) {
+				stars.rotation.x = spdy;
+				stars.rotation.y = spdx;
+			}
+
+			renderer.render(scene, camera);
+			requestAnimationFrame(animate);
+		}
+		init();
+	</script>
+	<nav class="navbar navbar-expand-xl navbar-dark bg-primary fixed-top blur">
+		<div class="container-fluid" style="
+		font-size: 1.2em;">
+			<a class="navbar-brand" href="https://github.com/bomma-Pranay/" target="_blank">Pranay Bomma</a>
+			<div class="row" style="margin-bottom: 0px;">
+				<div class="col">
+					<div class="hamburger navbar-toggler" data-bs-toggle="collapse" data-bs-target="#main_nav"
+						aria-expanded="false" aria-label="Toggle navigation" id="hamburgerId">
+						<span class="line"></span>
+						<span class="line"></span>
+						<span class="line"></span>
+					</div>
+				</div>
+			</div>
+			<div class="collapse navbar-collapse" id="main_nav">
+				<ul class="navbar-nav nav-fill w-100">
+					<li class="nav-item active"> <a class="nav-link" href="Index.html"><i class="fas fa-home"></i> Home
+						</a> </li>
+					<li class="nav-item"><a class="nav-link" href="AboutUs.html"> <i class="fas fa-info-circle"></i>
+							About </a></li>
+					<li class="nav-item"><a class="nav-link" href="HowToUse.html"> <i
+								class="fas fa-question-circle"></i> How To Use? </a></li>
+					<li class="nav-item dropdown">
+						<a id="00" class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"> <i
+								class="fas fa-plus"></i> Add & <i class="fas fa-minus"></i>
+							Sub</a>
+						<ul class="dropdown-menu" style="backdrop-filter: blur(50px);
+							-webkit-backdrop-filter: blur(50px);
+							color: white; line-height: 2.3em;
+							/* width: 100%;  */
+							font-size: 1em;">
+
+							<li><a id="001" class="dropdown-item hvr-bounce-to-right" href="AddSubGenerator.html">
+									<i class="fas fa-file-medical"></i> Generator </a></li>
+							<li><a id="01" class="dropdown-item hvr-bounce-to-right" href="AddSubFlashCards.html"> <i
+										class="fas fa-bolt"></i> Flash Cards </a></li>
+							<li><a id="02" class="dropdown-item hvr-bounce-to-right" href="AddSubInfinite.html"> <i
+										class="fas fa-infinity"></i> Infinite Mode</a></li>
+							<li><a id="03" class="dropdown-item hvr-bounce-to-right" href="AddSubSpeedRound.html"> <i
+										class="fas fa-hourglass-start"></i> Speed Round </a></li>
+							<li><a id="04" class="dropdown-item hvr-bounce-to-right" href="AddSubSet.html"> <i
+										class="fas fa-stopwatch"></i> Set</a></li>
+
+						</ul>
+
+					</li>
+					<li class="nav-item"><a class="nav-link" href="Store.html"> <i class="fas fa-store"></i>
+							&nbsp;Store </a></li>
+					<li class="nav-item dropdown">
+						<a id="10" class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><i
+								class="fas fa-times"></i> Multiplications</a>
+						<ul class="dropdown-menu" style="backdrop-filter: blur(50px);
+						-webkit-backdrop-filter: blur(50px);
+							color: white; line-height: 2.3em;
+							/* width: 100%; */
+							 font-size: 1em;">
+
+							<li><a id="002" class="dropdown-item hvr-bounce-to-right" href="MulGenerator.html">
+									<i class="fas fa-file-medical"></i> Generator </a></li>
+							<li><a id="11" class="dropdown-item hvr-bounce-to-right" href="MulSpeedRound.html"> <i
+										class="fas fa-hourglass-start"></i> Speed Round </a></li>
+							<li><a id="12" class="dropdown-item hvr-bounce-to-right" href="MulSet.html"> <i
+										class="fas fa-stopwatch"></i> Set </a></li>
+
+						</ul>
+
+					</li>
+
+					<li class="nav-item dropdown">
+						<a id="20" class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><i
+								class="fas fa-divide"></i> Divisions</a>
+						<ul class="dropdown-menu" style="backdrop-filter: blur(50px);
+						-webkit-backdrop-filter: blur(50px);
+							color: white; line-height: 2.3em;
+							/* width: 100%; */
+							 font-size: 1em;">
+							<li><a id="003" class="dropdown-item hvr-bounce-to-right" href="DivGenerator.html">
+									<i class="fas fa-file-medical"></i> Generator </a></li>
+							<li>
+								<a id="21" class="dropdown-item hvr-bounce-to-right" href="DivSpeedRound.html"
+									style="padding: 0.5em .5em .5em .5em;">
+									<i class="fas fa-hourglass-start"></i> Speed Round
+								</a>
+							</li>
+							<li><a id="22" class="dropdown-item hvr-bounce-to-right" href="DivSet.html"> <i
+										class="fas fa-stopwatch"></i> Set </a></li>
+
+						</ul>
+
+					</li>
+					<li class="nav-item"><a class="nav-link" href="ContactUs.html"> <i class="fas fa-phone"></i>
+							&nbsp;Contact Us </a></li>
+					<li class="nav-item"><a class="nav-link" href="JoinOurClasses.html"> <i class="fas fa-users"></i>
+							Join Our Classes </a></li>
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<a id="backToTop" href="#content">
+
+		<svg xmlns="http://www.w3.org/2000/svg" style="
+		
+						border-radius: 2em; color: rgb(255, 255, 255);" width="36" height="36" fill="currentColor"
+			class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
+			<path fill-rule="evenodd"
+				d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z" />
+		</svg>
+
+	</a>
+	<div id="content" style="padding: 0em;">
+		<script src="https://cdn.jsdelivr.net/npm/tsparticles@1.18.4/dist/tsparticles.min.js"></script>
+		<div id="tsparticles" style="
+			position: fixed;
+			display: block;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 0 !important;
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: 50% 50%;
+		"></div>
+		<script src="tsParticlesHome.js">
+		</script>
+		<div id="particles-js" style="
+			position: fixed;
+			left: 0;
+			top: 0;
+			display: block;
+			width: 100%;
+			height: 100%;
+			z-index: 0 !important;
+			background-image: url(''); 
+			background-repeat: no-repeat; 
+			background-size: cover; 
+			background-position: 50% 50%;
+		"></div>
+		<script>
+			particlesJS.load('particles-js', 'particlesHome.json', function () {
+			});
+		</script>
+		<br><br><br><br>
+		<div style="animation: upAndDown 5s linear infinite alternate-reverse; margin-bottom: 5em; padding: .3em;">
+			<br>
+			<h1 style="color: white; text-align: center;">AirCast</h1>
+			<br>
+			<h3 style="color: white;text-align: center;font-size: 1.6rem;">Forecasting Air Quality</h3>
+		</div>
+		<br>
+		
+		<div class="row">
+			<div class="col">
+				<div id="div1" data-aos="fade-down" data-aos-duration="2500" data-aos-easing="ease-out-cubic"
+					data-aos-mirror="true" data-aos-once="true" style="
+					background: linear-gradient(to bottom, #ff9933, white, rgb(19 136 8 / 80%) );
+					color: black;
+					font-size: 1em;
+					padding: 1em;
+					margin: 2.3em;
+					margin-right: 1.4em;
+					border-radius: 2em;
+					">
+
+					<div class="row">
+						<div class="col" style="text-align: center;">
+							<h2>
+								<strong> 
+									<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+										<path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+									  </svg>
+									Sector 51, Gurugram
+								</strong>
+							</h2>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col">
+							<iframe
+								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14034.738706286174!2d77.05804324845914!3d28.42877003263204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d188319f68463%3A0x71c9bc9381ff5afd!2sSector%2051%2C%20Gurugram%2C%20Haryana%20122003!5e0!3m2!1sen!2sin!4v1702537281751!5m2!1sen!2sin"
+								height="450" style="border:0; width: -webkit-fill-available;" allowfullscreen=""
+								loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+							</iframe>
+						</div>
+					</div>
+
+				</div>
+				<p style="margin: 1em;"></p>
+
+			</div>
+			<div class="col">
+				<div id="div2" data-aos="fade-down" data-aos-duration="2500" data-aos-easing="ease-out-cubic"
+					data-aos-mirror="true" data-aos-once="true" style="
+					color: white;
+					background-color: rgb(255 255 255 / 10%);
+					backdrop-filter: blur(4px);
+					-webkit-backdrop-filter: blur(4px);
+					border-radius: 2em;
+					padding: 1em;
+					margin: 2.3em;
+					margin-right: 1.4em;
+					">
+					<div class="row">
+						<div class="col">
+							<div id="forecast_aqi" style="width:1000px;height:500px;"></div>		
+						</div>
+					</div>
+					
+					<script>
+
+						forecast_aqi = document.getElementById('forecast_aqi');
+
+						var csvFileURL = 'data/cleaned_data/Forecasting_time_series/forecast_data.csv';
+
+						fetch(csvFileURL)
+							.then(response => response.text())
+							.then(csvData => {
+								// Parse CSV data using PapaParse
+								Papa.parse(csvData, {
+									header: true, // Assuming the first row contains headers
+									complete: function (results) {
+
+										var parsedData = results.data;
+										aqi = parsedData.map((obj) => obj.AQI );
+										datetime = parsedData.map((obj) => obj.Date );
+										var trace = {
+											x: datetime,
+											y: aqi,
+											mode: 'lines',
+											name: 'Lines'
+										};
+										
+										var data = [ trace ];
+
+										var layout = {
+											title:'AQI Forecast',
+											grid: {
+												columns: 0,
+												rows: 0
+											},
+											font: {
+												color: 'white',
+												size: 20
+											},
+											hoverlabel: {
+												font: {
+													color: 'white',
+													size: 16
+												},
+												bgcolor: 'black'
+											},
+											xaxis: {
+												title: 'Datetime',
+												color: 'white',
+												size: 14,
+												showgrid: false
+											},
+											yaxis: {
+												title: 'AQI',
+												color: 'white',
+												size: 14,
+												showgrid: false
+											},
+											plot_bgcolor: 'rgb(255 255 255 / 0%)' ,
+											paper_bgcolor: 'rgb(255 255 255 / 0%)', 
+										};
+
+										Plotly.newPlot(forecast_aqi, data, layout);
+									}
+								});
+							})
+							.catch(error => console.error('Error fetching the CSV file:', error));
+
+					</script>
+				</div>
+				<p style="margin: 1em;"></p>
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col">
+				<div id="div3" data-aos="fade-down" data-aos-duration="2500" data-aos-easing="ease-out-cubic"
+					data-aos-mirror="true" data-aos-once="true" style="
+					color: white;
+					background-color: rgb(255 255 255 / 10%);
+					backdrop-filter: blur(4px);
+					-webkit-backdrop-filter: blur(4px);
+					border-radius: 2em;
+					padding: 1em;
+					margin: 2.3em;
+					margin-right: 1.4em;
+					">
+					<div class="row">
+						<div class="col" style="text-align: center;">
+							<h2>AQI Scale</h2>
+							<style>
+								table {
+									width: 100%;
+									border-collapse: collapse;
+									border-radius: 20px;
+            						overflow: hidden; 
+									margin-bottom: 20px;
+								}
+
+								td {
+									padding: 8px;
+									text-align: left;
+								}
+
+								th {
+									background-color: black;
+									padding: 8px;
+									text-align: left;
+									color: white;
+								}
+							</style>
+							<table>
+								<tr>
+									<th>AQI</th>
+									<th>Associated Health Impacts</th>
+								</tr>
+								<tr style="background-color: #00b050; color: black;">
+									<td>0-50 (Good)</td>
+									<td>Minimal Impact</td>
+								</tr>
+								<tr style="background-color: #92d050; color: black;">
+									<td>51-100 (Satisfactory)</td>
+									<td>May cause minor breathing discomfort to sensitive people</td>
+								</tr>
+								<tr style="background-color: #ff0; color: black;">
+									<td>101-200 (Moderate)</td>
+									<td>
+										May cause breathing discomfort to the people with lung diseases (such as asthma) and discomfort to
+										people with heart diseases, children, and older adults
+									</td>
+								</tr>
+								<tr style="background-color: #ff9a00; color: black;">
+									<td>201-300 (Poor)</td>
+									<td>
+										May cause breathing discomfort to people on prolonged exposure and discomfort to people with
+										heart disease with short exposure
+									</td>
+								</tr>
+								<tr style="background-color: #f00; color: black;">
+									<td>301-400 (Very Poor)</td>
+									<td>
+										May cause respiratory illness to people on prolonged exposure. Effect may be more pronounced in
+										people with lung and heart diseases
+									</td>
+								</tr>
+								<tr style="background-color: #c00000; color: white;">
+									<td>401-500 (Severe)</td>
+									<td>
+										May cause respiratory effects even on healthy people and serious health impacts on people with
+										lung/heart diseases. The health impacts may be experienced even during light physical activity
+									</td>
+								</tr>
+							</table>
+								
+						</div>
+						
+					</div>
+					<script>
+					</script>
+				</div>
+				<p style="margin: 1em;"></p>
+			</div>
+			<div class="col">
+				<div id="div4" data-aos="fade-down" data-aos-duration="2500" data-aos-easing="ease-out-cubic"
+					data-aos-mirror="true" data-aos-once="true" style="
+					color: white;
+					background-color: rgb(255 255 255 / 10%);
+					backdrop-filter: blur(4px);
+					-webkit-backdrop-filter: blur(4px);
+					border-radius: 2em;
+					padding: 1em;
+					margin: 2.3em;
+					margin-right: 1.4em;
+					">
+					<div class="row">
+						<div class="col">
+							
+						</div>
+					</div>
+					
+			</div>
+
+		</div>
+
+		<div class="row">
+
+			<div class="col">
+				<div id="div5" data-aos="fade-down" data-aos-duration="2500" data-aos-easing="ease-out-cubic"
+					data-aos-mirror="true" data-aos-once="true" style="
+					color: white;
+					background-color: rgb(255 255 255 / 10%);
+					backdrop-filter: blur(4px);
+					-webkit-backdrop-filter: blur(4px);
+					border-radius: 2em;
+					padding: 1em;
+					margin: 2.3em;
+					margin-right: 1.4em;
+					">
+					<div class="row">
+						<div class="col">
+							<div id="historical_aqi" style="width:2000px;height:500px;"></div>		
+						</div>
+					</div>
+					<script>
+
+						historical_aqi = document.getElementById('historical_aqi');
+
+						var csvFileURL = 'data/cleaned_data/Forecasting_time_series/sector_51_daily_aqi.csv';
+
+						fetch(csvFileURL)
+							.then(response => response.text())
+							.then(csvData => {
+								// Parse CSV data using PapaParse
+								Papa.parse(csvData, {
+									header: true, // Assuming the first row contains headers
+									complete: function (results) {
+
+										var parsedData = results.data;
+										aqi = parsedData.map((obj) => obj.AQI );
+										datetime = parsedData.map((obj) => obj.Date );
+										var trace = {
+											x: datetime,
+											y: aqi,
+											mode: 'lines',
+											name: 'Lines'
+										};
+										
+										var data = [ trace ];
+
+										var layout = {
+											title:'Historical Daily AQI',
+											grid: {
+												columns: 0,
+												rows: 0
+											},
+											font: {
+												color: 'white',
+												size: 20
+											},
+											hoverlabel: {
+												font: {
+													color: 'white',
+													size: 16
+												},
+												bgcolor: 'black'
+											},
+											xaxis: {
+												title: 'Datetime',
+												color: 'white',
+												size: 14,
+												showgrid: false
+											},
+											yaxis: {
+												title: 'AQI',
+												color: 'white',
+												size: 14,
+												showgrid: false
+											},
+											plot_bgcolor: 'rgb(255 255 255 / 0%)' ,
+											paper_bgcolor: 'rgb(255 255 255 / 0%)', 
+										};
+
+										Plotly.newPlot(historical_aqi, data, layout);
+									}
+								});
+							})
+							.catch(error => console.error('Error fetching the CSV file:', error));
+
+					</script>
+				</div>
+				<p style="margin: 1em;"></p>
+			</div>
+
+		</div>
+	</div>
+
+	<div>
+		<svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+			viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+			<defs>
+				<path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+			</defs>
+			<g class="parallax">
+				<use xlink:href="#gentle-wave" x="48" y="0" fill="#0d6efd" />
+				<use xlink:href="#gentle-wave" x="48" y="3" fill="#0d6efd" />
+				<use xlink:href="#gentle-wave" x="48" y="5" fill="#0d6efd" />
+				<use xlink:href="#gentle-wave" x="48" y="7" fill="#0d6efd" />
+			</g>
+		</svg>
+	</div>
+
+	<footer class="page-footer font-small unique-color-dark pt-4">
+
+		<div class="row" style="margin: 1em;">
+
+			<div class="col"
+				style=" animation: upAndDownWave 30s cubic-bezier(0.74, 1.38, 0.58, 1.32) infinite alternate;">
+				<div class="row">
+					<strong class="nav-link" style="font-size: 26px;color: white;">
+						<i class="fas fa-link"></i> Quick Links
+					</strong>
+				</div>
+				<div class="row">
+					<a class="nav-link" style="color: white;"
+						href="https://www.youtube.com/channel/UCyBGFKqHd9j1tcqbqonTsqw">
+						<i class="fab fa-youtube"></i>
+						Our YouTube Channel
+					</a>
+				</div>
+
+				<div class="row">
+					<a class="nav-link" style="color: white;" href="tel:+91-8179328370">
+
+						<i class="fas fa-phone"></i>
+
+						+91-8179328370
+					</a>
+
+				</div>
+				<div class="row">
+					<a class="nav-link" style="color: white;" href="https://chat.whatsapp.com/HlaNjhcALxD616NNG2HDM0">
+
+						<i class="fab fa-whatsapp"></i>
+
+						Join our WhatsApp Group
+					</a>
+
+				</div>
+
+				<div class="row">
+					<a class="nav-link" style="color: white;" href="JoinOurClasses.html"> <i class="fas fa-users"></i>
+						Join Our Classes </a>
+				</div>
+				<div class="row" style="margin-bottom: 0px;">
+					<a class="nav-link" style="color: white;" href="Store.html"> <i class="fas fa-store"></i>
+						Our Abacus Store </a>
+				</div>
+				<div class="row">
+					<a class="nav-link" style="color: white;" href="https://www.buymeacoffee.com/pranaii/e/53411">
+						<i class="far fa-handshake"></i> Meet Me
+					</a>
+				</div>
+				<div class="row">
+
+					<a class="nav-link" style="color: white;" href="https://forms.gle/GVJt87ohDn659AMS8"
+						target="_blank">
+						<i class="far fa-comments"></i> Give my Feedback
+					</a>
+				</div>
+				<div class="row">
+					<a class="nav-link" style="color: white;" href="Index.html"><i class="fas fa-home"></i> Home </a>
+				</div>
+				<div class="row">
+					<a class="nav-link" style="color: white;" href="AboutUs.html"> <i class="fas fa-info-circle"></i>
+						About </a>
+				</div>
+				<div class="row">
+					<a class="nav-link" style="color: white;" href="HowToUse.html"> <i
+							class="fas fa-question-circle"></i> How To Use? </a>
+				</div>
+				<!-- <div class="row">	 -->
+				<!-- Our Store. -->
+				<!-- <div id="myShop">
+						<a href="https://pranaii1729.myspreadshop.com">pranaii1729</a>
+					</div>
+					
+					<script>
+						var spread_shop_config = {
+							shopName: 'pranaii1729',
+							locale: 'us_US',
+							prefix: 'https://pranaii1729.myspreadshop.com',
+							baseId: 'myShop'
+						};
+					</script>
+					
+					<script type="text/javascript"
+							src="https://pranaii1729.myspreadshop.com/shopfiles/shopclient/shopclient.nocache.js">
+					</script> -->
+				<!-- </div> -->
+			</div>
+			<div class="col"
+				style=" animation: upAndDownWave 30s cubic-bezier(0.74, 1.38, 0.58, 1.32) infinite alternate-reverse;">
+				<div class="row">
+
+					<strong class="nav-link" style="font-size: 26px;color: white;">
+						<i class="fas fa-plus"></i> Add & <i class="fas fa-minus"></i>
+						Sub
+					</strong>
+
+				</div>
+
+				<div class="row">
+					<a id="001" class="nav-link" style="color: white;" href="AddSubGenerator.html">
+						<i class="fas fa-file-medical"></i> Generator</a>
+				</div>
+
+				<div class="row">
+					<a id="01" class="nav-link" style="color: white;" href="AddSubFlashCards.html"> <i
+							class="fas fa-bolt"></i> Flash Cards </a>
+				</div>
+				<div class="row">
+					<a id="02" class="nav-link" style="color: white;" href="AddSubInfinite.html"> <i
+							class="fas fa-infinity"></i> Infinite Mode</a>
+				</div>
+				<div class="row">
+					<a id="03" class="nav-link" style="color: white;" href="AddSubSpeedRound.html"> <i
+							class="fas fa-hourglass-start"></i> Speed Round </a>
+				</div>
+				<div class="row">
+					<a id="04" class="nav-link" style="color: white;" href="AddSubSet.html"> <i
+							class="fas fa-stopwatch"></i> Set</a>
+				</div>
+
+			</div>
+			<div class="col"
+				style=" animation: upAndDownWave 30s cubic-bezier(0.74, 1.38, 0.58, 1.32) infinite alternate;">
+				<div class="row">
+
+					<strong class="nav-link" style="font-size: 26px;color: white;">
+						<i class="fas fa-times"></i> Multiplications
+					</strong>
+				</div>
+
+				<div class="row">
+					<a id="002" class="nav-link" style="color: white;" href="MulGenerator.html">
+						<i class="fas fa-file-medical"></i> Generator</a>
+				</div>
+				<div class="row">
+					<a id="11" class="nav-link" style="color: white;" href="MulSpeedRound.html"> <i
+							class="fas fa-hourglass-start"></i> Speed Round </a>
+				</div>
+				<div class="row">
+					<a id="12" class="nav-link" style="color: white;" href="MulSet.html"> <i
+							class="fas fa-stopwatch"></i>
+						Set </a>
+				</div>
+
+			</div>
+			<div class="col"
+				style=" animation: upAndDownWave 30s cubic-bezier(0.74, 1.38, 0.58, 1.32) infinite alternate-reverse;">
+				<div class="row">
+
+					<strong class="nav-link" style="font-size: 26px;color: white;">
+						<i class="fas fa-divide"></i> Divisions
+					</strong>
+
+				</div>
+				<div class="row">
+					<a id="003" class="nav-link" style="color: white;" href="DivGenerator.html">
+						<i class="fas fa-file-medical"></i> Generator</a>
+				</div>
+				<div class="row">
+					<a id="21" class="nav-link" style="color: white;" href="DivSpeedRound.html">
+						<i class="fas fa-hourglass-start"></i> Speed Round
+					</a>
+				</div>
+				<div class="row">
+					<a id="22" class="nav-link" style="color: white;" href="DivSet.html"> <i
+							class="fas fa-stopwatch"></i>
+						Set </a>
+				</div>
+			</div>
+
+		</div>
+		<strong class="nav-link" style="font-size: 26px;color: white;">
+			<i class="fas fa-hands-helping"></i> Support Me :)
+		</strong>
+		<h5 style="color: white; padding: 0.5rem 1rem;">If you have liked my website and gained value from our YouTube
+			videos, then please support me.</h5>
+
+		<div class="row" style="margin: 1em; margin-bottom: 4em; color: white;">
+
+
+			<div class="col" style="display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;">
+				<!-- <h4>If you are outside India. </h4> -->
+				<br>
+				<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
+					data-name="bmc-button" data-slug="pranaii" data-color="#FFDD00" data-emoji="" data-font="Poppins"
+					data-text="Support Me :)" data-outline-color="#000000" data-font-color="#000000"
+					data-coffee-color="#ffffff"></script>
+			</div>
+		</div>
+
+		<div class="row" style="margin: 1em; margin-bottom: 0px; padding-bottom: 1em; justify-content: center; 
+		text-align: center; color: white;">
+			<div class="col">
+
+				Designed & Developed by
+				<a class="navbar-brand" href="https://www.youtube.com/channel/UCyBGFKqHd9j1tcqbqonTsqw" target="_blank"
+					style="font-size: 23px; background: white; color: black;margin-right: 5px;">Pranaii
+					1729</a>©
+				<span id="getCurrentYear"></span>
+
+			</div>
+		</div>
+
+	</footer>
+
+	<!-- <div style="
+		color: rgb(255, 255, 255);
+		background-image: radial-gradient( #1f1f1f, #303030); 
+		text-align: center;
+		">
+
+		<div class="row">
+			<div class="col">
+				<h3 style="padding: .7em;">
+					Designed & Developed by
+					<a class="navbar-brand" href="https://www.youtube.com/channel/UCyBGFKqHd9j1tcqbqonTsqw"
+						target="_blank" style="font-size: 28px; color: black;margin-right: 5px;">Pranaii
+						1729</a>©
+					<span id="getCurrentYear"></span>
+					<br>
+				</h3>
+			</div>
+		</div>
+
+	</div> -->
+
+	<script>
+
+		var btn = $('#backToTop');
+
+		$(window).scroll(function () {
+			if ($(window).scrollTop() > 300) {
+				btn.addClass('show');
+			} else {
+				btn.removeClass('show');
+			}
+		});
+
+		var btn2 = $('#whatsAppIcon');
+
+		$(window).scroll(function () {
+			if ($(window).scrollTop() > 300) {
+				btn2.addClass('show');
+			} else {
+				btn2.removeClass('show');
+			}
+		});
+
+		// var btn3 = $('#bmc-wbtn');
+
+		// $(window).scroll(function () {
+		// 	if ($(window).scrollTop() > 300) {
+		// 		btn3.addClass('show');
+		// 	} else {
+		// 		btn3.removeClass('show');
+		// 	}
+		// });
+
+		var currentYear = new Date()
+		currentYear = currentYear.getFullYear()
+		document.getElementById('getCurrentYear').innerHTML = currentYear
+
+		$(function () {
+			$("#00").hover(function () {
+				$(".fa-plus").css("transform", "rotate(360deg)")
+				$(".fa-plus").css("transition", "2s")
+
+				$(".fa-minus").css("transform", "rotate(360deg)")
+				$(".fa-minus").css("transition", "2s")
+			}, function () {
+				$(".fa-plus").css("transform", "rotate(0deg)")
+				$(".fa-plus").css("transition", "1s")
+
+				$(".fa-minus").css("transform", "rotate(0deg)")
+				$(".fa-minus").css("transition", "1s")
+			});
+		});
+
+		$(function () {
+			$("#001").hover(function () {
+				$(".fa-file-medical").css("transform", "rotate(360deg)")
+				$(".fa-file-medical").css("transition", "2s")
+			}, function () {
+				$(".fa-file-medical").css("transform", "rotate(0deg)")
+				$(".fa-file-medical").css("transition", "1s")
+			});
+		});
+
+		$(function () {
+			$("#002").hover(function () {
+				$(".fa-file-medical").css("transform", "rotate(360deg)")
+				$(".fa-file-medical").css("transition", "2s")
+			}, function () {
+				$(".fa-file-medical").css("transform", "rotate(0deg)")
+				$(".fa-file-medical").css("transition", "1s")
+			});
+		});
+
+		$(function () {
+			$("#003").hover(function () {
+				$(".fa-file-medical").css("transform", "rotate(360deg)")
+				$(".fa-file-medical").css("transition", "2s")
+			}, function () {
+				$(".fa-file-medical").css("transform", "rotate(0deg)")
+				$(".fa-file-medical").css("transition", "1s")
+			});
+		});
+
+		$(function () {
+			$("#01").hover(function () {
+				$(".fa-bolt").css("transform", "rotate(360deg)")
+				$(".fa-bolt").css("transition", "2s")
+			}, function () {
+				$(".fa-bolt").css("transform", "rotate(0deg)")
+				$(".fa-bolt").css("transition", "1s")
+			});
+		});
+
+		$(function () {
+			$("#02").hover(function () {
+				$(".fa-infinity").css("transform", "rotate(360deg)")
+				$(".fa-infinity").css("transition", "2s")
+			}, function () {
+				$(".fa-infinity").css("transform", "rotate(0deg)")
+				$(".fa-infinity").css("transition", "1s")
+			});
+		});
+
+		$(function () {
+			$("#03").hover(function () {
+				$(".fa-hourglass-start").css("transform", "rotate(360deg)")
+				$(".fa-hourglass-start").css("transition", "2s")
+			}, function () {
+				$(".fa-hourglass-start").css("transform", "rotate(0deg)")
+				$(".fa-hourglass-start").css("transition", "1s")
+			});
+		});
+
+		$(function () {
+			$("#04").hover(function () {
+				$(".fa-stopwatch").css("transform", "rotate(360deg)")
+				$(".fa-stopwatch").css("transition", "2s")
+			}, function () {
+				$(".fa-stopwatch").css("transform", "rotate(0deg)")
+				$(".fa-stopwatch").css("transition", "1s")
+			});
+		});
+
+		$(function () {
+			$("#10").hover(function () {
+				$(".fa-times").css("transform", "rotate(360deg)")
+				$(".fa-times").css("transition", "2s")
+			}, function () {
+				$(".fa-times").css("transform", "rotate(0deg)")
+				$(".fa-times").css("transition", "1s")
+			});
+		});
+
+		$(function () {
+			$("#11").hover(function () {
+				$(".fa-hourglass-start").css("transform", "rotate(360deg)")
+				$(".fa-hourglass-start").css("transition", "2s")
+			}, function () {
+				$(".fa-hourglass-start").css("transform", "rotate(0deg)")
+				$(".fa-hourglass-start").css("transition", "1s")
+			});
+		});
+
+		$(function () {
+			$("#12").hover(function () {
+				$(".fa-stopwatch").css("transform", "rotate(360deg)")
+				$(".fa-stopwatch").css("transition", "2s")
+			}, function () {
+				$(".fa-stopwatch").css("transform", "rotate(0deg)")
+				$(".fa-stopwatch").css("transition", "1s")
+			});
+		});
+
+		$(function () {
+			$("#20").hover(function () {
+				$(".fa-divide").css("transform", "rotate(360deg)")
+				$(".fa-divide").css("transition", "2s")
+			}, function () {
+				$(".fa-divide").css("transform", "rotate(0deg)")
+				$(".fa-divide").css("transition", "1s")
+			});
+		});
+
+		$(function () {
+			$("#21").hover(function () {
+				$(".fa-hourglass-start").css("transform", "rotate(360deg)")
+				$(".fa-hourglass-start").css("transition", "2s")
+			}, function () {
+				$(".fa-hourglass-start").css("transform", "rotate(0deg)")
+				$(".fa-hourglass-start").css("transition", "1s")
+			});
+		});
+
+		$(function () {
+			$("#22").hover(function () {
+				$(".fa-stopwatch").css("transform", "rotate(360deg)")
+				$(".fa-stopwatch").css("transition", "2s")
+			}, function () {
+				$(".fa-stopwatch").css("transform", "rotate(0deg)")
+				$(".fa-stopwatch").css("transition", "1s")
+			});
+		});
+	</script>
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+	<script>
+		AOS.init();
+	</script>
+	<script type="text/javascript" src="vanilla-tilt.js"></script>
+	<script type="text/javascript">
+
+		if (screen.width >= 768) {
+			for (let index = 0; index < 5; index++) {
+
+				VanillaTilt.init(document.getElementById("div" + (index + 1)), {
+					max: 3,
+					perspective: 1000,
+					scale: 1.04,
+
+				});
+
+			}
+		}
+		function loaded() {
+			document.getElementById("loading").style.display = "none"
+		}
+	</script>
+
+</body>
+
+</html>
