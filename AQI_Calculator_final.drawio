@@ -1,0 +1,120 @@
+<mxfile host="app.diagrams.net" modified="2023-12-20T17:45:14.992Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="BvOay5xl3YEPY1XEH4kJ" version="22.1.11" type="device">
+  <diagram name="Page-1" id="nDaYHn2mYHW6qXpV198f">
+    <mxGraphModel dx="1750" dy="963" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="turFfmm52IAkxlSTsNJc-58" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="25" y="116" width="1120" height="595" as="geometry" />
+        </mxCell>
+        <mxCell id="yzQ3ssoGPACavgoiMbkE-2" value="Data Collection" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;fontSize=14;" parent="turFfmm52IAkxlSTsNJc-58" vertex="1">
+          <mxGeometry y="175" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="yzQ3ssoGPACavgoiMbkE-6" value="Data cleaning, &lt;br&gt;handling missing &lt;br&gt;values" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;fontSize=14;" parent="turFfmm52IAkxlSTsNJc-58" vertex="1">
+          <mxGeometry y="345" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="yzQ3ssoGPACavgoiMbkE-7" value="EDA, &lt;br&gt;Data Visualization" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;fontSize=14;" parent="turFfmm52IAkxlSTsNJc-58" vertex="1">
+          <mxGeometry y="515" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="turFfmm52IAkxlSTsNJc-57" value="" style="group" vertex="1" connectable="0" parent="turFfmm52IAkxlSTsNJc-58">
+          <mxGeometry x="17.5" width="1102.5" height="595" as="geometry" />
+        </mxCell>
+        <mxCell id="turFfmm52IAkxlSTsNJc-1" value="End" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;fontSize=14;" vertex="1" parent="turFfmm52IAkxlSTsNJc-57">
+          <mxGeometry x="650" y="345" width="145" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="turFfmm52IAkxlSTsNJc-15" value="Evaluate model" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;fontSize=14;" vertex="1" parent="turFfmm52IAkxlSTsNJc-57">
+          <mxGeometry x="312.5" y="175" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="turFfmm52IAkxlSTsNJc-16" value="Hyperparameter &lt;br&gt;tuning" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;fontSize=14;" vertex="1" parent="turFfmm52IAkxlSTsNJc-57">
+          <mxGeometry x="322.5" y="5" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="turFfmm52IAkxlSTsNJc-17" value="Best model" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;fontSize=14;" vertex="1" parent="turFfmm52IAkxlSTsNJc-57">
+          <mxGeometry x="642.5" y="5" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="turFfmm52IAkxlSTsNJc-52" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.476;entryY=-0.024;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="turFfmm52IAkxlSTsNJc-57" source="turFfmm52IAkxlSTsNJc-18">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="722.94" y="343.08000000000004" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="turFfmm52IAkxlSTsNJc-18" value="Model &lt;br style=&quot;font-size: 14px;&quot;&gt;deployment" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;fontSize=14;" vertex="1" parent="turFfmm52IAkxlSTsNJc-57">
+          <mxGeometry x="632.5" y="175" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="turFfmm52IAkxlSTsNJc-23" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;fontSize=14;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="turFfmm52IAkxlSTsNJc-57" source="turFfmm52IAkxlSTsNJc-16" target="turFfmm52IAkxlSTsNJc-17">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="712.7631578947369" y="103.9655172413793" as="sourcePoint" />
+            <mxPoint x="642.5" y="45" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="turFfmm52IAkxlSTsNJc-24" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;fontSize=14;exitX=0.444;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="turFfmm52IAkxlSTsNJc-57" source="turFfmm52IAkxlSTsNJc-17" target="turFfmm52IAkxlSTsNJc-18">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="722.5" y="95" as="sourcePoint" />
+            <mxPoint x="410.4342105263158" y="172.06896551724137" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="turFfmm52IAkxlSTsNJc-34" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontSize=14;" edge="1" parent="turFfmm52IAkxlSTsNJc-57" source="turFfmm52IAkxlSTsNJc-14" target="turFfmm52IAkxlSTsNJc-15">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="401.4473684210526" y="662.4137931034483" as="sourcePoint" />
+            <mxPoint x="405.0986842105263" y="117.58620689655172" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="turFfmm52IAkxlSTsNJc-31" value="Feature Engineering" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;fontSize=14;" vertex="1" parent="turFfmm52IAkxlSTsNJc-57">
+          <mxGeometry x="302.5" y="515" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="turFfmm52IAkxlSTsNJc-44" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;fontSize=14;" edge="1" parent="turFfmm52IAkxlSTsNJc-57" source="turFfmm52IAkxlSTsNJc-31" target="turFfmm52IAkxlSTsNJc-14">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="402.17763157894734" y="512.5862068965517" as="sourcePoint" />
+            <mxPoint x="397.79605263157896" y="253.79310344827587" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="turFfmm52IAkxlSTsNJc-14" value="Model training" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;fontSize=14;" vertex="1" parent="turFfmm52IAkxlSTsNJc-57">
+          <mxGeometry x="312.5" y="345" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="turFfmm52IAkxlSTsNJc-45" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;fontSize=14;" vertex="1" parent="turFfmm52IAkxlSTsNJc-57">
+          <mxGeometry x="1062.5" y="175" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="turFfmm52IAkxlSTsNJc-46" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;fontSize=14;" edge="1" parent="turFfmm52IAkxlSTsNJc-57" source="turFfmm52IAkxlSTsNJc-18" target="turFfmm52IAkxlSTsNJc-45">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="990.2631578947369" y="458.10344827586204" as="sourcePoint" />
+            <mxPoint x="1063.2894736842104" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="turFfmm52IAkxlSTsNJc-47" value="Real time inference" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;fontSize=14;" vertex="1" parent="turFfmm52IAkxlSTsNJc-57">
+          <mxGeometry x="872.5" y="175" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="turFfmm52IAkxlSTsNJc-50" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;fontSize=14;entryX=0.446;entryY=1.001;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="turFfmm52IAkxlSTsNJc-57" source="turFfmm52IAkxlSTsNJc-15" target="turFfmm52IAkxlSTsNJc-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="402.5" y="165" as="sourcePoint" />
+            <mxPoint x="400.5" y="95" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="turFfmm52IAkxlSTsNJc-55" value="Start" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;fontSize=14;" vertex="1" parent="turFfmm52IAkxlSTsNJc-57">
+          <mxGeometry width="145" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="turFfmm52IAkxlSTsNJc-56" value="Predictions" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;fontSize=14;" vertex="1" parent="turFfmm52IAkxlSTsNJc-57">
+          <mxGeometry x="872.5" y="215" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="turFfmm52IAkxlSTsNJc-3" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;fontSize=14;" edge="1" parent="turFfmm52IAkxlSTsNJc-58" source="turFfmm52IAkxlSTsNJc-55" target="yzQ3ssoGPACavgoiMbkE-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="42.5" y="80" as="sourcePoint" />
+            <mxPoint x="186.18421052631578" y="38.103448275862064" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="turFfmm52IAkxlSTsNJc-6" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;fontSize=14;" edge="1" parent="turFfmm52IAkxlSTsNJc-58" source="yzQ3ssoGPACavgoiMbkE-2" target="yzQ3ssoGPACavgoiMbkE-6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="555.7894736842105" y="442.2413793103448" as="sourcePoint" />
+            <mxPoint x="628.8157894736842" y="374.13793103448273" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="turFfmm52IAkxlSTsNJc-10" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;fontSize=14;" edge="1" parent="turFfmm52IAkxlSTsNJc-58" source="yzQ3ssoGPACavgoiMbkE-6" target="yzQ3ssoGPACavgoiMbkE-7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="108.86842105263158" y="401.37931034482756" as="sourcePoint" />
+            <mxPoint x="628.8157894736842" y="374.13793103448273" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="turFfmm52IAkxlSTsNJc-33" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Open Sans;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DOpen%2BSans;fontSize=14;" edge="1" parent="turFfmm52IAkxlSTsNJc-58" source="yzQ3ssoGPACavgoiMbkE-7" target="turFfmm52IAkxlSTsNJc-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
