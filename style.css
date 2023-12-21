@@ -578,12 +578,12 @@ body {
 
 .accordion-button::after {
     transition: transform 2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    background-image: url('plus.svg');
+    background-image: url('images/plus.svg');
     -webkit-transition: transform 2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 .accordion-button:not(.collapsed)::after {
     transition: transform 2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    background-image: url('minus.svg');
+    background-image: url('images/minus.svg');
     -webkit-transition: transform 2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
@@ -614,14 +614,14 @@ body {
     background: linear-gradient(to right, #ff993347, #13880847);
 }
 
-.accordion-body.FlashCards{
+.accordion-body.FAQs{
     background: linear-gradient(to right, #ff6a0d, #002cff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     border-radius: 1em;
 }
 
-.accordion-button:not(.collapsed).FlashCards {
+.accordion-button:not(.collapsed).FAQs {
     background: linear-gradient(to right, #002cff38,#ff6a0d2e);
     box-shadow: rgb(0 0 0 / 13%) 0px -1px 0px inset;
 }
