@@ -166,3 +166,9 @@
 2023-12-23 20:03:52,125 - __main__ - INFO - The data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2023-12-24 01:00:00
 2023-12-23 20:03:52,606 - __main__ - INFO - station=> Vikas Sadan, result => ['206', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2023-12-24 01:00:00')]
 2023-12-23 20:03:52,606 - __main__ - INFO - The data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2023-12-24 01:00:00
+2023-12-23 21:03:59,052 - __main__ - INFO - Exception ConnectionError has occured for station=> nise gwal
+2023-12-23 21:06:10,124 - __main__ - INFO - Exception ConnectionError has occured for station=> Sector-51, Gurugram
+2023-12-23 21:06:10,600 - __main__ - INFO - station=> Teri Gram, result => ['180', 'Teri Gram, Gurugram, India', Timestamp('2023-12-24 02:00:00')]
+2023-12-23 21:06:10,601 - __main__ - INFO - The data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2023-12-24 02:00:00
+2023-12-23 21:06:11,073 - __main__ - INFO - station=> Vikas Sadan, result => ['212', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2023-12-24 02:00:00')]
+2023-12-23 21:06:11,073 - __main__ - INFO - The data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2023-12-24 02:00:00
