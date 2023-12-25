@@ -36,7 +36,6 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-TPMQ9921ZL"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.min.js"
 		integrity="sha512-bzjaf85dHTL4H0BvkAJ/Jbvxqf1rDj+jVpCNe3oxQj/RXSnkx1HnKhqIcmMWghxEAbXsYgddrc38saWpltlkug=="
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -69,18 +68,13 @@
 	1.6s cubic-bezier(0.68, 1.12, 1, 1) 0s infinite normal none running spin;
 	">
 		<div id="LoaderId">
-			<!-- Loading... -->
 		</div>
 		<script>
-
 			$("#loading").css("top", parseInt(screen.height / 2))
 			$("#loading").css("left", parseInt(screen.width / 2) - 30)
-
 		</script>
-
 	</div>
 	<script>
-
 		let scene, camera, renderer, starGeo, stars;
 		var screenW = window.innerWidth;
 		var screenH = window.innerHeight;
@@ -209,7 +203,7 @@
 			<div class="collapse navbar-collapse" id="main_nav">
 				<ul class="navbar-nav nav-fill w-100">
 					<li class="nav-item active"> <a class="nav-link" href="Index.html"><i class="fas fa-home"></i>&nbsp;Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="AboutUs.html"> <i class="fas fa-info-circle"></i>&nbsp;About</a></li>
+					<li class="nav-item"><a class="nav-link" href="Resume.html"> <i class="fa-solid fa-file"></i>&nbsp;Resume</a></li>
 					<li class="nav-item"><a class="nav-link" href="https://www.kaggle.com/pranaii" target="_blank"><i class="fa-brands fa-kaggle"></i>&nbsp;Kaggle</a></li>
 					<li class="nav-item"><a class="nav-link" href="https://github.com/bomma-Pranay/" target="_blank"><i class="fa-brands fa-github"></i>&nbsp;GitHub</a></li>
 					<li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/in/Bomma-Pranay/" target="_blank"><i class="fa-brands fa-linkedin"></i>&nbsp;LinkedIn</a></li>
@@ -1006,160 +1000,7 @@
 	</div>
 
 	<footer class="page-footer font-small unique-color-dark pt-4">
-<!-- 
-		<div class="row" style="margin: 1em;">
-
-			<div class="col"
-				style=" animation: upAndDownWave 30s cubic-bezier(0.74, 1.38, 0.58, 1.32) infinite alternate;">
-				<div class="row">
-					<strong class="nav-link" style="font-size: 26px;color: white;">
-						<i class="fas fa-link"></i> Quick Links
-					</strong>
-				</div>
-				<div class="row">
-					<a class="nav-link" style="color: white;"
-						href="https://www.youtube.com/channel/UCyBGFKqHd9j1tcqbqonTsqw">
-						<i class="fab fa-youtube"></i>
-						Our YouTube Channel
-					</a>
-				</div>
-
-				<div class="row">
-					<a class="nav-link" style="color: white;" href="tel:+91-8179328370">
-
-						<i class="fas fa-phone"></i>
-
-						+91-8179328370
-					</a>
-
-				</div>
-				<div class="row">
-					<a class="nav-link" style="color: white;" href="https://chat.whatsapp.com/HlaNjhcALxD616NNG2HDM0">
-
-						<i class="fab fa-whatsapp"></i>
-
-						Join our WhatsApp Group
-					</a>
-
-				</div>
-
-				<div class="row">
-					<a class="nav-link" style="color: white;" href="JoinOurClasses.html"> <i class="fas fa-users"></i>
-						Join Our Classes </a>
-				</div>
-				<div class="row" style="margin-bottom: 0px;">
-					<a class="nav-link" style="color: white;" href="Store.html"> <i class="fas fa-store"></i>
-						Our Abacus Store </a>
-				</div>
-				<div class="row">
-					<a class="nav-link" style="color: white;" href="https://www.buymeacoffee.com/pranaii/e/53411">
-						<i class="far fa-handshake"></i> Meet Me
-					</a>
-				</div>
-				<div class="row">
-
-					<a class="nav-link" style="color: white;" href="https://forms.gle/GVJt87ohDn659AMS8"
-						target="_blank">
-						<i class="far fa-comments"></i> Give my Feedback
-					</a>
-				</div>
-				<div class="row">
-					<a class="nav-link" style="color: white;" href="Index.html"><i class="fas fa-home"></i> Home </a>
-				</div>
-				<div class="row">
-					<a class="nav-link" style="color: white;" href="AboutUs.html"> <i class="fas fa-info-circle"></i>
-						About </a>
-				</div>
-				<div class="row">
-					<a class="nav-link" style="color: white;" href="HowToUse.html"> <i
-							class="fas fa-question-circle"></i> How To Use? </a>
-				</div>
-			</div>
-			<div class="col"
-				style=" animation: upAndDownWave 30s cubic-bezier(0.74, 1.38, 0.58, 1.32) infinite alternate-reverse;">
-				<div class="row">
-
-					<strong class="nav-link" style="font-size: 26px;color: white;">
-						<i class="fas fa-plus"></i> Add & <i class="fas fa-minus"></i>
-						Sub
-					</strong>
-
-				</div>
-
-				<div class="row">
-					<a id="001" class="nav-link" style="color: white;" href="AddSubGenerator.html">
-						<i class="fas fa-file-medical"></i> Generator</a>
-				</div>
-
-				<div class="row">
-					<a id="01" class="nav-link" style="color: white;" href="AddSubFlashCards.html"> <i
-							class="fas fa-bolt"></i> Flash Cards </a>
-				</div>
-				<div class="row">
-					<a id="02" class="nav-link" style="color: white;" href="AddSubInfinite.html"> <i
-							class="fas fa-infinity"></i> Infinite Mode</a>
-				</div>
-				<div class="row">
-					<a id="03" class="nav-link" style="color: white;" href="AddSubSpeedRound.html"> <i
-							class="fas fa-hourglass-start"></i> Speed Round </a>
-				</div>
-				<div class="row">
-					<a id="04" class="nav-link" style="color: white;" href="AddSubSet.html"> <i
-							class="fas fa-stopwatch"></i> Set</a>
-				</div>
-
-			</div>
-			<div class="col"
-				style=" animation: upAndDownWave 30s cubic-bezier(0.74, 1.38, 0.58, 1.32) infinite alternate;">
-				<div class="row">
-
-					<strong class="nav-link" style="font-size: 26px;color: white;">
-						<i class="fas fa-times"></i> Multiplications
-					</strong>
-				</div>
-
-				<div class="row">
-					<a id="002" class="nav-link" style="color: white;" href="MulGenerator.html">
-						<i class="fas fa-file-medical"></i> Generator</a>
-				</div>
-				<div class="row">
-					<a id="11" class="nav-link" style="color: white;" href="MulSpeedRound.html"> <i
-							class="fas fa-hourglass-start"></i> Speed Round </a>
-				</div>
-				<div class="row">
-					<a id="12" class="nav-link" style="color: white;" href="MulSet.html"> <i
-							class="fas fa-stopwatch"></i>
-						Set </a>
-				</div>
-
-			</div>
-			<div class="col"
-				style=" animation: upAndDownWave 30s cubic-bezier(0.74, 1.38, 0.58, 1.32) infinite alternate-reverse;">
-				<div class="row">
-
-					<strong class="nav-link" style="font-size: 26px;color: white;">
-						<i class="fas fa-divide"></i> Divisions
-					</strong>
-
-				</div>
-				<div class="row">
-					<a id="003" class="nav-link" style="color: white;" href="DivGenerator.html">
-						<i class="fas fa-file-medical"></i> Generator</a>
-				</div>
-				<div class="row">
-					<a id="21" class="nav-link" style="color: white;" href="DivSpeedRound.html">
-						<i class="fas fa-hourglass-start"></i> Speed Round
-					</a>
-				</div>
-				<div class="row">
-					<a id="22" class="nav-link" style="color: white;" href="DivSet.html"> <i
-							class="fas fa-stopwatch"></i>
-						Set </a>
-				</div>
-			</div>
-
-		</div> -->
-
+		
 		<div class="row" style="margin: 1em; margin-bottom: 0px; padding-bottom: 1em; justify-content: center; 
 		text-align: center; color: white;">
 			<div class="col">
