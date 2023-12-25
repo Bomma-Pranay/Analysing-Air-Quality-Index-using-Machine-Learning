@@ -174,3 +174,11 @@
 2023-12-25 21:02:35,772 - __main__ - INFO - The data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2023-12-26 02:00:00
 2023-12-25 21:02:36,401 - __main__ - INFO - station=> Vikas Sadan, result => ['181', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2023-12-26 02:00:00')]
 2023-12-25 21:02:36,401 - __main__ - INFO - The data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2023-12-26 02:00:00
+2023-12-25 22:02:23,358 - __main__ - INFO - station=> nise gwal, result => ['198', 'NISE Gwal Pahari, Gurugram, India', Timestamp('2023-12-26 03:00:00')]
+2023-12-25 22:02:23,358 - __main__ - INFO - The data has been written to data/cron_job_data/nise_cron_output.csv with Timestamp: 2023-12-26 03:00:00
+2023-12-25 22:02:23,834 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['190', 'Sector-51, Gurugram, India', Timestamp('2023-12-26 03:00:00')]
+2023-12-25 22:02:23,834 - __main__ - INFO - The data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2023-12-26 03:00:00
+2023-12-25 22:02:24,309 - __main__ - INFO - station=> Teri Gram, result => ['191', 'Teri Gram, Gurugram, India', Timestamp('2023-12-26 03:00:00')]
+2023-12-25 22:02:24,310 - __main__ - INFO - The data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2023-12-26 03:00:00
+2023-12-25 22:02:24,782 - __main__ - INFO - station=> Vikas Sadan, result => ['167', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2023-12-26 03:00:00')]
+2023-12-25 22:02:24,782 - __main__ - INFO - The data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2023-12-26 03:00:00
