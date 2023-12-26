@@ -293,7 +293,7 @@
 					<div class="row">
 						<div class="col">
 							<div style="border-radius: 25px; overflow: hidden;">
-								<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14034.738706286174!2d77.05804324845914!3d28.42877003263204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d188319f68463%3A0x71c9bc9381ff5afd!2sSector%2051%2C%20Gurugram%2C%20Haryana%20122003!5e0!3m2!1sen!2sin!4v1702537281751!5m2!1sen!2sin"
+								<iframe id="maps-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14034.738706286174!2d77.05804324845914!3d28.42877003263204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d188319f68463%3A0x71c9bc9381ff5afd!2sSector%2051%2C%20Gurugram%2C%20Haryana%20122003!5e0!3m2!1sen!2sin!4v1702537281751!5m2!1sen!2sin"
 								height="450" style="border:0; width: -webkit-fill-available;" allowfullscreen=""
 								loading="lazy" referrerpolicy="no-referrer-when-downgrade">
 								</iframe>
@@ -324,7 +324,6 @@
 					</div>
 					
 					<script>
-
 						forecast_aqi = document.getElementById('forecast_aqi');
 
 						var csvFileURL = 'data/cleaned_data/Forecasting_time_series/forecast_data.csv';
@@ -951,7 +950,26 @@
 			</div>
 
 		</div>
+		<script>
 
+			// Adjust the iframe size when the window is resized
+			window.addEventListener('resize', resizeIframe);
+		
+			function resizeIframe(id, height_p, width_p) {
+				var iframe = document.getElementById(id);
+				var newHeight = window.innerHeight;
+				var newWidth = window.innerWidth;
+				if (iframe!=null) {
+					iframe.style.height = newHeight*height_p + 'px';
+					iframe.style.width = newWidth*width_p + 'px';
+				}
+			}
+		
+			ids = ['maps-iframe', 'forecast_aqi', 'historical_aqi']
+			resizeIframe('maps-iframe', 0.5);
+			resizeIframe('forecast_aqi', 0.5, 0.5);
+			resizeIframe('historical_aqi', 0.5, 0.5);
+		</script>
 		<div class="row">
 			<div class="col">
 				<div id="div8"

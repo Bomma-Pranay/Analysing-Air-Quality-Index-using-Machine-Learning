@@ -109,13 +109,14 @@
         background-position: 50% 50%;
 		">
 		<br><br>
-		<!-- <br><br> -->
-		<!-- <h1>Resume</h1> -->
+		<br><br>
 		<div class="anime row">
-			<div class="col">
-				<!-- <div class="row" style="display: flex; justify-content: space-around; align-items: center; margin: 1em; animation: upAndDown 10s linear infinite alternate;">
-					<img loading="lazy" src="Pranaii.jpeg" width="339em" height="226em" style="border-radius: 2em;">	
-				</div> -->
+			<div>
+				<iframe id="resume-iframe" src="Pranay_Bomma_Resume.pdf" scrolling="auto" style="width: 50%; height: 50vh; border-radius: 25px; overflow: hidden;"></iframe>					
+			</div>
+			
+			<!-- <div class="col">
+				
 			</div>
 			<div class="col" 
 			style="
@@ -135,20 +136,29 @@
 					<div class="row">
 						<div class="col">
 							<div style="border-radius: 25px; overflow: hidden;">
-								<iframe src="Pranay_Bomma_Resume.pdf"
-									scrolling="auto"
-									height="1000px"
-									width="1000px"
-								></iframe>
+								
 							  </div>
 						</div>
 					</div>
 			</div>
 			<div class="col">
-			</div>
+			</div> -->
 		</div>
 		<br>
 	</div>
+	<script>
+		// Adjust the iframe size when the window is resized
+		window.addEventListener('resize', resizeIframe);
+	
+		function resizeIframe() {
+			var iframe = document.getElementById('resume-iframe');
+			var newHeight = window.innerHeight; // Set the desired height logic here
+			iframe.style.height = newHeight*0.8 + 'px';
+		}
+	
+		// Call the resize function initially
+		resizeIframe();
+	</script>
 	<div id="wavesMarginTop">
 		<svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
 			<defs>
