@@ -32,7 +32,7 @@ sns.set(rc={"figure.dpi":100, 'savefig.dpi':300})
 sns.set_context('notebook')
 sns.set_style("ticks")
 from IPython.display import set_matplotlib_formats
-%config InlineBackend.figure_format = 'retina'
+# %config InlineBackend.figure_format = 'retina'
 
 # Metrics for model evaluation
 from sklearn.metrics import mean_absolute_error, mean_squared_error, mean_absolute_percentage_error
@@ -159,8 +159,12 @@ def writeData(station_hourly_aqi, station_daily_aqi):
     try:
         with open(station_daily_aqi, 'a', newline='') as csv_file:
             if len(temp_daily_aqi[yesterday:yesterday]) == 0: # Write only if it does not exist already
-                csv_writer = csv.writer(csv_file)    
-                csv_writer.writerow([temp_daily_aqi.iloc[-1,0] + 1, yesterday, df_api[yesterday:yesterday].AQI.values[0]])
+                csv_writer = csv.writer(csv_file)
+                index = temp_daily_aqi.iloc[-1,0] + 1 # Add 1 to yesterday's index
+                aqi = df_api[yesterday:yesterday].AQI.values[0]
+                if np.isnan(df_api[yesterday:yesterday].AQI.values[0]): # If NaN, take yesterday's value.
+                    aqi = temp_daily_aqi.iloc[-1,2]
+                csv_writer.writerow([index, yesterday, aqi])
     except Exception as e:
         print(f"Exception {type(e).__name__} has occured for station=> {station}")
         logger.info(f"Exception {type(e).__name__} has occured for station=> {station}")
@@ -173,7 +177,8 @@ def retrain_model(order, seasonal_order, station_daily_aqi):
     daily_aqi.set_index('Date', inplace=True)
     daily_aqi.drop(columns=['Unnamed: 0'], inplace=True)
     daily_aqi.index = pd.to_datetime(daily_aqi.index)
-    
+    daily_aqi.ffill(inplace=True)
+
     df = daily_aqi
     
     # Split into train & test
