@@ -116,7 +116,7 @@
 				star.acceleration = 0.02;
 				starGeo.vertices.push(star);
 			}
-			let sprite = new THREE.TextureLoader().load('star.png');
+			let sprite = new THREE.TextureLoader().load('images/star.png');
 			let starMaterial = new THREE.PointsMaterial({
 				color: 0xffffff,
 				size: 0.7,
@@ -139,7 +139,7 @@
 				star.acceleration = 0.2;
 				starGeo.vertices.push(star);
 			}
-			let sprite2 = new THREE.TextureLoader().load('star.png');
+			let sprite2 = new THREE.TextureLoader().load('images/star.png');
 			let starMaterial2 = new THREE.PointsMaterial({
 				color: 0xf25e06,
 				size: 2,
@@ -260,7 +260,7 @@
 			<br>
 			<h1 style="color: white; text-align: center;">AirCast</h1>
 			<br>
-			<h3 style="color: white;text-align: center;font-size: 1.6rem;">Forecasting Air Quality</h3>
+			<h3 style="color: white;text-align: center;font-size: 1.6rem;">Calculate & Forecast Air Quality Index</h3>
 		</div>
 		<br>
 		
@@ -387,7 +387,7 @@
 										var data = [ trace ];
 
 										var layout = {
-											title:'AQI Forecast',
+											title:'Gurugram - AQI Forecast',
 											grid: {
 												columns: 0,
 												rows: 0
@@ -636,7 +636,7 @@
 										var data = [ trace ];
 
 										var layout = {
-											title:'Historical Daily AQI',
+											title:'Gurugram - Historical Daily AQI',
 											grid: {
 												columns: 0,
 												rows: 0
@@ -1042,7 +1042,8 @@
 		</div>
 	</div>
 
-	<div>
+	<div style="backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);">
 		<svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 			viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
 			<defs>
@@ -1057,7 +1058,8 @@
 		</svg>
 	</div>
 
-	<footer class="page-footer font-small unique-color-dark pt-4">
+	<footer class="page-footer font-small unique-color-dark pt-4" style="backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);">
 		
 		<div class="row" style="margin: 1em; margin-bottom: 0px; padding-bottom: 1em; justify-content: center; 
 		text-align: center; color: white;">
