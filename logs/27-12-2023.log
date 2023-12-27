@@ -142,3 +142,14 @@
 2023-12-27 19:02:05,486 - __main__ - INFO - The data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2023-12-28 00:00:00
 2023-12-27 19:02:06,177 - __main__ - INFO - station=> Vikas Sadan, result => ['168', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2023-12-27 23:00:00')]
 2023-12-27 19:02:06,177 - __main__ - INFO - Timestamp 2023-12-27 23:00:00 already present in data/cron_job_data/vikas_sadan_cron_output.csv, not appending.
+2023-12-27 20:03:38,268 - __main__ - INFO - station=> nise gwal, result => ['181', 'NISE Gwal Pahari, Gurugram, India', Timestamp('2023-12-28 01:00:00')]
+2023-12-27 20:03:38,269 - __main__ - INFO - The data has been written to data/cron_job_data/nise_cron_output.csv with Timestamp: 2023-12-28 01:00:00
+2023-12-27 20:03:38,751 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['165', 'Sector-51, Gurugram, India', Timestamp('2023-12-28 01:00:00')]
+2023-12-27 20:03:38,752 - __main__ - INFO - The data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2023-12-28 01:00:00
+2023-12-27 20:03:39,240 - __main__ - INFO - station=> Teri Gram, result => ['197', 'Teri Gram, Gurugram, India', Timestamp('2023-12-28 01:00:00')]
+2023-12-27 20:03:39,240 - __main__ - INFO - The data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2023-12-28 01:00:00
+2023-12-27 20:03:39,719 - __main__ - INFO - station=> Vikas Sadan, result => ['146', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2023-12-28 01:00:00')]
+2023-12-27 20:03:39,719 - __main__ - INFO - The data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2023-12-28 01:00:00
+2023-12-27 20:03:39,737 - __main__ - INFO - Re-training the model & train_end is 2023-12-21 00:00:00
+2023-12-27 20:03:40,990 - __main__ - INFO - Retrained the model & MAPE is 17.95%
+2023-12-27 20:03:42,457 - __main__ - INFO - The forecast data has been written to data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv
