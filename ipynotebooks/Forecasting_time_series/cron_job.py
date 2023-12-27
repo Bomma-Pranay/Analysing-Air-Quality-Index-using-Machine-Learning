@@ -1,5 +1,5 @@
 import requests
-import pprint
+# import pprint
 import csv
 from datetime import datetime, timedelta
 import logging
@@ -24,14 +24,14 @@ from statsmodels.tsa.statespace.sarimax import SARIMAX
 # import statsmodels.api as sm
 
 # For printing multiple outputs
-from IPython.core.interactiveshell import InteractiveShell
-InteractiveShell.ast_node_interactivity = "all"
+# from IPython.core.interactiveshell import InteractiveShell
+# InteractiveShell.ast_node_interactivity = "all"
 
 # Visualization parameters
 # sns.set(rc={"figure.dpi":100, 'savefig.dpi':300})
 # sns.set_context('notebook')
 # sns.set_style("ticks")
-from IPython.display import set_matplotlib_formats
+# from IPython.display import set_matplotlib_formats
 # %config InlineBackend.figure_format = 'retina'
 
 # Metrics for model evaluation
