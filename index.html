@@ -361,7 +361,27 @@
 												}
 												return 'gray'; // Default color if outside ranges
 												})
-											}
+											},
+											text: aqi.map(function(value) {
+													if (value < 50) {
+														return value + "<br>" + 'Good';
+													}
+													else if (value > 50 && value <= 100) {
+														return value + "<br>" + 'Satisfactory';
+													} 
+													else if (value > 100 && value <= 200) {
+														return value + "<br>" + 'Moderate';
+													}
+													else if (value > 200 && value <= 300) {
+														return value + "<br>" + 'Poor';
+													}
+													else if (value > 300 && value <= 400) {
+														return value + "<br>" + 'Very Poor';
+													}
+													else if (value > 400 && value <= 5000) {
+														return value + "<br>" + 'Severe';
+													}
+													}),
 										};
 										
 										var data = [ trace ];

@@ -65,6 +65,9 @@ ORDER, SEASONAL_ORDER = (1, 0, 1), (1, 0, 1, 7)
 FORECAST_SECTOR_51_DAILY_AQI = 'data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv'
 
 def get_api_token():
+    '''
+    This function fetches the AQI token.
+    '''
     try:
         return os.environ['API_TOKEN']
     except KeyError:
@@ -76,6 +79,12 @@ def get_api_token():
 # In 2nd cron daily job, Incase if api fails, write to file with previous day
 
 def setData(station, output_file, logger, TOKEN):
+    '''
+    This function is called hourly once. 
+    It fetches the real-time hourly AQI data for 4 stations and writes to the hourly csv files.
+    This data is consumed by writeData function.
+    '''
+    
     try:
         # Get the API response
         url = "https://api.waqi.info/search/?token=" + TOKEN + "&keyword=" + station
@@ -125,6 +134,10 @@ def setData(station, output_file, logger, TOKEN):
         logger.info(f"Exception {type(e).__name__} has occured for station=> {station}")
 
 def setLogger():
+    '''
+    This function sets the logger to the logs directory.
+    Every day, a new file gets created.
+    '''
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)
     logger_file_handler = logging.handlers.RotatingFileHandler(
@@ -139,6 +152,11 @@ def setLogger():
     return logger
 
 def writeData(station_hourly_aqi, station_daily_aqi):
+    '''
+    This function is called daily once at 1 AM. 
+    It preprocesses the data, computes the daily AQI from hourly AQI csv files and writes to the daily csv files.
+    This data is consumed by retrain_model function.
+    '''
     df_api = pd.read_csv(station_hourly_aqi + ".csv")
     df_api['Time'] = pd.to_datetime(df_api['Time'])
     df_api.set_index('Time', inplace=True)
@@ -170,7 +188,14 @@ def writeData(station_hourly_aqi, station_daily_aqi):
         logger.info(f"Exception {type(e).__name__} has occured for station=> {station}")
 
 def retrain_model(order, seasonal_order, station_daily_aqi):
-    
+    '''
+    This function is called daily once at 1 AM. 
+    It takes into account today's AQI and re-trains the model.
+    We check the model's performance by splitting data into train & test data, then train the model and calculate MAPE.
+    If MAPE is <= 30%, we consider entire data (no splitting into train & test) and re-train our model & forecast for the next 5 days.
+    Else if MAPE is > 30%, an email is sent to myself (Pranay Bomma) to manually look into the model and fix it.
+    '''
+
     # Read the data & clean it.
     daily_aqi = pd.read_csv(station_daily_aqi)
     daily_aqi['Date'] = pd.to_datetime(daily_aqi['Date'])
