@@ -1,11 +1,41 @@
 import requests
-import pandas as pd
 import pprint
 import csv
 from datetime import datetime, timedelta
 import logging
 import os
 import logging.handlers
+
+# Data analysis
+import pandas as pd 
+
+# Data Visualization
+import matplotlib.pyplot as plt 
+import seaborn as sns
+import plotly.express as px 
+
+# Time Series
+from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+from statsmodels.tsa.stattools import acf, pacf
+from datetime import datetime, timedelta
+from statsmodels.tsa.arima.model import ARIMA 
+from statsmodels.tsa.statespace.sarimax import SARIMAX
+from pmdarima import auto_arima
+import statsmodels.api as sm
+
+# For printing multiple outputs
+from IPython.core.interactiveshell import InteractiveShell
+InteractiveShell.ast_node_interactivity = "all"
+
+# Visualization parameters
+sns.set(rc={"figure.dpi":100, 'savefig.dpi':300})
+sns.set_context('notebook')
+sns.set_style("ticks")
+from IPython.display import set_matplotlib_formats
+# %config InlineBackend.figure_format = 'retina'
+
+# Metrics for model evaluation
+from sklearn.metrics import mean_absolute_error, mean_squared_error, mean_absolute_percentage_error
 
 # NISE
 NISE = "nise gwal"
@@ -29,6 +59,10 @@ VIKAS_SADAN_STATION = "Vikas Sadan Gurgaon"
 VIKAS_SADAN_OUTPUT = "data/cron_job_data/vikas_sadan_cron_output"
 
 stations = [(NISE,  NISE_OUTPUT), (SECTOR_51, SECTOR_51_OUTPUT), (TERI_GRAM, TERI_GRAM_OUTPUT), (VIKAS_SADAN, VIKAS_SADAN_OUTPUT)]
+
+# We have selected best model based on different combinations - See Modelling block in ipython notebook.
+ORDER, SEASONAL_ORDER = (1, 0, 1), (1, 0, 1, 7)
+FORECAST_SECTOR_51_DAILY_AQI = 'data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv'
 
 def get_api_token():
     try:
@@ -103,6 +137,7 @@ def setLogger():
     logger_file_handler.setFormatter(formatter)
     logger.addHandler(logger_file_handler)
     return logger
+
 def writeData(station_hourly_aqi, station_daily_aqi):
     df_api = pd.read_csv(station_hourly_aqi + ".csv")
     df_api['Time'] = pd.to_datetime(df_api['Time'])
@@ -120,10 +155,88 @@ def writeData(station_hourly_aqi, station_daily_aqi):
     temp_daily_aqi.set_index('Date', inplace=True)
 
     print(f"temp_daily_aqi[{yesterday}]=> {temp_daily_aqi[yesterday:yesterday]}")
-    with open(station_daily_aqi, 'a', newline='') as csv_file:
-        if len(temp_daily_aqi[yesterday:yesterday]) == 0: # Write only if it does not exist already
-            csv_writer = csv.writer(csv_file)    
-            csv_writer.writerow([temp_daily_aqi.iloc[-1,0] + 1, yesterday, df_api[yesterday:yesterday].AQI.values[0]])
+    
+    try:
+        with open(station_daily_aqi, 'a', newline='') as csv_file:
+            if len(temp_daily_aqi[yesterday:yesterday]) == 0: # Write only if it does not exist already
+                csv_writer = csv.writer(csv_file)
+                index = temp_daily_aqi.iloc[-1,0] + 1 # Add 1 to yesterday's index
+                aqi = df_api[yesterday:yesterday].AQI.values[0]
+                if np.isnan(df_api[yesterday:yesterday].AQI.values[0]): # If NaN, take yesterday's value.
+                    aqi = temp_daily_aqi.iloc[-1,2]
+                csv_writer.writerow([index, yesterday, aqi])
+    except Exception as e:
+        print(f"Exception {type(e).__name__} has occured for station=> {station}")
+        logger.info(f"Exception {type(e).__name__} has occured for station=> {station}")
+
+def retrain_model(order, seasonal_order, station_daily_aqi):
+    
+    # Read the data & clean it.
+    daily_aqi = pd.read_csv(station_daily_aqi)
+    daily_aqi['Date'] = pd.to_datetime(daily_aqi['Date'])
+    daily_aqi.set_index('Date', inplace=True)
+    daily_aqi.drop(columns=['Unnamed: 0'], inplace=True)
+    daily_aqi.index = pd.to_datetime(daily_aqi.index)
+    daily_aqi.ffill(inplace=True)
+
+    df = daily_aqi
+    
+    # Split into train & test
+    train_end = df.index[-1] - timedelta(days=5)  # Except last 5 days
+    print(f"train_end=> {train_end}")
+    logger.info(f'Re-training the model & train_end is {train_end}')
+    
+    train_data = df.loc[:train_end, 'AQI']
+    test_data = df.loc[train_end + timedelta(days=1):, 'AQI']
+
+    # Train the model
+    model = SARIMAX(train_data, order=order, seasonal_order=seasonal_order)
+    model_fit = model.fit()
+
+    predictions = model_fit.forecast(len(test_data))
+    predictions = pd.Series(predictions, index=test_data.index)
+    
+    # Calculate MAPE
+    MAPE = round(mean_absolute_percentage_error(test_data, predictions) * 100, 2)  # Round it off to two decimal points
+    print(f"\n\nMAPE=> {MAPE}")
+    logger.info(f'Retrained the model & MAPE is {MAPE}%')
+
+    if (MAPE <= 30):
+        # If MAPE is < 30%, forecast next 5 days.
+        train_data = df.loc[:, 'AQI']
+        model = SARIMAX(train_data, order=order, seasonal_order=seasonal_order)
+        model_fit = model.fit()
+        predictions = model_fit.forecast(len(test_data))
+        predictions = pd.Series(predictions)
+        print(f"\n\nForecast=> {predictions}")
+
+        # Save the forecast
+        try:
+            
+            containsNaN = predictions.isna().sum()
+            if containsNaN == 0:
+                with open(FORECAST_SECTOR_51_DAILY_AQI, 'w', newline='') as csv_file:
+                    csv_writer = csv.writer(csv_file)
+                    csv_writer.writerow(['Date', 'AQI'])
+                    for i in range(5):
+                        csv_writer.writerow([predictions.index[i].date(), round(predictions.values[i])])
+
+                    # Log the predictions to view in future.
+                    logger.info(f'The forecast data has been written to {FORECAST_SECTOR_51_DAILY_AQI}')
+            else:
+                logger.info(f'The forecast data has NaNs.')
+
+        except Exception as e:
+            print(f"Exception {type(e).__name__} has occured for station=> {station}")
+            logger.info(f"Exception {type(e).__name__} has occured for station=> {station}")
+
+    elif (MAPE > 30):
+        # record MAPE and send email if it is >30%
+        pass
+    else:
+        # Raise Exception & email - Model is not re-trained.
+        print(f"Model is not retrained. Please look into the issue.")
+        logger.info(f"Model is not retrained. Please look into the issue.")
 
 if __name__ == "__main__":
 
@@ -138,7 +251,8 @@ if __name__ == "__main__":
     
      # If the day changes, append it to original data
     
-    if datetime.now().hour == 1:     # It means 1 AM
+    if datetime.now().hour == 20:     # It means 1 AM IST (20 is GitHub action runner time)
         writeData(SECTOR_51_OUTPUT, SECTOR_51_DAILY_AQI)
+        retrain_model(ORDER, SEASONAL_ORDER, SECTOR_51_DAILY_AQI)
 #         for station, station_location in stations:
 #             writeData(station_location)
