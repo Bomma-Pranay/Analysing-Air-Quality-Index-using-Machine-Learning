@@ -1,2 +1,4 @@
 requests==2.31.0
 pandas==1.3.5
+statsmodels==0.13.5
+sklearn==1.1.3

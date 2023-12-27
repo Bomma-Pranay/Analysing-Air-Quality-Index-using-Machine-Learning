@@ -10,27 +10,27 @@ import logging.handlers
 import pandas as pd 
 
 # Data Visualization
-import matplotlib.pyplot as plt 
-import seaborn as sns
-import plotly.express as px 
+# import matplotlib.pyplot as plt 
+# import seaborn as sns
+# import plotly.express as px 
 
 # Time Series
-from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
-from statsmodels.tsa.stattools import acf, pacf
+# from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+# from statsmodels.tsa.stattools import acf, pacf
 from datetime import datetime, timedelta
 from statsmodels.tsa.arima.model import ARIMA 
 from statsmodels.tsa.statespace.sarimax import SARIMAX
-from pmdarima import auto_arima
-import statsmodels.api as sm
+# from pmdarima import auto_arima
+# import statsmodels.api as sm
 
 # For printing multiple outputs
 from IPython.core.interactiveshell import InteractiveShell
 InteractiveShell.ast_node_interactivity = "all"
 
 # Visualization parameters
-sns.set(rc={"figure.dpi":100, 'savefig.dpi':300})
-sns.set_context('notebook')
-sns.set_style("ticks")
+# sns.set(rc={"figure.dpi":100, 'savefig.dpi':300})
+# sns.set_context('notebook')
+# sns.set_style("ticks")
 from IPython.display import set_matplotlib_formats
 # %config InlineBackend.figure_format = 'retina'
 
