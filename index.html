@@ -326,8 +326,15 @@
 					<script>
 						forecast_aqi = document.getElementById('forecast_aqi');
 
-						var csvFileURL = 'data/cleaned_data/Forecasting_time_series/forecast_data.csv';
-
+						var csvFileURL = 'data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv';
+						const colorRanges = [
+												{ min: 0, max: 50, color: '#00b050' },
+												{ min: 51, max: 100, color: '#92d050' },
+												{ min: 101, max: 200, color: '#ff0' },
+												{ min: 201, max: 300, color: '#ff9a00' },
+												{ min: 301, max: 400, color: '#f00' },
+												{ min: 401, max: 5000, color: '#c00000' },
+												];
 						fetch(csvFileURL)
 							.then(response => response.text())
 							.then(csvData => {
@@ -335,15 +342,26 @@
 								Papa.parse(csvData, {
 									header: true, // Assuming the first row contains headers
 									complete: function (results) {
-
 										var parsedData = results.data;
 										aqi = parsedData.map((obj) => obj.AQI );
 										datetime = parsedData.map((obj) => obj.Date );
 										var trace = {
 											x: datetime,
 											y: aqi,
-											mode: 'lines',
-											name: 'Lines'
+											mode: 'markers',
+											type: 'bar',
+											name: 'Lines',
+											text: aqi,
+											marker: {
+												color: aqi.map(value => {
+												for (const range of colorRanges) {
+													if (value >= range.min && value <= range.max) {
+													return range.color;
+													}
+												}
+												return 'gray'; // Default color if outside ranges
+												})
+											}
 										};
 										
 										var data = [ trace ];
@@ -366,9 +384,12 @@
 												bgcolor: 'black'
 											},
 											xaxis: {
-												title: 'Datetime',
+												title: 'Date',
 												color: 'white',
+												tickformat: '%Y-%m-%d',
 												size: 14,
+												tickvals: datetime,
+												ticktext: datetime,
 												showgrid: false
 											},
 											yaxis: {
@@ -582,7 +603,6 @@
 								Papa.parse(csvData, {
 									header: true, // Assuming the first row contains headers
 									complete: function (results) {
-
 										var parsedData = results.data;
 										aqi = parsedData.map((obj) => obj.AQI );
 										datetime = parsedData.map((obj) => obj.Date );
