@@ -50,6 +50,7 @@
 	</script>
 	<script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 </head>
 
 <body onload="loaded()" style="padding-right: 0px; background-color: black;">
@@ -104,7 +105,7 @@
 			document.body.appendChild(renderer.domElement);
 
 
-			//Second star
+			//First star
 			starGeo = new THREE.Geometry();
 			for (let i = 0; i < 1000; i++) {
 				star = new THREE.Vector3(
@@ -128,9 +129,8 @@
 
 			//Second star
 			starGeo = new THREE.Geometry();
-			for (let i = 0; i < 25; i++) {
+			for (let i = 0; i < 4; i++) {
 				star = new THREE.Vector3(
-
 					Math.random() * 600 - 300,
 					Math.random() * 600 - 300,
 					Math.random() * 600 - 300
@@ -258,9 +258,13 @@
 		<br><br><br><br>
 		<div style="animation: upAndDown 5s linear infinite alternate-reverse; margin-bottom: 5em; padding: .3em;">
 			<br>
-			<h1 style="color: white; text-align: center;">AirCast</h1>
+			<h1 style="color: white; text-align: center;">
+				<strong>
+					AirCast
+				</strong>
+			</h1>
 			<br>
-			<h3 style="color: white;text-align: center;font-size: 1.6rem;">Calculate & Forecast Air Quality Index</h3>
+			<h3 style="color: white;text-align: center;font-size: 1.6rem;">Calculate & Forecast Air Quality Index.</h3>
 		</div>
 		<br>
 		
@@ -268,8 +272,11 @@
 			<div class="col">
 				<div id="div1" data-aos="fade-down" data-aos-duration="2500" data-aos-easing="ease-out-cubic"
 					data-aos-mirror="true" data-aos-once="true" style="
-					background: linear-gradient(to bottom, #ff9933, white, rgb(19 136 8 / 80%) );
-					color: black;
+					/* background: linear-gradient(to bottom, #ff9933, white, rgb(19 136 8 / 80%) ); */
+					color: white;
+					background-color: rgb(255 255 255 / 10%);
+					backdrop-filter: blur(4px);
+					-webkit-backdrop-filter: blur(4px);
 					font-size: 1em;
 					padding: 1em;
 					margin: 2.3em;
@@ -287,9 +294,60 @@
 									Sector 51, Gurugram
 								</strong>
 							</h2>
+							<h4>
+								Current AQI is <span id="current_aqi"></span> - <span id="current_aqi_scale"></span>
+							</h4>
+							Last Updated: <span id="current_aqi_time"></span>
 						</div>
 					</div>
-
+					<script>
+						var currentAQIFileURL = 'data/cron_job_data/sector_51_cron_output.csv';
+						fetch(currentAQIFileURL)
+							.then(response => response.text())
+							.then(csvData => {
+								Papa.parse(csvData, {
+									header: true,
+									complete: function (results) {
+										var parsedData = results.data;
+										current_aqi = parsedData[parsedData.length -1].AQI
+										current_aqi_time = parsedData[parsedData.length -1].Time
+										document.getElementById("current_aqi").innerHTML = current_aqi;
+										var formattedDate = moment(current_aqi_time).format('DD MMMM YYYY, h:mm A');
+										document.getElementById("current_aqi_time").innerHTML = formattedDate;
+										current_aqi_scale = ""
+										current_aqi_scale_color = "black"
+										if (current_aqi < 50) {
+											current_aqi_scale = 'Good';
+											current_aqi_scale_color = "#00b050";
+										}
+										else if (current_aqi > 50 && current_aqi <= 100) {
+											current_aqi_scale = 'Satisfactory';
+											current_aqi_scale_color = "#92d050";
+										} 
+										else if (current_aqi > 100 && current_aqi <= 200) {
+											current_aqi_scale = 'Moderate';
+											current_aqi_scale_color = "#ff0";
+										}
+										else if (current_aqi > 200 && current_aqi <= 300) {
+											current_aqi_scale = 'Poor';
+											current_aqi_scale_color = "#ff9a00";
+										}
+										else if (current_aqi > 300 && current_aqi <= 400) {
+											current_aqi_scale = 'Very Poor';
+											current_aqi_scale_color = "#f00";
+										}
+										else if (current_aqi > 400 && current_aqi <= 5000) {
+											current_aqi_scale = 'Severe';
+											current_aqi_scale_color = "#c00000";
+										}
+										
+										document.getElementById("current_aqi_scale").innerHTML = current_aqi_scale;
+										$("#current_aqi_scale").css("color", current_aqi_scale_color)
+									}
+								});
+							})
+							.catch(error => console.error('Error fetching the CSV file:', error));
+					</script>
 					<div class="row">
 						<div class="col">
 							<div style="border-radius: 25px; overflow: hidden;">
@@ -318,8 +376,12 @@
 					margin-right: 1.4em;
 					">
 					<div class="row">
+						<h2>
+							<strong> 
+								Gurugram - AQI Forecast
+							</strong>
+						</h2>
 						<div class="col" id="forecast_aqi" style="width:max-content;height:500px;">
-							<!-- <div id="forecast_aqi" style="width:max-content;height:500px;"></div>		 -->
 						</div>
 					</div>
 					
@@ -387,7 +449,7 @@
 										var data = [ trace ];
 
 										var layout = {
-											title:'Gurugram - AQI Forecast',
+											// title:'Gurugram - AQI Forecast',
 											grid: {
 												columns: 0,
 												rows: 0
@@ -449,7 +511,11 @@
 					">
 					<div class="row">
 						<div class="col" style="text-align: center;">
-							<h2>AQI Scale</h2>
+							<h2>
+								<strong>
+									AQI Scale
+								</strong>
+							</h2>
 							<style>
 								table {
 									width: 100%;
@@ -536,7 +602,11 @@
 					">
 					<div class="row">
 						<div class="col">
-							<h2>Calculate AQI now.</h2>
+							<h2>
+								<strong>
+									Calculate AQI now.
+								</strong>
+							</h2>
 							<form id="inputValues">
 								PM2.5 <input id="pm2.5" min="1" placeholder="Enter PM2.5" required type="number">
 								NO <input id="NO" min="1" placeholder="Enter NO" required type="number">
@@ -550,7 +620,11 @@
 					</div>
 					<div class="row">
 						<div class="col">
-							<h2>How it works.</h2>
+							<h2>
+								<strong>
+									How it works.
+								</strong>
+							</h2>
 													
 						</div>
 					</div>
@@ -606,6 +680,11 @@
 					margin-right: 1.4em;
 					">
 					<div class="row">
+						<h2>
+							<strong> 
+								Gurugram - Historical Daily AQI
+							</strong>
+						</h2>
 						<div class="col" id="historical_aqi" style="width:fit-content;height:500px;">
 							<!-- <div id="historical_aqi" style="width:max-content;height:500px;"></div>		 -->
 						</div>
@@ -630,13 +709,16 @@
 											x: datetime,
 											y: aqi,
 											mode: 'lines',
-											name: 'Lines'
+											name: 'Lines',
+											line: {
+												color: '#005AFF'
+											}
 										};
 										
 										var data = [ trace ];
 
 										var layout = {
-											title:'Gurugram - Historical Daily AQI',
+											// title:'Gurugram - Historical Daily AQI',
 											grid: {
 												columns: 0,
 												rows: 0
@@ -653,7 +735,7 @@
 												bgcolor: 'black'
 											},
 											xaxis: {
-												title: 'Datetime',
+												title: 'Date',
 												color: 'white',
 												size: 14,
 												showgrid: false
@@ -701,7 +783,11 @@
 								animation: upAndDown 5s linear infinite alternate;
 								margin-bottom: 1em;" data-aos="fade-up" data-aos-easing="ease-out-cubic" data-aos-mirror="true"
 								data-aos-once="true" data-aos-duration="1400" class="row">
-								<h3 style="color: white;"><i class="fas fa-bolt iconRotate"></i> FAQs</h3>
+								<h2 style="color: white;">
+									<strong>
+										<i class="fas fa-bolt iconRotate"></i> FAQs
+									</strong>
+								</h2>
 								<div data-aos="fade-up" data-aos-easing="ease-out-cubic" data-aos-mirror="true" data-aos-once="true"
 									data-aos-duration="1400" class=" accordion" id="accordionExample1">
 									<div class="accordion-item">
@@ -716,13 +802,13 @@
 											<div class="accordion-body FAQs">
 												The Air Quality Index (AQI) is a numerical scale used to communicate the quality of air in a specific location. 
 												It takes into account various air pollutants, such as 
-												<ol>
+												<ul>
 													<li>Particulate matter (PM2.5 and PM10)</li>
 													<li>Nitrogen dioxide (NO2)</li>
 													<li>Sulfur Dioxide (SO2)</li>
 													<li>Carbon Monoxide (CO)</li>
 													<li>Ozone (O3)</li>
-												</ol>
+												</ul>
 												to provide an overall assessment of air quality.
 											</div>
 										</div>
@@ -738,13 +824,13 @@
 										<div id="collapseOne2" class="accordion-collapse collapse" aria-labelledby="headingOne2"
 											data-bs-parent="#accordionExample1">
 											<div class="accordion-body FAQs">
-												<ol>
+												<ul>
 													<li>In India, the AQI is measured based on the concentrations of major air pollutants.</li>
 													<li>Each pollutant is assigned an individual Air Quality Index</li>
 													<li>The overall AQI is determined by the highest index value among them</li>
 													<li>The AQI is categorized into different levels, ranging from "Good" to "Severe" 
 														indicating the potential health impacts associated with the air quality.</li>
-												</ol>
+												</ul>
 											</div>
 										</div>
 									</div>
@@ -760,14 +846,14 @@
 										<div id="collapseOne3" class="accordion-collapse collapse" aria-labelledby="headingOne3"
 											data-bs-parent="#accordionExample1">
 											<div class="accordion-body FAQs">
-												<ol>
+												<ul>
 													<li>Limit outdoor activities, especially strenuous ones.</li>
 													<li>Use N95 masks to reduce inhalation of pollutants.</li>
 													<li>Keep windows and doors closed.</li>
 													<li>Plant good quality indoor trees.</li>
 													<li>Use air purifiers indoors.</li>
 													<li>Stay informed about air quality levels and take necessary precautions.</li>
-												</ol>
+												</ul>
 											</div>
 										</div>
 									</div>
@@ -782,12 +868,12 @@
 										<div id="collapseOne4" class="accordion-collapse collapse" aria-labelledby="headingOne4"
 											data-bs-parent="#accordionExample1">
 											<div class="accordion-body FAQs">
-												<ol>
+												<ul>
 													<li>The AQI for your area can be checked through various sources, including government websites, 
 														mobile apps, and online platforms. Many cities in India have dedicated air quality monitoring stations, 
 														and their data is often accessible in real-time.</li>
 													<li>However, if you are in Gurugram, you can check the AQI and 1 week forecast at the top of this page.</li>
-												</ol>
+												</ul>
 												
 											</div>
 										</div>
@@ -804,12 +890,12 @@
 											data-bs-parent="#accordionExample1">
 											<div class="accordion-body FAQs">
 												Government initiatives may include
-												<ol>
+												<ul>
 													<li>Implementing stricter emission standards</li>
 													<li>Promoting public transportation</li>
 													<li>Encouraging the use of cleaner energy sources</li>
 													<li>Imposing regulations on industries contributing to air pollution</li>
-												</ol>
+												</ul>
 												Additionally, awareness campaigns and citizen participation are crucial components of improving air quality.
 											</div>
 										</div>
@@ -825,11 +911,11 @@
 										<div id="collapseOne6" class="accordion-collapse collapse" aria-labelledby="headingOne6"
 											data-bs-parent="#accordionExample1">
 											<div class="accordion-body FAQs">
-												<ol>
+												<ul>
 													<li>Individuals can contribute by using public transportation.</li>
 													<li>Reducing the use of personal vehicles, minimizing the use of fossil fuels, planting trees.</li>
 													<li>Participating in community initiatives to raise awareness about air quality issues.</li>
-												</ol>
+												</ul>
 												These FAQs provide a basic understanding of the Air Quality Index 
 												and its relevance in the context of India. 
 												It's important to stay informed and take necessary actions to 
@@ -848,7 +934,7 @@
 										<div id="collapseOne7" class="accordion-collapse collapse" aria-labelledby="headingOne7"
 											data-bs-parent="#accordionExample1">
 											<div class="accordion-body FAQs">
-												<ol>
+												<ul>
 													<li>Central Pollution Control Board (CPCB): 
 														<a href="https://cpcb.nic.in/" target="_blank" style="text-decoration: underline !important;">
 															<strong>https://cpcb.nic.in/</strong>
@@ -859,7 +945,7 @@
 															<strong>http://safar.tropmet.res.in/</strong>
 														</a>
 													</li>
-												</ol> 
+												</ul> 
 											</div>
 										</div>
 									</div>
@@ -868,17 +954,14 @@
 											<button class="accordion-button FAQs collapsed" type="button"
 												data-bs-toggle="collapse" data-bs-target="#collapseOne8" aria-expanded="false"
 												aria-controls="collapseOne8">
-												<strong>8. Indoor Plants for Better Air Quality</strong>
+												<strong>8. Indoor Plants for better Air Quality</strong>
 											</button>
 										</h2>
 										<div id="collapseOne8" class="accordion-collapse collapse" aria-labelledby="headingOne8"
 											data-bs-parent="#accordionExample1">
 											<div class="accordion-body FAQs">
-												
-
-												<p>Indoor plants can help improve air quality by absorbing pollutants and releasing oxygen. Here are some indoor plants known for their air-purifying qualities:</p>
-
-												<ol>
+												Indoor plants can help improve air quality by absorbing pollutants and releasing oxygen. Here are some indoor plants known for their air-purifying qualities:
+												<ul>
 													<li><strong>Spider Plant (Chlorophytum comosum):</strong> 
 														Effective in removing pollutants like formaldehyde and xylene. 
 														Easy to care for and adapts well to different conditions.
@@ -928,9 +1011,11 @@
 														Known for its air-purifying abilities, particularly in removing formaldehyde. 
 														Low-maintenance and can thrive in various light conditions.
 													</li>
-												</ol>
+												</ul>
 
-												<p>Remember that while indoor plants can contribute to improved air quality, they are not a substitute for proper ventilation and addressing the root causes of indoor air pollution. Regularly ventilate your living space, minimize the use of synthetic materials, and keep the area clean to create a healthier indoor environment.</p>
+												Remember that while indoor plants can contribute to improved air quality, they are not a substitute for proper ventilation 
+												and addressing the root causes of indoor air pollution. Regularly ventilate your living space, minimize the use of 
+												synthetic materials, and keep the area clean to create a healthier indoor environment.
 											</div>
 										</div>
 									</div>
@@ -939,7 +1024,10 @@
 							</div>
 						</div>
 						<div class="col" style="text-align: center;">
-							<h2></h2>
+							<h2>
+								<strong>
+								</strong>
+							</h2>
 						</div>
 						
 					</div>
@@ -961,7 +1049,11 @@
 					margin: 2.3em;
 					margin-right: 1.4em;
 					">
-					<h2>Architectures</h2>
+					<h2>
+						<strong>
+							Architectures
+						</strong>
+					</h2>
 					<div class="row">
 						<div class="col" style="text-align: center;">
 							<h3>AirCast</h3>
@@ -1084,96 +1176,11 @@
 				btn.removeClass('show');
 			}
 		});
-
+		
+		// Update the year in footer
 		var currentYear = new Date()
 		currentYear = currentYear.getFullYear()
 		document.getElementById('getCurrentYear').innerHTML = currentYear
-
-		$(function () {
-			$("#00").hover(function () {
-				$(".fa-plus").css("transform", "rotate(360deg)")
-				$(".fa-plus").css("transition", "2s")
-
-				$(".fa-minus").css("transform", "rotate(360deg)")
-				$(".fa-minus").css("transition", "2s")
-			}, function () {
-				$(".fa-plus").css("transform", "rotate(0deg)")
-				$(".fa-plus").css("transition", "1s")
-
-				$(".fa-minus").css("transform", "rotate(0deg)")
-				$(".fa-minus").css("transition", "1s")
-			});
-		});
-
-		$(function () {
-			$("#001").hover(function () {
-				$(".fa-file-medical").css("transform", "rotate(360deg)")
-				$(".fa-file-medical").css("transition", "2s")
-			}, function () {
-				$(".fa-file-medical").css("transform", "rotate(0deg)")
-				$(".fa-file-medical").css("transition", "1s")
-			});
-		});
-
-		$(function () {
-			$("#002").hover(function () {
-				$(".fa-file-medical").css("transform", "rotate(360deg)")
-				$(".fa-file-medical").css("transition", "2s")
-			}, function () {
-				$(".fa-file-medical").css("transform", "rotate(0deg)")
-				$(".fa-file-medical").css("transition", "1s")
-			});
-		});
-
-		$(function () {
-			$("#003").hover(function () {
-				$(".fa-file-medical").css("transform", "rotate(360deg)")
-				$(".fa-file-medical").css("transition", "2s")
-			}, function () {
-				$(".fa-file-medical").css("transform", "rotate(0deg)")
-				$(".fa-file-medical").css("transition", "1s")
-			});
-		});
-
-		$(function () {
-			$("#01").hover(function () {
-				$(".fa-bolt").css("transform", "rotate(360deg)")
-				$(".fa-bolt").css("transition", "2s")
-			}, function () {
-				$(".fa-bolt").css("transform", "rotate(0deg)")
-				$(".fa-bolt").css("transition", "1s")
-			});
-		});
-
-		$(function () {
-			$("#02").hover(function () {
-				$(".fa-infinity").css("transform", "rotate(360deg)")
-				$(".fa-infinity").css("transition", "2s")
-			}, function () {
-				$(".fa-infinity").css("transform", "rotate(0deg)")
-				$(".fa-infinity").css("transition", "1s")
-			});
-		});
-
-		$(function () {
-			$("#03").hover(function () {
-				$(".fa-hourglass-start").css("transform", "rotate(360deg)")
-				$(".fa-hourglass-start").css("transition", "2s")
-			}, function () {
-				$(".fa-hourglass-start").css("transform", "rotate(0deg)")
-				$(".fa-hourglass-start").css("transition", "1s")
-			});
-		});
-
-		$(function () {
-			$("#04").hover(function () {
-				$(".fa-stopwatch").css("transform", "rotate(360deg)")
-				$(".fa-stopwatch").css("transition", "2s")
-			}, function () {
-				$(".fa-stopwatch").css("transform", "rotate(0deg)")
-				$(".fa-stopwatch").css("transition", "1s")
-			});
-		});
 
 	</script>
 	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
