@@ -158,3 +158,15 @@
 2023-12-28 19:02:02,708 - __main__ - INFO - Timestamp 2023-12-28 23:00:00 already present in data/cron_job_data/teri_gram_cron_output.csv, not appending.
 2023-12-28 19:02:03,398 - __main__ - INFO - station=> Vikas Sadan, result => ['178', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2023-12-28 23:00:00')]
 2023-12-28 19:02:03,399 - __main__ - INFO - Timestamp 2023-12-28 23:00:00 already present in data/cron_job_data/vikas_sadan_cron_output.csv, not appending.
+2023-12-28 20:04:15,882 - __main__ - INFO - station=> nise gwal, result => ['230', 'NISE Gwal Pahari, Gurugram, India', Timestamp('2023-12-29 00:00:00')]
+2023-12-28 20:04:15,882 - __main__ - INFO - The data has been written to data/cron_job_data/nise_cron_output.csv with Timestamp: 2023-12-29 00:00:00
+2023-12-28 20:04:16,588 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['253', 'Sector-51, Gurugram, India', Timestamp('2023-12-29 00:00:00')]
+2023-12-28 20:04:16,589 - __main__ - INFO - The data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2023-12-29 00:00:00
+2023-12-28 20:04:17,295 - __main__ - INFO - station=> Teri Gram, result => ['196', 'Teri Gram, Gurugram, India', Timestamp('2023-12-29 00:00:00')]
+2023-12-28 20:04:17,296 - __main__ - INFO - The data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2023-12-29 00:00:00
+2023-12-28 20:04:18,027 - __main__ - INFO - station=> Vikas Sadan, result => ['177', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2023-12-29 00:00:00')]
+2023-12-28 20:04:18,028 - __main__ - INFO - The data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2023-12-29 00:00:00
+2023-12-28 20:04:18,039 - __main__ - INFO - Exception NameError has occured for station=> Vikas Sadan
+2023-12-28 20:04:18,043 - __main__ - INFO - Re-training the model & train_end is 2023-12-21 00:00:00
+2023-12-28 20:04:19,291 - __main__ - INFO - Retrained the model & MAPE is 17.95%
+2023-12-28 20:04:20,710 - __main__ - INFO - The forecast data has been written to data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv
