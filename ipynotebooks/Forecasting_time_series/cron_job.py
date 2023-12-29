@@ -7,7 +7,8 @@ import os
 import logging.handlers
 
 # Data analysis
-import pandas as pd 
+import pandas as pd
+import numpy as np
 
 # Data Visualization
 # import matplotlib.pyplot as plt 
@@ -103,7 +104,7 @@ def setData(station, output_file, logger, TOKEN):
             try:
                 int(result[0])
             except Exception as exception:
-                logger.info(f"AQI is not an integer. Exception {type(exception).__name__} has occured for station=> {station}")
+                logger.info(f"setData function - AQI is not an integer. Exception {type(exception).__name__} has occured for station=> {station}")
                 return
             
             # Write to the file only when (station, time) is not already existing in the file.
@@ -121,17 +122,17 @@ def setData(station, output_file, logger, TOKEN):
                 with open(csv_file_path, 'a', newline='') as csv_file:
                     csv_writer = csv.writer(csv_file)
                     csv_writer.writerow(result)
-                print(f'The data has been written to {csv_file_path} with Timestamp: {new_timestamp}')
-                logger.info(f'The data has been written to {csv_file_path} with Timestamp: {new_timestamp}')
+                print(f'The hourly data has been written to {csv_file_path} with Timestamp: {new_timestamp}')
+                logger.info(f'The hourly data has been written to {csv_file_path} with Timestamp: {new_timestamp}')
             else:
                 print(f'Timestamp {new_timestamp} already present in {csv_file_path}, not appending.')
                 logger.info(f'Timestamp {new_timestamp} already present in {csv_file_path}, not appending.')
         else:
-            print(f"Error: {response.status_code} - {response.text}")
-            logger.info(f"Error: {response.status_code} - {response.text}")
+            print(f"setData function - Error: {response.status_code} - {response.text}")
+            logger.info(f"setData function - Error: {response.status_code} - {response.text}")
     except Exception as e:
-        print(f"Exception {type(e).__name__} has occured for station=> {station}")
-        logger.info(f"Exception {type(e).__name__} has occured for station=> {station}")
+        print(f"setData function - Exception {type(e).__name__} has occured for station=> {station}")
+        logger.info(f"setData function - Exception {type(e).__name__} has occured for station=> {station}")
 
 def setLogger():
     '''
@@ -157,22 +158,29 @@ def writeData(station_hourly_aqi, station_daily_aqi):
     It preprocesses the data, computes the daily AQI from hourly AQI csv files and writes to the daily csv files.
     This data is consumed by retrain_model function.
     '''
+    # Hourly data preprocessing
     df_api = pd.read_csv(station_hourly_aqi + ".csv")
     df_api['Time'] = pd.to_datetime(df_api['Time'])
     df_api.set_index('Time', inplace=True)
     df_api = df_api['AQI'].resample('D').mean()
     df_api = pd.DataFrame(df_api)
     print(f"df_api columns {df_api.columns}")
+    logger.info(f"df_api columns {df_api.columns}")
     df_api['AQI'] = round(df_api['AQI'])
+
     today = datetime.now().date()
     yesterday = today - timedelta(days=1)
 
+    # Write it to the Daily data csv file
     temp_daily_aqi = pd.read_csv(station_daily_aqi)
     print(f'temp_daily_aqi columns {temp_daily_aqi.columns}')
+    logger.info(f'temp_daily_aqi columns {temp_daily_aqi.columns}')
+                
     temp_daily_aqi['Date'] = pd.to_datetime(temp_daily_aqi['Date'])
     temp_daily_aqi.set_index('Date', inplace=True)
 
     print(f"temp_daily_aqi[{yesterday}]=> {temp_daily_aqi[yesterday:yesterday]}")
+    logger.info(f"temp_daily_aqi[{yesterday}]=> {temp_daily_aqi[yesterday:yesterday]}")
     
     try:
         with open(station_daily_aqi, 'a', newline='') as csv_file:
@@ -180,12 +188,16 @@ def writeData(station_hourly_aqi, station_daily_aqi):
                 csv_writer = csv.writer(csv_file)
                 index = temp_daily_aqi.iloc[-1,0] + 1 # Add 1 to yesterday's index
                 aqi = df_api[yesterday:yesterday].AQI.values[0]
+                print(f'Index => {index}, yesterday => {yesterday} & AQI => {aqi}')
+                logger.info(f'Index => {index}, yesterday => {yesterday} & AQI => {aqi}')
                 if np.isnan(df_api[yesterday:yesterday].AQI.values[0]): # If NaN, take yesterday's value.
                     aqi = temp_daily_aqi.iloc[-1,2]
                 csv_writer.writerow([index, yesterday, aqi])
+                print(f'Daily AQI data has been written to {station_daily_aqi}')
+                logger.info(f'Daily AQI data has been written to {station_daily_aqi}')
     except Exception as e:
-        print(f"Exception {type(e).__name__} has occured for station=> {station}")
-        logger.info(f"Exception {type(e).__name__} has occured for station=> {station}")
+        print(f"writeData function - Exception {type(e).__name__} has occured for station=> {station_daily_aqi}")
+        logger.info(f"writeData function - Exception {type(e).__name__} has occured for station=> {station_daily_aqi}")
 
 def retrain_model(order, seasonal_order, station_daily_aqi):
     '''
@@ -234,6 +246,7 @@ def retrain_model(order, seasonal_order, station_daily_aqi):
         predictions = model_fit.forecast(len(test_data))
         predictions = pd.Series(predictions)
         print(f"\n\nForecast=> {predictions}")
+        logger.info(f"Forecast=> {predictions}")
 
         # Save the forecast
         try:
@@ -247,21 +260,23 @@ def retrain_model(order, seasonal_order, station_daily_aqi):
                         csv_writer.writerow([predictions.index[i].date(), round(predictions.values[i])])
 
                     # Log the predictions to view in future.
+                    print(f'The forecast data has been written to {FORECAST_SECTOR_51_DAILY_AQI}')
                     logger.info(f'The forecast data has been written to {FORECAST_SECTOR_51_DAILY_AQI}')
             else:
-                logger.info(f'The forecast data has NaNs.')
+                print(f'retrain_model function - The forecast data has NaNs.')
+                logger.info(f'retrain_model function - The forecast data has NaNs.')
 
         except Exception as e:
-            print(f"Exception {type(e).__name__} has occured for station=> {station}")
-            logger.info(f"Exception {type(e).__name__} has occured for station=> {station}")
+            print(f"retrain_model function - Exception {type(e).__name__} has occured.")
+            logger.info(f"retrain_model function - Exception {type(e).__name__} has occured.")
 
     elif (MAPE > 30):
         # record MAPE and send email if it is >30%
         pass
     else:
         # Raise Exception & email - Model is not re-trained.
-        print(f"Model is not retrained. Please look into the issue.")
-        logger.info(f"Model is not retrained. Please look into the issue.")
+        print(f"retrain_model function - Model is not retrained. Please look into the issue.")
+        logger.info(f"retrain_model function - Model is not retrained. Please look into the issue.")
 
 if __name__ == "__main__":
 

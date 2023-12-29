@@ -255,6 +255,33 @@
 			particlesJS.load('particles-js', 'particlesHome.json', function () {
 			});
 		</script>
+		<script>
+			function getFontFamily() {
+				// Get the user's operating system
+				var operatingSystem = navigator.platform.toLowerCase();
+
+				// Define default font family
+				var defaultFontFamily = 'Open Sans, Arial, sans-serif';
+
+				// Set font family based on operating system
+				var fontFamily;
+				if (operatingSystem.indexOf('win') !== -1) {
+					// Windows
+					fontFamily = 'Open Sans, Segoe UI, sans-serif';
+				} else if (operatingSystem.indexOf('mac') !== -1) {
+					// macOS
+					fontFamily = 'Helvetica, sans-serif';
+				} else if (operatingSystem.indexOf('linux') !== -1) {
+					// Linux
+					fontFamily = 'Open Sans, DejaVu Sans, sans-serif';
+				} else {
+					// Default for other systems
+					fontFamily = defaultFontFamily;
+				}
+				return fontFamily;
+			}
+			
+		</script>
 		<br><br><br><br>
 		<div style="animation: upAndDown 5s linear infinite alternate-reverse; margin-bottom: 5em; padding: .3em;">
 			<br>
@@ -389,6 +416,9 @@
 						forecast_aqi = document.getElementById('forecast_aqi');
 
 						var csvFileURL = 'data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv';
+						
+						fontFamily = getFontFamily();
+
 						const colorRanges = [
 												{ min: 0, max: 50, color: '#00b050' },
 												{ min: 51, max: 100, color: '#92d050' },
@@ -480,6 +510,10 @@
 												size: 14,
 												showgrid: false
 											},
+											// font: {
+											// 	family: fontFamily,
+											// 	size: 14,
+											// },
 											plot_bgcolor: 'rgb(255 255 255 / 0%)' ,
 											paper_bgcolor: 'rgb(255 255 255 / 0%)', 
 										};
@@ -686,7 +720,6 @@
 							</strong>
 						</h2>
 						<div class="col" id="historical_aqi" style="width:fit-content;height:500px;">
-							<!-- <div id="historical_aqi" style="width:max-content;height:500px;"></div>		 -->
 						</div>
 					</div>
 					<script>
@@ -694,6 +727,8 @@
 						historical_aqi = document.getElementById('historical_aqi');
 
 						var csvFileURL = 'data/cleaned_data/Forecasting_time_series/sector_51_daily_aqi.csv';
+						
+						fontFamily = getFontFamily();
 
 						fetch(csvFileURL)
 							.then(response => response.text())
@@ -746,6 +781,10 @@
 												size: 14,
 												showgrid: false
 											},
+											// font: {
+											// 	family: fontFamily,
+											// 	size: 14,
+											// },
 											plot_bgcolor: 'rgb(255 255 255 / 0%)' ,
 											paper_bgcolor: 'rgb(255 255 255 / 0%)', 
 										};
