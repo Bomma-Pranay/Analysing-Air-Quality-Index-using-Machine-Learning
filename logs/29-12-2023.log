@@ -203,3 +203,12 @@ Freq: D, Name: predicted_mean, dtype: float64
 2023-12-29 21:02:34,558 - __main__ - INFO - station=> Vikas Sadan, result => ['166', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2023-12-29 20:00:00')]
 2023-12-29 21:02:34,559 - __main__ - INFO - Timestamp 2023-12-29 20:00:00 already present in data/cron_job_data/vikas_sadan_cron_output.csv, not appending.
 2023-12-29 21:02:34,560 - __main__ - INFO - datetime.now().hour=> 21
+2023-12-29 22:03:40,337 - __main__ - INFO - station=> nise gwal, result => ['168', 'NISE Gwal Pahari, Gurugram, India', Timestamp('2023-12-29 20:00:00')]
+2023-12-29 22:03:40,337 - __main__ - INFO - Timestamp 2023-12-29 20:00:00 already present in data/cron_job_data/nise_cron_output.csv, not appending.
+2023-12-29 22:03:40,817 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['186', 'Sector-51, Gurugram, India', Timestamp('2023-12-29 20:00:00')]
+2023-12-29 22:03:40,818 - __main__ - INFO - Timestamp 2023-12-29 20:00:00 already present in data/cron_job_data/sector_51_cron_output.csv, not appending.
+2023-12-29 22:03:41,303 - __main__ - INFO - station=> Teri Gram, result => ['183', 'Teri Gram, Gurugram, India', Timestamp('2023-12-29 20:00:00')]
+2023-12-29 22:03:41,304 - __main__ - INFO - Timestamp 2023-12-29 20:00:00 already present in data/cron_job_data/teri_gram_cron_output.csv, not appending.
+2023-12-29 22:03:41,785 - __main__ - INFO - station=> Vikas Sadan, result => ['166', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2023-12-29 20:00:00')]
+2023-12-29 22:03:41,786 - __main__ - INFO - Timestamp 2023-12-29 20:00:00 already present in data/cron_job_data/vikas_sadan_cron_output.csv, not appending.
+2023-12-29 22:03:41,787 - __main__ - INFO - datetime.now().hour=> 22
