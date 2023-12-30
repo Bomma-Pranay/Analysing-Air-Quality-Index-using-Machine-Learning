@@ -170,6 +170,8 @@ def writeData(station_hourly_aqi, station_daily_aqi):
 
     today = datetime.now().date()
     yesterday = today - timedelta(days=1)
+    print(f'today=> {today} & yesterday=> {yesterday}')
+    logger.info(f'today=> {today} & yesterday=> {yesterday}')
 
     # Write it to the Daily data csv file
     temp_daily_aqi = pd.read_csv(station_daily_aqi)
@@ -293,8 +295,8 @@ if __name__ == "__main__":
     print(f"datetime.now()=> {datetime.now()}")
     logger.info(f"datetime.now()=> {datetime.now()}")
 
-    # Remove below line
-    writeData(SECTOR_51_OUTPUT, SECTOR_51_DAILY_AQI) 
+    # Remove below line - only for testing
+    # writeData(SECTOR_51_OUTPUT, SECTOR_51_DAILY_AQI) 
     
     if datetime.now().hour == 20:     # It means 1 AM IST (20 is GitHub action runner time)
         print("Calling writeData & retrain_model functions.")
