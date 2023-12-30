@@ -294,11 +294,8 @@ if __name__ == "__main__":
      # If the day changes, append it to original data
     print(f"datetime.now()=> {datetime.now()}")
     logger.info(f"datetime.now()=> {datetime.now()}")
-
-    # Remove below line - only for testing
-    # writeData(SECTOR_51_OUTPUT, SECTOR_51_DAILY_AQI) 
     
-    if datetime.now().hour == 20:     # It means 1 AM IST (20 is GitHub action runner time)
+    if datetime.now().hour == 1:
         print("Calling writeData & retrain_model functions.")
         logger.info("Calling writeData & retrain_model functions.")
         writeData(SECTOR_51_OUTPUT, SECTOR_51_DAILY_AQI)
