@@ -41,3 +41,12 @@ Columns: [Unnamed: 0, AQI]
 Index: []
 2023-12-30 02:36:41,116 - __main__ - INFO - Index => 1394, yesterday => 2023-12-29 & AQI => 191.0
 2023-12-30 02:36:41,116 - __main__ - INFO - Daily AQI data has been written to data/cleaned_data/Forecasting_time_series/sector_51_daily_aqi.csv
+2023-12-30 03:05:49,981 - __main__ - INFO - station=> nise gwal, result => ['173', 'NISE Gwal Pahari, Gurugram, India', Timestamp('2023-12-30 08:00:00')]
+2023-12-30 03:05:49,981 - __main__ - INFO - The hourly data has been written to data/cron_job_data/nise_cron_output.csv with Timestamp: 2023-12-30 08:00:00
+2023-12-30 03:05:50,635 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['195', 'Sector-51, Gurugram, India', Timestamp('2023-12-30 08:00:00')]
+2023-12-30 03:05:50,636 - __main__ - INFO - The hourly data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2023-12-30 08:00:00
+2023-12-30 03:05:51,276 - __main__ - INFO - station=> Teri Gram, result => ['179', 'Teri Gram, Gurugram, India', Timestamp('2023-12-30 08:00:00')]
+2023-12-30 03:05:51,277 - __main__ - INFO - The hourly data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2023-12-30 08:00:00
+2023-12-30 03:05:51,933 - __main__ - INFO - station=> Vikas Sadan, result => ['163', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2023-12-30 08:00:00')]
+2023-12-30 03:05:51,934 - __main__ - INFO - The hourly data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2023-12-30 08:00:00
+2023-12-30 03:05:51,936 - __main__ - INFO - datetime.now()=> 2023-12-30 03:05:51.936049
