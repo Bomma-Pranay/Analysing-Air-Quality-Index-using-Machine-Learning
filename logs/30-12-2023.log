@@ -25,3 +25,19 @@
 2023-12-30 02:17:35,620 - __main__ - INFO - station=> Vikas Sadan, result => ['174', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2023-12-30 07:00:00')]
 2023-12-30 02:17:35,621 - __main__ - INFO - The hourly data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2023-12-30 07:00:00
 2023-12-30 02:17:35,622 - __main__ - INFO - datetime.now().hour=> 2
+2023-12-30 02:36:39,063 - __main__ - INFO - station=> nise gwal, result => ['184', 'NISE Gwal Pahari, Gurugram, India', Timestamp('2023-12-30 07:00:00')]
+2023-12-30 02:36:39,063 - __main__ - INFO - Timestamp 2023-12-30 07:00:00 already present in data/cron_job_data/nise_cron_output.csv, not appending.
+2023-12-30 02:36:39,731 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['199', 'Sector-51, Gurugram, India', Timestamp('2023-12-30 07:00:00')]
+2023-12-30 02:36:39,732 - __main__ - INFO - Timestamp 2023-12-30 07:00:00 already present in data/cron_job_data/sector_51_cron_output.csv, not appending.
+2023-12-30 02:36:40,419 - __main__ - INFO - station=> Teri Gram, result => ['185', 'Teri Gram, Gurugram, India', Timestamp('2023-12-30 07:00:00')]
+2023-12-30 02:36:40,420 - __main__ - INFO - Timestamp 2023-12-30 07:00:00 already present in data/cron_job_data/teri_gram_cron_output.csv, not appending.
+2023-12-30 02:36:41,104 - __main__ - INFO - station=> Vikas Sadan, result => ['174', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2023-12-30 07:00:00')]
+2023-12-30 02:36:41,105 - __main__ - INFO - Timestamp 2023-12-30 07:00:00 already present in data/cron_job_data/vikas_sadan_cron_output.csv, not appending.
+2023-12-30 02:36:41,105 - __main__ - INFO - datetime.now()=> 2023-12-30 02:36:41.105819
+2023-12-30 02:36:41,111 - __main__ - INFO - df_api columns Index(['AQI'], dtype='object')
+2023-12-30 02:36:41,113 - __main__ - INFO - temp_daily_aqi columns Index(['Unnamed: 0', 'Date', 'AQI'], dtype='object')
+2023-12-30 02:36:41,115 - __main__ - INFO - temp_daily_aqi[2023-12-29]=> Empty DataFrame
+Columns: [Unnamed: 0, AQI]
+Index: []
+2023-12-30 02:36:41,116 - __main__ - INFO - Index => 1394, yesterday => 2023-12-29 & AQI => 191.0
+2023-12-30 02:36:41,116 - __main__ - INFO - Daily AQI data has been written to data/cleaned_data/Forecasting_time_series/sector_51_daily_aqi.csv
