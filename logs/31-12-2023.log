@@ -7,3 +7,30 @@
 2023-12-31 00:31:50,997 - __main__ - INFO - station=> Vikas Sadan, result => ['161', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2023-12-30 09:00:00')]
 2023-12-31 00:31:50,997 - __main__ - INFO - Timestamp 2023-12-30 09:00:00 already present in data/cron_job_data/vikas_sadan_cron_output.csv, not appending.
 2023-12-31 00:31:50,998 - __main__ - INFO - datetime.now()=> 2023-12-31 00:31:50.998418
+2023-12-31 01:50:40,150 - __main__ - INFO - station=> nise gwal, result => ['172', 'NISE Gwal Pahari, Gurugram, India', Timestamp('2023-12-30 09:00:00')]
+2023-12-31 01:50:40,150 - __main__ - INFO - Timestamp 2023-12-30 09:00:00 already present in data/cron_job_data/nise_cron_output.csv, not appending.
+2023-12-31 01:50:40,632 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['187', 'Sector-51, Gurugram, India', Timestamp('2023-12-30 09:00:00')]
+2023-12-31 01:50:40,633 - __main__ - INFO - Timestamp 2023-12-30 09:00:00 already present in data/cron_job_data/sector_51_cron_output.csv, not appending.
+2023-12-31 01:50:41,118 - __main__ - INFO - station=> Teri Gram, result => ['175', 'Teri Gram, Gurugram, India', Timestamp('2023-12-30 09:00:00')]
+2023-12-31 01:50:41,119 - __main__ - INFO - Timestamp 2023-12-30 09:00:00 already present in data/cron_job_data/teri_gram_cron_output.csv, not appending.
+2023-12-31 01:50:41,602 - __main__ - INFO - station=> Vikas Sadan, result => ['161', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2023-12-30 09:00:00')]
+2023-12-31 01:50:41,602 - __main__ - INFO - Timestamp 2023-12-30 09:00:00 already present in data/cron_job_data/vikas_sadan_cron_output.csv, not appending.
+2023-12-31 01:50:41,603 - __main__ - INFO - datetime.now()=> 2023-12-31 01:50:41.603727
+2023-12-31 01:50:41,603 - __main__ - INFO - Calling writeData & retrain_model functions.
+2023-12-31 01:50:41,609 - __main__ - INFO - df_api columns Index(['AQI'], dtype='object')
+2023-12-31 01:50:41,610 - __main__ - INFO - today=> 2023-12-31 & yesterday=> 2023-12-30
+2023-12-31 01:50:41,612 - __main__ - INFO - temp_daily_aqi columns Index(['Unnamed: 0', 'Date', 'AQI'], dtype='object')
+2023-12-31 01:50:41,614 - __main__ - INFO - temp_daily_aqi[2023-12-30]=> Empty DataFrame
+Columns: [Unnamed: 0, AQI]
+Index: []
+2023-12-31 01:50:41,615 - __main__ - INFO - Index => 1395, yesterday => 2023-12-30 & AQI => 197.0
+2023-12-31 01:50:41,615 - __main__ - INFO - Daily AQI data has been written to data/cleaned_data/Forecasting_time_series/sector_51_daily_aqi.csv
+2023-12-31 01:50:41,619 - __main__ - INFO - Re-training the model & train_end is 2023-12-25 00:00:00
+2023-12-31 01:50:43,142 - __main__ - INFO - Retrained the model & MAPE is 15.28%
+2023-12-31 01:50:44,759 - __main__ - INFO - Forecast=> 2023-12-31    188.069825
+2024-01-01    193.033438
+2024-01-02    199.747163
+2024-01-03    199.293793
+2024-01-04    206.746150
+Freq: D, Name: predicted_mean, dtype: float64
+2023-12-31 01:50:44,760 - __main__ - INFO - The forecast data has been written to data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv
