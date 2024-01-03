@@ -43,3 +43,12 @@ Freq: D, Name: predicted_mean, dtype: float64
 2024-01-03 02:19:03,371 - __main__ - INFO - station=> Vikas Sadan, result => ['168', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2024-01-03 07:00:00')]
 2024-01-03 02:19:03,371 - __main__ - INFO - Timestamp 2024-01-03 07:00:00 already present in data/cron_job_data/vikas_sadan_cron_output.csv, not appending.
 2024-01-03 02:19:03,372 - __main__ - INFO - datetime.now()=> 2024-01-03 02:19:03.372783
+2024-01-03 03:06:30,136 - __main__ - INFO - station=> nise gwal, result => ['176', 'NISE Gwal Pahari, Gurugram, India', Timestamp('2024-01-03 08:00:00')]
+2024-01-03 03:06:30,137 - __main__ - INFO - The hourly data has been written to data/cron_job_data/nise_cron_output.csv with Timestamp: 2024-01-03 08:00:00
+2024-01-03 03:06:30,807 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['174', 'Sector-51, Gurugram, India', Timestamp('2024-01-03 08:00:00')]
+2024-01-03 03:06:30,808 - __main__ - INFO - The hourly data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2024-01-03 08:00:00
+2024-01-03 03:06:31,497 - __main__ - INFO - station=> Teri Gram, result => ['176', 'Teri Gram, Gurugram, India', Timestamp('2024-01-03 08:00:00')]
+2024-01-03 03:06:31,497 - __main__ - INFO - The hourly data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2024-01-03 08:00:00
+2024-01-03 03:06:32,183 - __main__ - INFO - station=> Vikas Sadan, result => ['152', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2024-01-03 08:00:00')]
+2024-01-03 03:06:32,183 - __main__ - INFO - The hourly data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2024-01-03 08:00:00
+2024-01-03 03:06:32,184 - __main__ - INFO - datetime.now()=> 2024-01-03 03:06:32.184759
