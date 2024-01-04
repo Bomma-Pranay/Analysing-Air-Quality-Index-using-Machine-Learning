@@ -260,7 +260,7 @@ def retrain_model(order, seasonal_order, station_daily_aqi):
                     csv_writer.writerow(['Date', 'AQI'])
                     for i in range(5):
                         csv_writer.writerow([predictions.index[i].date(), round(predictions.values[i])])
-
+                    csv_writer.writerow(['MAPE', MAPE])
                     # Log the predictions to view in future.
                     print(f'The forecast data has been written to {FORECAST_SECTOR_51_DAILY_AQI}')
                     logger.info(f'The forecast data has been written to {FORECAST_SECTOR_51_DAILY_AQI}')
