@@ -1,0 +1,9 @@
+2024-01-04 00:29:17,747 - __main__ - INFO - station=> nise gwal, result => ['197', 'NISE Gwal Pahari, Gurugram, India', Timestamp('2024-01-04 05:00:00')]
+2024-01-04 00:29:17,748 - __main__ - INFO - The hourly data has been written to data/cron_job_data/nise_cron_output.csv with Timestamp: 2024-01-04 05:00:00
+2024-01-04 00:29:18,402 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['169', 'Sector-51, Gurugram, India', Timestamp('2024-01-04 05:00:00')]
+2024-01-04 00:29:18,403 - __main__ - INFO - The hourly data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2024-01-04 05:00:00
+2024-01-04 00:29:19,073 - __main__ - INFO - station=> Teri Gram, result => ['999', 'Teri Gram, Gurugram, India', Timestamp('2024-01-04 05:00:00')]
+2024-01-04 00:29:19,073 - __main__ - INFO - The hourly data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2024-01-04 05:00:00
+2024-01-04 00:29:19,724 - __main__ - INFO - station=> Vikas Sadan, result => ['158', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2024-01-04 05:00:00')]
+2024-01-04 00:29:19,725 - __main__ - INFO - The hourly data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2024-01-04 05:00:00
+2024-01-04 00:29:19,726 - __main__ - INFO - datetime.now()=> 2024-01-04 00:29:19.726790
