@@ -470,3 +470,15 @@ canvas {
 ol, ul {
     color: #ff6200f2
 }
+
+input {
+    text-align: center;
+    border-radius: 1.4em;
+    border-color: black;
+}
+
+#submitButton {
+    border-radius: 2em;
+    padding-right: 23px;
+    padding-left: 23px;
+}

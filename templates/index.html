@@ -659,21 +659,21 @@
 
 							<form method="POST" action="/predict" id="inputValues">
 								<h4>
-									<strong>PM2.5</strong> <input id="PM2.5" name="PM2.5" min="0" placeholder="Enter PM2.5" required type="number" style="margin: 20px;" >
-									<strong>NO</strong>    <input id="NO" name="NO" min="0" placeholder="Enter NO" required type="number" style="margin: 20px;" >
-									<strong>NO2</strong>   <input id="NO2" name="NO2" min="0" placeholder="Enter NO2" required type="number" style="margin: 20px;" ><br><br>
-									<strong>NOx</strong>   <input id="NOx" name="NOx" min="0" placeholder="Enter NOx" required type="number" style="margin: 20px;">
-									<strong>SO2</strong>   <input id="SO2" name="SO2" min="0" placeholder="Enter SO2" required type="number" style="margin: 20px;">
-									<strong>CO</strong>    <input id="CO" name="CO" min="0" placeholder="Enter CO" required type="number" style="margin: 20px;">
+									<strong>PM2.5</strong> <input id="PM2.5" name="PM2.5" min="0" placeholder="Enter PM2.5" required type="number" style="margin: 20px;" value="{{ input_text_PM25 }}">
+									<strong>NO</strong>    <input id="NO" name="NO" min="0" placeholder="Enter NO" required type="number" style="margin: 20px;" value="{{ input_text_NO }}">
+									<strong>NO2</strong>   <input id="NO2" name="NO2" min="0" placeholder="Enter NO2" required type="number" style="margin: 20px;" value="{{ input_text_NO2 }}"><br><br>
+									<strong>NOx</strong>   <input id="NOx" name="NOx" min="0" placeholder="Enter NOx" required type="number" style="margin: 20px;" value="{{ input_text_NOx }}">
+									<strong>SO2</strong>   <input id="SO2" name="SO2" min="0" placeholder="Enter SO2" required type="number" style="margin: 20px;" value="{{ input_text_SO2 }}">
+									<strong>CO</strong>    <input id="CO" name="CO" min="0" placeholder="Enter CO" required type="number" style="margin: 20px;" value="{{ input_text_CO }}">
 									<br><br>
 									<div style="
-									display: flex;
-									font-size: 30px;
-									flex-direction: row;
-									align-content: center;
-									justify-content: space-evenly;
-									align-items: center;
-									">
+										display: flex;
+										font-size: 30px;
+										flex-direction: row;
+										align-content: center;
+										justify-content: space-evenly;
+										align-items: center;
+										">
 										<button type="submit" id="submitButton" class="btn btn-primary" style="font-size: 1.5rem;">
 											<i class="fas fa-check"></i>
 											Submit
