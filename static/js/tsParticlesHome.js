@@ -57,7 +57,7 @@ tsParticles.load("tsparticles", {
                     fill: true,
                     font: 'Helvetica Neue',
                     style: "",
-                    value: ['Python', 'AQI', 'ML', 'AI', 'Plotly', 'Flask', 'SARIMAX', 'Seaborn'],
+                    value: ['Python', 'AQI', 'ML', 'AI', 'Plotly', 'Flask', 'kNN', 'SARIMAX', 'Seaborn'],
                     weight: "200"
                 }
             ],
