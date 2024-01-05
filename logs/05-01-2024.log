@@ -34,3 +34,12 @@ Index: []
 2024-01-09    205.655052
 Freq: D, Name: predicted_mean, dtype: float64
 2024-01-05 01:45:38,891 - __main__ - INFO - The forecast data has been written to data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv
+2024-01-05 02:20:59,858 - __main__ - INFO - station=> nise gwal, result => ['154', 'NISE Gwal Pahari, Gurugram, India', Timestamp('2024-01-05 07:00:00')]
+2024-01-05 02:20:59,858 - __main__ - INFO - Timestamp 2024-01-05 07:00:00 already present in data/cron_job_data/nise_cron_output.csv, not appending.
+2024-01-05 02:21:00,549 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['151', 'Sector-51, Gurugram, India', Timestamp('2024-01-05 07:00:00')]
+2024-01-05 02:21:00,549 - __main__ - INFO - Timestamp 2024-01-05 07:00:00 already present in data/cron_job_data/sector_51_cron_output.csv, not appending.
+2024-01-05 02:21:01,242 - __main__ - INFO - station=> Teri Gram, result => ['120', 'Teri Gram, Gurugram, India', Timestamp('2024-01-05 07:00:00')]
+2024-01-05 02:21:01,242 - __main__ - INFO - Timestamp 2024-01-05 07:00:00 already present in data/cron_job_data/teri_gram_cron_output.csv, not appending.
+2024-01-05 02:21:01,926 - __main__ - INFO - station=> Vikas Sadan, result => ['80', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2024-01-05 07:00:00')]
+2024-01-05 02:21:01,927 - __main__ - INFO - Timestamp 2024-01-05 07:00:00 already present in data/cron_job_data/vikas_sadan_cron_output.csv, not appending.
+2024-01-05 02:21:01,927 - __main__ - INFO - datetime.now()=> 2024-01-05 02:21:01.927979
