@@ -1,4 +1,4 @@
 Flask
 Gunicorn
-pickle
+pickle==4.0
 numpy
