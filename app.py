@@ -59,5 +59,9 @@ def get_aqi_scale(predicted_aqi):
         predicted_aqi_scale = 'Severe'
     return predicted_aqi_scale
 
+@app.route('/Resume')
+def Resume():
+    return render_template('Resume.html')
+
 if __name__ == "__main__":
     app.run(debug=True)

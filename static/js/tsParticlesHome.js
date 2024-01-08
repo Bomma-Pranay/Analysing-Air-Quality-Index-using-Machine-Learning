@@ -55,7 +55,7 @@ tsParticles.load("tsparticles", {
             character: [
                 {
                     fill: true,
-                    font: 'Helvetica Neue',
+                    font: 'BlinkMacSystemFont',
                     style: "",
                     value: ['Python', 'AQI', 'ML', 'AI', 'Plotly', 'Flask', 'kNN', 'SARIMAX', 'Seaborn'],
                     weight: "200"

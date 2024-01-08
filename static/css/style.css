@@ -8,6 +8,10 @@ body {
     scroll-behavior: smooth;
 }
 
+nav {
+    font-size: 1.4rem;
+}
+
 p {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1.1em;
@@ -117,7 +121,7 @@ info:not(:disabled):not(.disabled):active,
     display: inline-block;
     padding: .4rem;
     margin-right: 1rem;
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     background: white;
     border-radius: 2em;
     line-height: inherit;
@@ -376,7 +380,7 @@ canvas {
 .accordion-item {
     border-radius: 1em;
     border-color: black;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .accordion-item:last-of-type .accordion-button {
@@ -397,7 +401,7 @@ canvas {
 .accordion-item .accordion-button {
     border-radius: 1em;
     border-color: black;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .accordion-button,
@@ -458,6 +462,7 @@ canvas {
 .accordion-body.FAQs {
     background: linear-gradient(to right, #ff6a0d, #002cff);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     border-radius: 1em;
 }
@@ -468,7 +473,7 @@ canvas {
 }
 
 ol, ul {
-    color: #ff6200f2
+    color: #ff6200f2;
 }
 
 input {
@@ -481,4 +486,28 @@ input {
     border-radius: 2em;
     padding-right: 23px;
     padding-left: 23px;
+}
+
+@keyframes shine {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@-webkit-keyframes shine {
+    0% { background-position: 0% 25%;}
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }      
+}
+
+@-moz-keyframes shine {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%;}
+}
+
+@keyframes rotate {
+    to {
+          --angle: 360deg;
+      }
 }

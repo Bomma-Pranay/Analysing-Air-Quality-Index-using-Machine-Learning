@@ -188,8 +188,7 @@
 		init();
 	</script>
 	<nav class="navbar navbar-expand-xl navbar-dark bg-primary fixed-top blur">
-		<div class="container-fluid" style="
-		font-size: 1.2em;">
+		<div class="container-fluid">
 			<a class="navbar-brand" href="https://github.com/bomma-Pranay/" target="_blank">Pranay Bomma</a>
 			<div class="row" style="margin-bottom: 0px;">
 				<div class="col">
@@ -203,8 +202,9 @@
 			</div>
 			<div class="collapse navbar-collapse" id="main_nav">
 				<ul class="navbar-nav nav-fill w-100">
-					<li class="nav-item active"> <a class="nav-link" href="Index.html"><i class="fas fa-home"></i>&nbsp;Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="Resume.html"> <i class="fa-solid fa-file"></i>&nbsp;Resume</a></li>
+					<li class="nav-item active"> <a class="nav-link" href=""><i class="fas fa-home"></i>&nbsp;Home</a></li>
+					<!-- <li class="nav-item"><a class="nav-link" href="{{ url_for('Resume') }}"> <i class="fa-solid fa-file"></i>&nbsp;Resume</a></li> -->
+					<li class="nav-item"><a class="nav-link" href="https://github.com/bomma-Pranay/" target="_blank"><i class="fa-solid fa-briefcase"></i>&nbsp;My Portfolio</a></li>
 					<li class="nav-item"><a class="nav-link" href="https://www.kaggle.com/pranaii" target="_blank"><i class="fa-brands fa-kaggle"></i>&nbsp;Kaggle</a></li>
 					<li class="nav-item"><a class="nav-link" href="https://github.com/bomma-Pranay/" target="_blank"><i class="fa-brands fa-github"></i>&nbsp;GitHub</a></li>
 					<li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/in/Bomma-Pranay/" target="_blank"><i class="fa-brands fa-linkedin"></i>&nbsp;LinkedIn</a></li>
@@ -265,7 +265,7 @@
 				var operatingSystem = navigator.platform.toLowerCase();
 
 				// Define default font family
-				var defaultFontFamily = 'Open Sans, Arial, sans-serif';
+				var defaultFontFamily = '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif';
 
 				// Set font family based on operating system
 				var fontFamily;
@@ -274,10 +274,10 @@
 					fontFamily = 'Open Sans, Segoe UI, sans-serif';
 				} else if (operatingSystem.indexOf('mac') !== -1) {
 					// macOS
-					fontFamily = 'Helvetica, sans-serif';
+					fontFamily = '-apple-system, BlinkMacSystemFont, Helvetica, sans-serif';
 				} else if (operatingSystem.indexOf('linux') !== -1) {
 					// Linux
-					fontFamily = 'Open Sans, DejaVu Sans, sans-serif';
+					fontFamily = 'Open Sans, Ubuntu, DejaVu Sans, sans-serif';
 				} else {
 					// Default for other systems
 					fontFamily = defaultFontFamily;
@@ -287,15 +287,56 @@
 			
 		</script>
 		<br><br><br><br>
-		<div style="animation: upAndDown 5s linear infinite alternate-reverse; margin-bottom: 5em; padding: .3em;">
+		<div style="animation: upAndDown 5s linear infinite alternate-reverse; margin-bottom: 5em; padding: .3em;
+			/* background-color: rgb(255 255 255 / 10%); */
+			backdrop-filter: blur(4px);
+			-webkit-backdrop-filter: blur(4px);
+			">
 			<br>
-			<h1 style="color: white; text-align: center;">
-				<strong>
+			<h1 style="color: white; text-align: center; ">
+				<strong style="background: linear-gradient(to left, #0033ff, #b6fbff);
+				color: white; text-align: center; 
+				animation: shine 10s linear infinite;
+				-webkit-background-clip: text;
+				background-clip: text;
+				background-size: 400% 400%;
+				-webkit-text-fill-color: transparent;
+				">
+					AQI Calculator 
+				</strong>
+				&
+				<strong style="background: linear-gradient(to right, #0033ff, #b6fbff);
+				color: white; text-align: center; 
+				animation: shine 10s linear infinite;
+				-webkit-background-clip: text;
+				background-clip: text;
+				background-size: 400% 400%;
+				-webkit-text-fill-color: transparent;">
 					AirCast
 				</strong>
 			</h1>
 			<br>
-			<h3 style="color: white;text-align: center;font-size: 1.6rem;">Calculate & Forecast Air Quality Index.</h3>
+			<h2 style="color: white;text-align: center;font-size: 1.6rem;">Calculate & Forecast Air Quality Index.</h2>
+			<br>
+			<p style="color: white; font-size: 22px;"><strong style="font-weight: bold;
+				background: linear-gradient(to left, #0033ff, #b6fbff);
+				color: white; text-align: center; 
+				animation: shine 10s linear infinite;
+				-webkit-background-clip: text;
+				background-clip: text;
+				background-size: 400% 400%;
+				-webkit-text-fill-color: transparent;
+				">AQI Calculator:</strong> Given pollutants as input to the Machine Learning model, predict the Air Quality Index.</p>
+			
+			<p style="color: white; font-size: 22px;"><strong style="font-weight: bold;
+				background: linear-gradient(to right, #0033ff, #b6fbff);
+				color: white; text-align: center; 
+				animation: shine 10s linear infinite;
+				-webkit-background-clip: text;
+				background-clip: text;
+				background-size: 400% 400%;
+				-webkit-text-fill-color: transparent;
+				">AirCast:</strong> Forecast the next 1 week's AQI in Gurugram. A SARIMAX model trained on historical time series data.</p>
 		</div>
 		<br>
 		
@@ -419,7 +460,7 @@
 						</div>
 					</div>
 					<br>
-					Note: The results may not be accurate. 
+					<!-- Note: The results may not be accurate.  -->
 					<!-- The error percentage is <span id="forecast_mape"></span>%. -->
 					
 					<script>
@@ -498,13 +539,14 @@
 												rows: 0
 											},
 											font: {
-												color: 'white',
-												size: 20
+												color: 'black',
+												family: fontFamily,
+												size: 24,
 											},
 											hoverlabel: {
 												font: {
 													color: 'white',
-													size: 16
+													size: 23
 												},
 												bgcolor: 'black'
 											},
@@ -525,7 +567,8 @@
 											},
 											// font: {
 											// 	family: fontFamily,
-											// 	size: 14,
+											// 	size: 24,
+											// 	color: 'black'
 											// },
 											plot_bgcolor: 'rgb(255 255 255 / 0%)' ,
 											paper_bgcolor: 'rgb(255 255 255 / 0%)', 
@@ -701,8 +744,9 @@
 						form.addEventListener("change", () => {
 							document.getElementById('submitButton').disabled = !form.checkValidity()
 						});
-
-						predicted_aqi = document.getElementById("predicted_aqi_and_scale_1").innerHTML
+						predicted_aqi = 0
+						if (document.getElementById("predicted_aqi_and_scale_1") != null)
+							predicted_aqi = document.getElementById("predicted_aqi_and_scale_1").innerHTML
 						if (predicted_aqi < 50) {
 							predicted_aqi_scale_color = "#00b050";
 						}
@@ -722,7 +766,8 @@
 							predicted_aqi_scale_color = "#c00000";
 						}
 						
-						document.getElementById("predicted_aqi_and_scale").style.color = predicted_aqi_scale_color
+						if (document.getElementById("predicted_aqi_and_scale") != null)
+							document.getElementById("predicted_aqi_and_scale").style.color = predicted_aqi_scale_color
 					</script>
 				</div>
 
@@ -810,12 +855,13 @@
 											},
 											font: {
 												color: 'white',
-												size: 20
+												family: fontFamily,
+												size: 24,
 											},
 											hoverlabel: {
 												font: {
 													color: 'white',
-													size: 16
+													size: 23
 												},
 												bgcolor: 'black'
 											},
@@ -833,7 +879,8 @@
 											},
 											// font: {
 											// 	family: fontFamily,
-											// 	size: 14,
+											// 	size: 24,
+											// 	color: 'black'
 											// },
 											plot_bgcolor: 'rgb(255 255 255 / 0%)' ,
 											paper_bgcolor: 'rgb(255 255 255 / 0%)', 
@@ -1142,40 +1189,91 @@
 					">
 					<h2>
 						<strong>
-							Architectures
+							Architectures & more...
 						</strong>
 					</h2>
 					<div class="row">
-						<div class="col" 
-							 style="
-								text-align: center;
-								display: flex;
-								align-items: center;
-								justify-content: center;
-								flex-direction: column;">
-							<h3>AirCast</h3>
-							YouTube explanation video
+						<div class="col" style="font-size: 22px; text-align: left;">
+							<h3 style="text-align: center; font-size: 30px; font-weight: bold;">AirCast</h3>
+							<ul style="color: #ffffff;">
+								<!-- <li> <span style="font-weight: bold;">Architecture explanation video:</span> <a href="" target="_blank"></a> </li> -->
+								<li> <span style="font-weight: bold;">The Story:</span> 
+									<ul style="color: white; font-size: 22px;">
+										<li>After completing the AQI Calculator project in May 2023, an idea sprouted in my brain - 
+											"We have the advantage of live data, can we make use of it and re-train the model every day to forecast AQI?"</li>
+										<li>Then, I started learning about Time Series forecasting & started this project.</li>
+										<li>Here, it is reverse engineering - I got the idea first, then I learned the required skills & then did the project.</li>
+									</ul>
+								</li>
+								<li> <span style="font-weight: bold;">Input & Output:</span> Input is the historical daily AQI data & the output is next 5 days AQI forecast.</li>
+								<li> <span style="font-weight: bold;">Algorithm:</span> SARIMAX (1, 0, 1), (1, 0, 1, 7) </li>
+								<li><span style="font-weight: bold;">Data collected from:</span> <a href="https://airquality.cpcb.gov.in/ccr/#/caaqm-dashboard-all/caaqm-landing" target="_blank" style="text-decoration: underline; color: #307ECC;">CPCB</a></li>
+								<li> <span style="font-weight: bold;">Dataset type & frequency:</span> Daily Time Series data</li>
+								<li> <span style="font-weight: bold;">Dataset size:</span></li>
+								<li><span style="font-weight: bold;">Model metrics:</span>
+									<ul style="color: #ffffff; font-size: 22px;">
+										<li>Mean Absolute Percentage Error (MAPE): 13.14</li>
+										<li>Mean Absolute Error (MAE): 36</li>
+										<li>Note: These are not the daily Cron job metrics, but at the time of training for the first time on the historical data. 
+											Cron job metrics are reported to the 
+											<a href="https://github.com/Bomma-Pranay/Analysing-Air-Quality-Index-using-Machine-Learning/tree/main/logs" target="_blank" style="text-decoration: underline; color: #307ECC;">logs</a> 
+											folder in GitHub.</li>
+									</ul>
+								</li>
+								<li><span style="font-weight: bold;">Timelines:</span> November 2023 - January 2024</li>
+								<li><span style="font-weight: bold;">Tech stack:</span> Python, Time Series Analysis & Forecasting Algorithms, Flask, Pandas, Matplotlib, Seaborn, GitHub Actions</li>
+								<li><span style="font-weight: bold;">Future ideas:</span>
+									<ul style="color: #ffffff;">
+										<li>Extend AQI forecasting to other major cities in India</li>
+										<li>Connect to a Database for storing the AQI data of many cities</li>
+									</ul>
+								</li>
+								
+							</ul>
 						</div>
 						<div class="col" style="text-align: center;">
 							<img src="{{ url_for('static', filename='img/AirCast_Flow_Chart_Dark_Background_Sketch.svg') }}" alt="">
 							<!-- <img src="AirCast_Flow_Chart_Dark_Background_Sketch.svg" alt=""> -->
 						</div>
-					</div>	
+					</div>
 					<p style="margin: 5em;"></p>
 					<div class="row">
-						
 						<div class="col" style="text-align: center;">
 							<!-- <img src="AQI_Calculator_Flow_Chart_Dark_Background_Sketch.svg" alt="" style="height: 100%; width: 100%;"> -->
 							<img src="{{ url_for('static', filename='img/AQI_Calculator_Flow_Chart_Dark_Background_Sketch.svg') }}" alt="">
 						</div>
-						<div class="col" 
-							 style="
-								text-align: center;
-								display: flex;
-								align-items: center;
-								justify-content: center;
-								flex-direction: column;">
-							<h3>AQI Calculator</h3>
+						<div class="col" style="font-size: 22px; text-align: left;">
+							<h3 style="text-align: center; font-size: 30px; font-weight: bold;">AQI Calculator</h3>
+							<ul style="color: #ffffff;">
+								<li> <span style="font-weight: bold;">The Story:</span> 
+									<ul style="color: white; font-size: 22px;">
+										<li>After learning the concepts of ML, writing blogs/posts, hustling on Kaggle,</li>
+										<li>I wanted to build my first end-to-end project that too with a good team & environment.</li>
+										<li>So, I joined Omdena & started this project.</li>
+										<li>Here, I learned the skills first, then did the project.</li>
+									</ul>
+								</li>
+								<li> <span style="font-weight: bold;">Input & Output:</span> Given pollutants as input to the Machine Learning model, predict the Air Quality Index.</li>
+								<li>Collaborated with <a href="https://www.omdena.com/projects/analyzing-air-quality-in-gurugram-using-machine-learning" target="_blank" style="text-decoration: underline; color: #307ECC;">Omdena</a>, 
+									worked with people across the globe, and led the team of 5 people in Data Collection,
+									Exploratory Data Analysis, Model Training & Project Documentation.</li>
+								<!-- <li> <span style="font-weight: bold;">Architecture explanation video:</span> <a href="" target="_blank"></a> </li> -->
+								<li> <span style="font-weight: bold;">Algorithm:</span> k Nearest Neighbors (k = 5)</li>
+								<li><span style="font-weight: bold;">Data collected from:</span> <a href="https://airquality.cpcb.gov.in/ccr/#/caaqm-dashboard-all/caaqm-landing" target="_blank" style="text-decoration: underline; color: #307ECC;">CPCB</a></li>
+								<li> <span style="font-weight: bold;">Dataset type & frequency:</span> Hourly Time Series data with target column as AQI</li>
+								<li> <span style="font-weight: bold;">Dataset size:</span></li>
+								<li><span style="font-weight: bold;">Model metrics:</span>
+									<ul style="color: #ffffff; font-size: 22px;">
+										<li>R Squared: 0.835</li>
+										<li>Mean Absolute Percentage Error (MAPE): 21.06</li>
+										<li>Mean Absolute Error (MAE): 30.75</li>
+									</ul>
+								</li>
+								<li><span style="font-weight: bold;">Timelines:</span> March 2023 - May 2023</li>
+								<li><span style="font-weight: bold;">Tech stack:</span> Python, Pandas, Scikit-learn, Matplotlib, Seaborn, Plotly, Flask</li>
+								<li><a href="https://github.com/Bomma-Pranay/Analysing-Air-Quality-Index-using-Machine-Learning/blob/main/Certificate%20Omdena%20Pranay.jpg" target="_blank" style="text-decoration: underline; color: #307ECC; font-weight: bold;">Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i></a></li>
+
+							</ul>
 						</div>
 					</div>
 					<script>
