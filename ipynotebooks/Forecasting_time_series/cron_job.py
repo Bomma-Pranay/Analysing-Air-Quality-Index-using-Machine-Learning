@@ -257,54 +257,53 @@ def retrain_model(order, seasonal_order, station_daily_aqi):
     print(f"\n\nMAPE=> {MAPE}")
     logger.info(f'Retrained the model & MAPE is {MAPE}%')
 
-    if (MAPE <= 30):
-        # If MAPE is < 30%, forecast next 5 days.
-        train_data = df.loc[:, 'AQI']
-        model = SARIMAX(train_data, order=order, seasonal_order=seasonal_order)
-        model_fit = model.fit()
-        predictions = model_fit.forecast(len(test_data))
-        predictions = pd.Series(predictions)
-        print(f"\n\nForecast=> {predictions}")
-        logger.info(f"Forecast=> {predictions}")
+    # if (MAPE <= 30):
+    # If MAPE is < 30%, forecast next 5 days.
+    train_data = df.loc[:, 'AQI']
+    model = SARIMAX(train_data, order=order, seasonal_order=seasonal_order)
+    model_fit = model.fit()
+    predictions = model_fit.forecast(len(test_data))
+    predictions = pd.Series(predictions)
+    print(f"\n\nForecast=> {predictions}")
+    logger.info(f"Forecast=> {predictions}")
 
-        # Save the forecast
-        try:
+    # Save the forecast
+    try:
+        containsNaN = predictions.isna().sum()
+        if containsNaN == 0:
+            with open(FORECAST_SECTOR_51_DAILY_AQI, 'w', newline='') as csv_file:
+                csv_writer = csv.writer(csv_file)
+                csv_writer.writerow(['Date', 'AQI'])
+                for i in range(5):
+                    csv_writer.writerow([predictions.index[i].date(), round(predictions.values[i])])
+                # Log the predictions to view in future.
+                print(f'The forecast data has been written to {FORECAST_SECTOR_51_DAILY_AQI}')
+                logger.info(f'The forecast data has been written to {FORECAST_SECTOR_51_DAILY_AQI}')
             
-            containsNaN = predictions.isna().sum()
-            if containsNaN == 0:
-                with open(FORECAST_SECTOR_51_DAILY_AQI, 'w', newline='') as csv_file:
-                    csv_writer = csv.writer(csv_file)
-                    csv_writer.writerow(['Date', 'AQI'])
-                    for i in range(5):
-                        csv_writer.writerow([predictions.index[i].date(), round(predictions.values[i])])
-                    # Log the predictions to view in future.
-                    print(f'The forecast data has been written to {FORECAST_SECTOR_51_DAILY_AQI}')
-                    logger.info(f'The forecast data has been written to {FORECAST_SECTOR_51_DAILY_AQI}')
-                
-                # Also, write to Flask app
-                with open(FORECAST_SECTOR_51_DAILY_AQI_FLASK, 'w', newline='') as csv_file:
-                    csv_writer = csv.writer(csv_file)
-                    csv_writer.writerow(['Date', 'AQI'])
-                    for i in range(5):
-                        csv_writer.writerow([predictions.index[i].date(), round(predictions.values[i])])
-                    # Log the predictions to view in future.
-                    print(f'The forecast data has been written to {FORECAST_SECTOR_51_DAILY_AQI_FLASK}')
-                    logger.info(f'The forecast data has been written to {FORECAST_SECTOR_51_DAILY_AQI_FLASK}')
-            else:
-                print(f'retrain_model function - The forecast data has NaNs.')
-                logger.info(f'retrain_model function - The forecast data has NaNs.')
+            # Also, write to Flask app
+            with open(FORECAST_SECTOR_51_DAILY_AQI_FLASK, 'w', newline='') as csv_file:
+                csv_writer = csv.writer(csv_file)
+                csv_writer.writerow(['Date', 'AQI'])
+                for i in range(5):
+                    csv_writer.writerow([predictions.index[i].date(), round(predictions.values[i])])
+                # Log the predictions to view in future.
+                print(f'The forecast data has been written to {FORECAST_SECTOR_51_DAILY_AQI_FLASK}')
+                logger.info(f'The forecast data has been written to {FORECAST_SECTOR_51_DAILY_AQI_FLASK}')
+        else:
+            print(f'retrain_model function - The forecast data has NaNs.')
+            logger.info(f'retrain_model function - The forecast data has NaNs.')
 
-        except Exception as e:
-            print(f"retrain_model function - Exception {type(e).__name__} has occured.")
-            logger.info(f"retrain_model function - Exception {type(e).__name__} has occured.")
-
-    elif (MAPE > 30):
-        # record MAPE and send email if it is >30%
-        pass
-    else:
-        # Raise Exception & email - Model is not re-trained.
-        print(f"retrain_model function - Model is not retrained. Please look into the issue.")
-        logger.info(f"retrain_model function - Model is not retrained. Please look into the issue.")
+        if (MAPE > 30):
+            # record MAPE and send email if it is >30%
+            pass
+        # else:
+        #     # Raise Exception & email - Model is not re-trained.
+        #     print(f"retrain_model function - Model is not retrained. Please look into the issue.")
+        #     logger.info(f"retrain_model function - Model is not retrained. Please look into the issue.")
+    
+    except Exception as e:
+        print(f"retrain_model function - Model is not retrained. Please look into the issue - Exception {type(e).__name__} has occured.")
+        logger.info(f"retrain_model function - Model is not retrained. Please look into the issue - Exception {type(e).__name__} has occured.")
 
 if __name__ == "__main__":
 
