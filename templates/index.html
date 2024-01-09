@@ -737,6 +737,16 @@
 					</div>
 					
 					<script>
+						console.log("window.location.href ",window.location.href)
+						currentUrl = window.location.href
+						if (currentUrl.includes('/predict')) {
+							var targetElement = document.getElementById('submitButton');
+
+							if (targetElement) {
+								targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+							}
+						}
+
 						const form = document.getElementById('inputValues');
 						form.addEventListener("keyup", () => {
 							document.getElementById('submitButton').disabled = !form.checkValidity()
@@ -1178,7 +1188,7 @@
 				<div id="div7" data-aos="fade-down" data-aos-duration="2500" data-aos-easing="ease-out-cubic"
 					data-aos-mirror="true" data-aos-once="true" style="
 					color: white;
-					background-color: rgb(255 255 255 / 10%);
+					background-color: rgb(255 255 255 / 20%);
 					backdrop-filter: blur(4px);
 					-webkit-backdrop-filter: blur(4px);
 					animation: upAndDown 100s linear alternate;
