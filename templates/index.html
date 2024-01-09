@@ -4,10 +4,12 @@
 <head>
 	<title>AirCast</title>
 	<!-- <link rel="shortcut icon" type="image/*" href="favicon.png" /> -->
+	<link rel="shortcut icon" type="image/*" href="{{ url_for('static', filename='img/favicon.png') }}">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="AirCast">
 	<!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
+	<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 		</script>
@@ -382,8 +384,14 @@
 									header: true,
 									complete: function (results) {
 										var parsedData = results.data;
-										current_aqi = parsedData[parsedData.length -1].AQI
-										current_aqi_time = parsedData[parsedData.length -1].Time
+										if (parsedData[parsedData.length -1].AQI == '') {
+											current_aqi = parsedData[parsedData.length - 2].AQI
+											current_aqi_time = parsedData[parsedData.length - 2].Time	
+										}
+										else {
+											current_aqi = parsedData[parsedData.length -1].AQI
+											current_aqi_time = parsedData[parsedData.length -1].Time
+										}
 										document.getElementById("current_aqi").innerHTML = current_aqi;
 										var formattedDate = moment(current_aqi_time).format('DD MMMM YYYY, h:mm A');
 										document.getElementById("current_aqi_time").innerHTML = formattedDate;
@@ -737,7 +745,6 @@
 					</div>
 					
 					<script>
-						console.log("window.location.href ",window.location.href)
 						currentUrl = window.location.href
 						if (currentUrl.includes('/predict')) {
 							var targetElement = document.getElementById('submitButton');
