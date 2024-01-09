@@ -47,7 +47,9 @@ NISE_OUTPUT = "data/cron_job_data/nise_cron_output"
 SECTOR_51 = "Sector-51, Gurugram"
 SECTOR_51_STATION = "Sector-51, Gurugram, India"
 SECTOR_51_OUTPUT = "data/cron_job_data/sector_51_cron_output"
+SECTOR_51_OUTPUT_FLASK = "static/data/sector_51_cron_output"
 SECTOR_51_DAILY_AQI = 'data/cleaned_data/Forecasting_time_series/sector_51_daily_aqi.csv'
+SECTOR_51_DAILY_AQI_FLASK = 'static/data/sector_51_daily_aqi.csv'
 
 # Teri gram
 TERI_GRAM = "Teri Gram"
@@ -59,11 +61,12 @@ VIKAS_SADAN = "Vikas Sadan"
 VIKAS_SADAN_STATION = "Vikas Sadan Gurgaon"
 VIKAS_SADAN_OUTPUT = "data/cron_job_data/vikas_sadan_cron_output"
 
-stations = [(NISE,  NISE_OUTPUT), (SECTOR_51, SECTOR_51_OUTPUT), (TERI_GRAM, TERI_GRAM_OUTPUT), (VIKAS_SADAN, VIKAS_SADAN_OUTPUT)]
+stations = [(NISE,  NISE_OUTPUT), (SECTOR_51, SECTOR_51_OUTPUT), (SECTOR_51, SECTOR_51_OUTPUT_FLASK), (TERI_GRAM, TERI_GRAM_OUTPUT), (VIKAS_SADAN, VIKAS_SADAN_OUTPUT)]
 
 # We have selected best model based on different combinations - See Modelling block in ipython notebook.
 ORDER, SEASONAL_ORDER = (1, 0, 1), (1, 0, 1, 7)
 FORECAST_SECTOR_51_DAILY_AQI = 'data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv'
+FORECAST_SECTOR_51_DAILY_AQI_FLASK = 'static/data/forecast_sector_51_daily_aqi.csv'
 
 def get_api_token():
     '''
@@ -197,6 +200,20 @@ def writeData(station_hourly_aqi, station_daily_aqi):
                 csv_writer.writerow([index, yesterday, aqi])
                 print(f'Daily AQI data has been written to {station_daily_aqi}')
                 logger.info(f'Daily AQI data has been written to {station_daily_aqi}')
+        
+        # Also, write to Flask app
+        with open(SECTOR_51_DAILY_AQI_FLASK, 'a', newline='') as csv_file:
+            if len(temp_daily_aqi[yesterday:yesterday]) == 0: # Write only if it does not exist already
+                csv_writer = csv.writer(csv_file)
+                index = temp_daily_aqi.iloc[-1,0] + 1 # Add 1 to yesterday's index
+                aqi = df_api[yesterday:yesterday].AQI.values[0]
+                print(f'Index => {index}, yesterday => {yesterday} & AQI => {aqi}')
+                logger.info(f'Index => {index}, yesterday => {yesterday} & AQI => {aqi}')
+                if np.isnan(df_api[yesterday:yesterday].AQI.values[0]): # If NaN, take yesterday's value.
+                    aqi = temp_daily_aqi.iloc[-1,2]
+                csv_writer.writerow([index, yesterday, aqi])
+                print(f'Daily AQI data has been written to {SECTOR_51_DAILY_AQI_FLASK}')
+                logger.info(f'Daily AQI data has been written to {SECTOR_51_DAILY_AQI_FLASK}')
     except Exception as e:
         print(f"writeData function - Exception {type(e).__name__} has occured for station=> {station_daily_aqi}")
         logger.info(f"writeData function - Exception {type(e).__name__} has occured for station=> {station_daily_aqi}")
@@ -264,6 +281,17 @@ def retrain_model(order, seasonal_order, station_daily_aqi):
                     # Log the predictions to view in future.
                     print(f'The forecast data has been written to {FORECAST_SECTOR_51_DAILY_AQI}')
                     logger.info(f'The forecast data has been written to {FORECAST_SECTOR_51_DAILY_AQI}')
+                
+                # Also, write to Flask app
+                with open(FORECAST_SECTOR_51_DAILY_AQI_FLASK, 'w', newline='') as csv_file:
+                    csv_writer = csv.writer(csv_file)
+                    csv_writer.writerow(['Date', 'AQI'])
+                    for i in range(5):
+                        csv_writer.writerow([predictions.index[i].date(), round(predictions.values[i])])
+                    csv_writer.writerow(['MAPE', MAPE])
+                    # Log the predictions to view in future.
+                    print(f'The forecast data has been written to {FORECAST_SECTOR_51_DAILY_AQI_FLASK}')
+                    logger.info(f'The forecast data has been written to {FORECAST_SECTOR_51_DAILY_AQI_FLASK}')
             else:
                 print(f'retrain_model function - The forecast data has NaNs.')
                 logger.info(f'retrain_model function - The forecast data has NaNs.')
