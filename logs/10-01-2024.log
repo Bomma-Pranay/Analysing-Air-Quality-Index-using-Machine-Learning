@@ -1,0 +1,11 @@
+2024-01-10 00:29:57,999 - __main__ - INFO - station=> nise gwal, result => ['184', 'NISE Gwal Pahari, Gurugram, India', Timestamp('2024-01-06 11:00:00')]
+2024-01-10 00:29:58,000 - __main__ - INFO - Timestamp 2024-01-06 11:00:00 already present in data/cron_job_data/nise_cron_output.csv, not appending.
+2024-01-10 00:29:58,709 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['-', 'Sector-51, Gurugram, India', Timestamp('2024-01-09 19:00:00')]
+2024-01-10 00:29:58,709 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> Sector-51, Gurugram
+2024-01-10 00:29:59,425 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['-', 'Sector-51, Gurugram, India', Timestamp('2024-01-09 19:00:00')]
+2024-01-10 00:29:59,425 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> Sector-51, Gurugram
+2024-01-10 00:30:00,138 - __main__ - INFO - station=> Teri Gram, result => ['-', 'Teri Gram, Gurugram, India', Timestamp('2024-01-09 19:00:00')]
+2024-01-10 00:30:00,138 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> Teri Gram
+2024-01-10 00:30:00,847 - __main__ - INFO - station=> Vikas Sadan, result => ['-', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2024-01-09 19:00:00')]
+2024-01-10 00:30:00,847 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> Vikas Sadan
+2024-01-10 00:30:00,847 - __main__ - INFO - datetime.now()=> 2024-01-10 00:30:00.847918
