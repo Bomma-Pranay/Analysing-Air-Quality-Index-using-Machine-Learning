@@ -100,8 +100,6 @@ def setData(station, output_file, logger, TOKEN):
                 result.append(res["data"][0]['aqi'])
                 result.append(res["data"][0]['station']['name'])
                 result.append(pd.to_datetime(res["data"][0]['time']['stime']))
-            logger.info(f"station=> {station}, result => {result}")
-            print(f"station=> {station}, result => {result}")
             
             # If AQI is not a number, dont write it and return
             try:
@@ -125,11 +123,13 @@ def setData(station, output_file, logger, TOKEN):
                 with open(csv_file_path, 'a', newline='') as csv_file:
                     csv_writer = csv.writer(csv_file)
                     csv_writer.writerow(result)
+                logger.info(f"station=> {station}, result => {result}")
+                print(f"station=> {station}, result => {result}")
                 print(f'The hourly data has been written to {csv_file_path} with Timestamp: {new_timestamp}')
                 logger.info(f'The hourly data has been written to {csv_file_path} with Timestamp: {new_timestamp}')
             else:
                 print(f'Timestamp {new_timestamp} already present in {csv_file_path}, not appending.')
-                logger.info(f'Timestamp {new_timestamp} already present in {csv_file_path}, not appending.')
+            #     logger.info(f'Timestamp {new_timestamp} already present in {csv_file_path}, not appending.')
         else:
             print(f"setData function - Error: {response.status_code} - {response.text}")
             logger.info(f"setData function - Error: {response.status_code} - {response.text}")
@@ -318,7 +318,7 @@ if __name__ == "__main__":
     
      # If the day changes, append it to original data
     print(f"datetime.now()=> {datetime.now()}")
-    logger.info(f"datetime.now()=> {datetime.now()}")
+    # logger.info(f"datetime.now()=> {datetime.now()}")
     
     if datetime.now().hour == 1:     # It means 1 AM IST (20 is GitHub action runner time)
         print("Calling writeData & retrain_model functions.")
