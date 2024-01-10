@@ -296,6 +296,17 @@
 			">
 			<br>
 			<h1 style="color: white; text-align: center; ">
+				
+				<strong style="background: linear-gradient(to right, #0033ff, #b6fbff);
+				color: white; text-align: center; 
+				animation: shine 10s linear infinite;
+				-webkit-background-clip: text;
+				background-clip: text;
+				background-size: 400% 400%;
+				-webkit-text-fill-color: transparent;">
+					AirCast
+				</strong>
+				&
 				<strong style="background: linear-gradient(to left, #0033ff, #b6fbff);
 				color: white; text-align: center; 
 				animation: shine 10s linear infinite;
@@ -306,29 +317,11 @@
 				">
 					AQI Calculator 
 				</strong>
-				&
-				<strong style="background: linear-gradient(to right, #0033ff, #b6fbff);
-				color: white; text-align: center; 
-				animation: shine 10s linear infinite;
-				-webkit-background-clip: text;
-				background-clip: text;
-				background-size: 400% 400%;
-				-webkit-text-fill-color: transparent;">
-					AirCast
-				</strong>
+				
 			</h1>
 			<br>
-			<h2 style="color: white;text-align: center;font-size: 1.6rem;">Calculate & Forecast Air Quality Index.</h2>
+			<h2 style="color: white;text-align: center;font-size: 1.6rem;">Forecast & Calculate Air Quality Index.</h2>
 			<br>
-			<p style="color: white; font-size: 22px;"><strong style="font-weight: bold;
-				background: linear-gradient(to left, #0033ff, #b6fbff);
-				color: white; text-align: center; 
-				animation: shine 10s linear infinite;
-				-webkit-background-clip: text;
-				background-clip: text;
-				background-size: 400% 400%;
-				-webkit-text-fill-color: transparent;
-				">AQI Calculator:</strong> Given pollutants as input to the Machine Learning model, predict the Air Quality Index.</p>
 			
 			<p style="color: white; font-size: 22px;"><strong style="font-weight: bold;
 				background: linear-gradient(to right, #0033ff, #b6fbff);
@@ -337,8 +330,24 @@
 				-webkit-background-clip: text;
 				background-clip: text;
 				background-size: 400% 400%;
+				font-size: 25px;
 				-webkit-text-fill-color: transparent;
-				">AirCast:</strong> Forecast the next 1 week's AQI in Gurugram. A SARIMAX model trained on historical time series data.</p>
+				">AirCast:</strong> Forecast the next 5 day's AQI in Gurugram. A SARIMAX model trained on historical time series data <br>
+				that retrains daily by a Cron job with new data and forecasts next 5 day's Air Quality Index in Gurugram.</p>
+			
+			<p style="color: white; font-size: 22px;"><strong style="font-weight: bold;
+				background: linear-gradient(to left, #0033ff, #b6fbff);
+				color: white; text-align: center; 
+				animation: shine 10s linear infinite;
+				-webkit-background-clip: text;
+				background-clip: text;
+				background-size: 400% 400%;
+				font-size: 25px;
+				-webkit-text-fill-color: transparent;
+				">AQI Calculator:</strong> Given pollutants as input to the Machine Learning model, predict the Air Quality Index. <br>
+				The kNN model is trained on 4 stations in Gurugram on 147K rows that has 83.5% accuracy (R-Squared).
+			</p>
+			
 		</div>
 		<br>
 		
@@ -1026,7 +1035,7 @@
 													<li>The AQI for your area can be checked through various sources, including government websites, 
 														mobile apps, and online platforms. Many cities in India have dedicated air quality monitoring stations, 
 														and their data is often accessible in real-time.</li>
-													<li>However, if you are in Gurugram, you can check the AQI and 1 week forecast at the top of this page.</li>
+													<li>However, if you are in Gurugram, you can check the AQI and the next 5 day's forecast at the top of this page.</li>
 												</ul>
 												
 											</div>
@@ -1282,7 +1291,7 @@
 								<li> <span style="font-weight: bold;">Dataset size:</span> 147531 rows x 31 columns </li>
 								<li><span style="font-weight: bold;">Model metrics:</span>
 									<ul style="color: #ffffff; font-size: 16px;">
-										<li>R Squared: 0.835</li>
+										<li>R-Squared: 0.835</li>
 										<li>Mean Absolute Percentage Error (MAPE): 21.06</li>
 										<li>Mean Absolute Error (MAE): 30.75</li>
 									</ul>
