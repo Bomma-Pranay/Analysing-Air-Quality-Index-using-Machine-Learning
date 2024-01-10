@@ -369,7 +369,7 @@
 								</strong>
 							</h2>
 							<h4>
-								Current AQI is <span id="current_aqi"></span> - <span id="current_aqi_scale"></span>
+								Current AQI is <span id="current_aqi"></span> ( <span id="current_aqi_scale"></span> )
 							</h4>
 							Last Updated: <span id="current_aqi_time"></span>
 						</div>
@@ -549,12 +549,12 @@
 											font: {
 												color: 'black',
 												family: fontFamily,
-												size: 24,
+												size: 18,
 											},
 											hoverlabel: {
 												font: {
 													color: 'white',
-													size: 23
+													size: 20
 												},
 												bgcolor: 'black'
 											},
@@ -562,7 +562,7 @@
 												title: 'Date',
 												color: 'white',
 												tickformat: '%Y-%m-%d',
-												size: 14,
+												size: 10,
 												tickvals: datetime,
 												ticktext: datetime,
 												showgrid: false
@@ -570,7 +570,7 @@
 											yaxis: {
 												title: 'AQI',
 												color: 'white',
-												size: 14,
+												size: 10,
 												showgrid: false
 											},
 											// font: {
@@ -620,7 +620,7 @@
 									border-radius: 20px;
             						overflow: hidden; 
 									margin-bottom: 20px;
-									font-size: 20px;
+									font-size: 16px;
 								}
 
 								td {
@@ -636,7 +636,7 @@
 								}
 							</style>
 							<table>
-								<tr>
+								<tr style="font: 18px;">
 									<th>AQI</th>
 									<th>Associated Health Impacts</th>
 								</tr>
@@ -709,7 +709,7 @@
 							<h5>Concentration in µg/m3 (except for CO)</h5>
 
 							<form method="POST" action="/predict" id="inputValues">
-								<h4>
+								<h5>
 									<strong>PM2.5</strong> <input id="PM2.5" name="PM2.5" min="0" placeholder="Enter PM2.5" required type="number" style="margin: 20px;" value="{{ input_text_PM25 }}">
 									<strong>NO</strong>    <input id="NO" name="NO" min="0" placeholder="Enter NO" required type="number" style="margin: 20px;" value="{{ input_text_NO }}">
 									<strong>NO2</strong>   <input id="NO2" name="NO2" min="0" placeholder="Enter NO2" required type="number" style="margin: 20px;" value="{{ input_text_NO2 }}"><br><br>
@@ -737,7 +737,7 @@
 										{% endif %}
 									</div>
 									
-								</h4>
+								</h5>
 								<br>
 								<span style="font-size: 18px;"><strong>Note:</strong> If you do not have value for any field, input it as 0.</span>
 							</form>							
@@ -873,25 +873,25 @@
 											font: {
 												color: 'white',
 												family: fontFamily,
-												size: 24,
+												size: 18,
 											},
 											hoverlabel: {
 												font: {
 													color: 'white',
-													size: 23
+													size: 20
 												},
 												bgcolor: 'black'
 											},
 											xaxis: {
 												title: 'Date',
 												color: 'white',
-												size: 14,
+												size: 10,
 												showgrid: false
 											},
 											yaxis: {
 												title: 'AQI',
 												color: 'white',
-												size: 14,
+												size: 10,
 												showgrid: false
 											},
 											// font: {
@@ -1210,12 +1210,12 @@
 						</strong>
 					</h2>
 					<div class="row">
-						<div class="col" style="font-size: 22px; text-align: left;">
+						<div class="col" style="font-size: 18px; text-align: left;">
 							<h3 style="text-align: center; font-size: 30px; font-weight: bold;">AirCast</h3>
 							<ul style="color: #ffffff;">
 								<!-- <li> <span style="font-weight: bold;">Architecture explanation video:</span> <a href="" target="_blank"></a> </li> -->
 								<li> <span style="font-weight: bold;">The Story:</span> 
-									<ul style="color: white; font-size: 22px;">
+									<ul style="color: white; font-size: 18px;">
 										<li>After completing the AQI Calculator project in May 2023, an idea sprouted in my brain - 
 											"We have the advantage of live data, can we make use of it and re-train the model every day to forecast AQI?"</li>
 										<li>Then, I started learning about Time Series forecasting & started this project.</li>
@@ -1228,7 +1228,7 @@
 								<li> <span style="font-weight: bold;">Dataset type & frequency:</span> Daily Time Series data</li>
 								<li> <span style="font-weight: bold;">Dataset size:</span> 1369 rows x 10 columns (2020-03-05 to 2023-11-23)</li>
 								<li><span style="font-weight: bold;">Model metrics:</span>
-									<ul style="color: #ffffff; font-size: 22px;">
+									<ul style="color: #ffffff; font-size: 16px;">
 										<li>Mean Absolute Percentage Error (MAPE): 13.14</li>
 										<li>Mean Absolute Error (MAE): 36</li>
 										<li>Note: These are not the daily Cron job metrics, but at the time of training for the first time on the historical data. 
@@ -1259,11 +1259,11 @@
 							<!-- <img src="AQI_Calculator_Flow_Chart_Dark_Background_Sketch.svg" alt="" style="height: 100%; width: 100%;"> -->
 							<img src="{{ url_for('static', filename='img/AQI_Calculator_Flow_Chart_Dark_Background_Sketch.svg') }}" alt="">
 						</div>
-						<div class="col" style="font-size: 22px; text-align: left;">
+						<div class="col" style="font-size: 18px; text-align: left;">
 							<h3 style="text-align: center; font-size: 30px; font-weight: bold;">AQI Calculator</h3>
 							<ul style="color: #ffffff;">
 								<li> <span style="font-weight: bold;">The Story:</span> 
-									<ul style="color: white; font-size: 22px;">
+									<ul style="color: white; font-size: 18px;">
 										<li>After learning the concepts of ML, writing blogs/posts, hustling on Kaggle,</li>
 										<li>I wanted to build my first end-to-end project that too with a good team & environment.</li>
 										<li>So, I joined Omdena & started this project.</li>
@@ -1280,7 +1280,7 @@
 								<li> <span style="font-weight: bold;">Dataset type & frequency:</span> Hourly Time Series data with target column as AQI</li>
 								<li> <span style="font-weight: bold;">Dataset size:</span> 147531 rows x 31 columns </li>
 								<li><span style="font-weight: bold;">Model metrics:</span>
-									<ul style="color: #ffffff; font-size: 22px;">
+									<ul style="color: #ffffff; font-size: 16px;">
 										<li>R Squared: 0.835</li>
 										<li>Mean Absolute Percentage Error (MAPE): 21.06</li>
 										<li>Mean Absolute Error (MAE): 30.75</li>
