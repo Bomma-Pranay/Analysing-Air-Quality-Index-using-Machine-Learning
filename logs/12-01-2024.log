@@ -1,0 +1,4 @@
+2024-01-12 00:30:08,580 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> Sector-51, Gurugram
+2024-01-12 00:30:09,257 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> Sector-51, Gurugram
+2024-01-12 00:30:09,959 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> Teri Gram
+2024-01-12 00:30:10,665 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> Vikas Sadan
