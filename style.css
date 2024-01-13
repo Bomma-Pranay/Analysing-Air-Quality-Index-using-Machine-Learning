@@ -417,14 +417,14 @@ canvas {
 
 .accordion-button::after {
     transition: transform 2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    background-image: url("../img/plus.svg");
+    background-image: url("images/plus.svg");
     /* background-image: url("{{ url_for('static', filename='img/plus.svg') }}"); */
     -webkit-transition: transform 2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
 .accordion-button:not(.collapsed)::after {
     transition: transform 2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    background-image: url("../img/minus.svg");
+    background-image: url("images/minus.svg");
     /* background-image: url("{{ url_for('static', filename='img/minus.svg') }}"); */
     -webkit-transition: transform 2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }

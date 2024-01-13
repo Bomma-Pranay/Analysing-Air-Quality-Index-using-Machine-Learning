@@ -13,13 +13,13 @@
 		gtag('config', 'G-0TZKZLEKRT');
 	</script>
 
-	<!-- <link rel="shortcut icon" type="image/*" href="favicon.png" /> -->
-	<link rel="shortcut icon" type="image/*" href="{{ url_for('static', filename='img/favicon.png') }}">
+	<link rel="shortcut icon" type="image/*" href="favicon.png" />
+	<!-- <link rel="shortcut icon" type="image/*" href="{{ url_for('static', filename='img/favicon.png') }}"> -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="AirCast">
-	<!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
-	<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<!-- <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}"> -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 		</script>
@@ -43,9 +43,10 @@
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
 
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-	<!-- <script src="index.js"></script> -->
-	<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+	<link rel="stylesheet" href="style.css">
+	<!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> -->
+	<script src="index.js"></script>
+	<!-- <script src="{{ url_for('static', filename='js/index.js') }}"></script> -->
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -53,7 +54,8 @@
 		integrity="sha512-bzjaf85dHTL4H0BvkAJ/Jbvxqf1rDj+jVpCNe3oxQj/RXSnkx1HnKhqIcmMWghxEAbXsYgddrc38saWpltlkug=="
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/hover.css') }}">
+	<link rel="stylesheet" href="hover.css">
+	<!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/hover.css') }}"> -->
 	<script>
 		$(document).ready(function () {
 			$(".hamburger").click(function () {
@@ -130,7 +132,7 @@
 				star.acceleration = 0.02;
 				starGeo.vertices.push(star);
 			}
-			let sprite = new THREE.TextureLoader().load('{{ url_for("static", filename="img/star.png") }}');
+			let sprite = new THREE.TextureLoader().load('images/star.png');
 			let starMaterial = new THREE.PointsMaterial({
 				color: 0xffffff,
 				size: 0.7,
@@ -152,7 +154,7 @@
 				star.acceleration = 0.2;
 				starGeo.vertices.push(star);
 			}
-			let sprite2 = new THREE.TextureLoader().load('{{ url_for("static", filename="img/star.png") }}');
+			let sprite2 = new THREE.TextureLoader().load('images/star.png');
 			let starMaterial2 = new THREE.PointsMaterial({
 				color: 0xf25e06,
 				size: 2,
@@ -249,8 +251,8 @@
 			background-size: cover;
 			background-position: 50% 50%;
 		"></div>
-		<!-- <script src="tsParticlesHome.js"> -->
-		<script src="{{ url_for('static', filename='js/tsParticlesHome.js') }}"></script>
+		<script src="tsParticlesHome.js">
+		// <script src="{{ url_for('static', filename='js/tsParticlesHome.js') }}"></script>
 		</script>
 		<div id="particles-js" style="
 			position: fixed;
@@ -266,9 +268,10 @@
 			background-position: 50% 50%;
 		"></div>
 		<!-- <script src="{{ url_for('static', filename='js/vanilla-tilt.js') }}"></script> -->
+		<script src="vanilla-tilt.js"></script> 
 		<script>
 			
-			particlesJS.load('particles-js', '{{ url_for("static", filename="js/particlesHome.json") }}', function () {
+			particlesJS.load('particles-js', 'particlesHome.json', function () {
 			});
 		</script>
 		<script>
@@ -394,8 +397,8 @@
 						</div>
 					</div>
 					<script>
-						// var currentAQIFileURL = '../data/cron_job_data/sector_51_cron_output.csv';
-						var currentAQIFileURL = '{{ url_for("static", filename="data/sector_51_cron_output.csv") }}';
+						var currentAQIFileURL = '../data/cron_job_data/sector_51_cron_output.csv';
+						// var currentAQIFileURL = '{{ url_for("static", filename="data/sector_51_cron_output.csv") }}';
 						fetch(currentAQIFileURL)
 							.then(response => response.text())
 							.then(csvData => {
@@ -493,8 +496,8 @@
 					<script>
 						forecast_aqi = document.getElementById('forecast_aqi');
 
-						// var csvFileURL = '../data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv';
-						var csvFileURL = '{{ url_for("static", filename="data/forecast_sector_51_daily_aqi.csv") }}';
+						var csvFileURL = '../data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv';
+						// var csvFileURL = '{{ url_for("static", filename="data/forecast_sector_51_daily_aqi.csv") }}';
 						
 						fontFamily = getFontFamily();
 
@@ -857,8 +860,8 @@
 
 						historical_aqi = document.getElementById('historical_aqi');
 
-						// var csvFileURL = '../data/cleaned_data/Forecasting_time_series/sector_51_daily_aqi.csv';
-						var csvFileURL = '{{ url_for("static", filename="data/sector_51_daily_aqi.csv") }}';
+						var csvFileURL = '../data/cleaned_data/Forecasting_time_series/sector_51_daily_aqi.csv';
+						// var csvFileURL = '{{ url_for("static", filename="data/sector_51_daily_aqi.csv") }}';
 						fontFamily = getFontFamily();
 
 						fetch(csvFileURL)
@@ -1269,15 +1272,15 @@
 							</ul>
 						</div>
 						<div class="col" style="text-align: center;">
-							<img src="{{ url_for('static', filename='img/AirCast_Flow_Chart_Dark_Background_Sketch.svg') }}" alt="">
-							<!-- <img src="AirCast_Flow_Chart_Dark_Background_Sketch.svg" alt=""> -->
+							<!-- <img src="{{ url_for('static', filename='img/AirCast_Flow_Chart_Dark_Background_Sketch.svg') }}" alt=""> -->
+							<img src="AirCast_Flow_Chart_Dark_Background_Sketch.svg" alt="">
 						</div>
 					</div>
 					<p style="margin: 5em;"></p>
 					<div class="row">
 						<div class="col" style="text-align: center;">
-							<!-- <img src="AQI_Calculator_Flow_Chart_Dark_Background_Sketch.svg" alt="" style="height: 100%; width: 100%;"> -->
-							<img src="{{ url_for('static', filename='img/AQI_Calculator_Flow_Chart_Dark_Background_Sketch.svg') }}" alt="">
+							<img src="AQI_Calculator_Flow_Chart_Dark_Background_Sketch.svg" alt="" style="height: 100%; width: 100%;">
+							<!-- <img src="{{ url_for('static', filename='img/AQI_Calculator_Flow_Chart_Dark_Background_Sketch.svg') }}" alt=""> -->
 						</div>
 						<div class="col" style="font-size: 18px; text-align: left;">
 							<h3 style="text-align: center; font-size: 30px; font-weight: bold;">AQI Calculator</h3>
@@ -1425,7 +1428,8 @@
 	<script>
 		AOS.init();
 	</script>
-	<script src="{{ url_for('static', filename='js/vanilla-tilt.js') }}"></script>
+	<!-- <script src="{{ url_for('static', filename='js/vanilla-tilt.js') }}"></script> -->
+	<script src="vanilla-tilt.js"></script> 
 	<script type="text/javascript">
 
 		if (screen.width >= 768) {
