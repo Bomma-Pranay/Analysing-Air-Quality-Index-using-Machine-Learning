@@ -1,0 +1,21 @@
+name: Hit Website
+
+on:
+  schedule:
+    - cron: '*/14 * * * *'
+  workflow_dispatch:
+
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
+jobs:
+  hit-website:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Hit the website
+      run: |
+        curl -sS https://aircast-and-aqi-calculator.onrender.com
