@@ -3,6 +3,16 @@
 
 <head>
 	<title>AirCast</title>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-107017890-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-107017890-1');
+	</script>
+
 	<!-- <link rel="shortcut icon" type="image/*" href="favicon.png" /> -->
 	<link rel="shortcut icon" type="image/*" href="{{ url_for('static', filename='img/favicon.png') }}">
 	<meta charset="utf-8">
