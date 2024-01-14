@@ -1,5 +1,4 @@
 import requests
-# import pprint
 import csv
 from datetime import datetime, timedelta
 import logging
@@ -10,33 +9,13 @@ import logging.handlers
 import pandas as pd
 import numpy as np
 
-# Data Visualization
-# import matplotlib.pyplot as plt 
-# import seaborn as sns
-# import plotly.express as px 
-
 # Time Series
-# from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
-# from statsmodels.tsa.stattools import acf, pacf
 from datetime import datetime, timedelta
 from statsmodels.tsa.arima.model import ARIMA 
 from statsmodels.tsa.statespace.sarimax import SARIMAX
-# from pmdarima import auto_arima
-# import statsmodels.api as sm
-
-# For printing multiple outputs
-# from IPython.core.interactiveshell import InteractiveShell
-# InteractiveShell.ast_node_interactivity = "all"
-
-# Visualization parameters
-# sns.set(rc={"figure.dpi":100, 'savefig.dpi':300})
-# sns.set_context('notebook')
-# sns.set_style("ticks")
-# from IPython.display import set_matplotlib_formats
-# %config InlineBackend.figure_format = 'retina'
 
 # Metrics for model evaluation
-from sklearn.metrics import mean_absolute_error, mean_squared_error, mean_absolute_percentage_error
+from sklearn.metrics import mean_absolute_percentage_error
 
 # NISE
 NISE = "nise gwal"
@@ -79,9 +58,6 @@ def get_api_token():
          # If running locally, use an alternative method to get the API token
         return input("Enter your API token: ")
     
-# Incase if api fails, write to file with previous day
-# In 2nd cron daily job, Incase if api fails, write to file with previous day
-
 def setData(station, output_file, logger, TOKEN):
     '''
     This function is called hourly once. 
@@ -223,8 +199,7 @@ def retrain_model(order, seasonal_order, station_daily_aqi):
     This function is called daily once at 1 AM. 
     It takes into account today's AQI and re-trains the model.
     We check the model's performance by splitting data into train & test data, then train the model and calculate MAPE.
-    If MAPE is <= 30%, we consider entire data (no splitting into train & test) and re-train our model & forecast for the next 5 days.
-    Else if MAPE is > 30%, an email is sent to myself (Pranay Bomma) to manually look into the model and fix it.
+    We consider entire data (no splitting into train & test) and re-train our model & forecast for the next 5 days.
     '''
 
     # Read the data & clean it.
@@ -257,8 +232,6 @@ def retrain_model(order, seasonal_order, station_daily_aqi):
     print(f"\n\nMAPE=> {MAPE}")
     logger.info(f'Retrained the model & MAPE is {MAPE}%')
 
-    # if (MAPE <= 30):
-    # If MAPE is < 30%, forecast next 5 days.
     train_data = df.loc[:, 'AQI']
     model = SARIMAX(train_data, order=order, seasonal_order=seasonal_order)
     model_fit = model.fit()
@@ -292,14 +265,6 @@ def retrain_model(order, seasonal_order, station_daily_aqi):
         else:
             print(f'retrain_model function - The forecast data has NaNs.')
             logger.info(f'retrain_model function - The forecast data has NaNs.')
-
-        if (MAPE > 30):
-            # record MAPE and send email if it is >30%
-            pass
-        # else:
-        #     # Raise Exception & email - Model is not re-trained.
-        #     print(f"retrain_model function - Model is not retrained. Please look into the issue.")
-        #     logger.info(f"retrain_model function - Model is not retrained. Please look into the issue.")
     
     except Exception as e:
         print(f"retrain_model function - Model is not retrained. Please look into the issue - Exception {type(e).__name__} has occured.")
