@@ -38,3 +38,4 @@ Freq: D, Name: predicted_mean, dtype: float64
 2024-01-14 01:55:01,704 - __main__ - INFO - The forecast data has been written to data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv
 2024-01-14 01:55:01,704 - __main__ - INFO - The forecast data has been written to static/data/forecast_sector_51_daily_aqi.csv
 2024-01-14 02:25:23,675 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> nise gwal
+2024-01-14 03:06:48,881 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> nise gwal
