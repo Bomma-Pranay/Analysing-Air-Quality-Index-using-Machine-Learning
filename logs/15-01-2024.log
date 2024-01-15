@@ -50,3 +50,4 @@ Freq: D, Name: predicted_mean, dtype: float64
 2024-01-15 13:09:42,288 - __main__ - INFO - station=> Vikas Sadan, result => ['143', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2024-01-15 18:00:00')]
 2024-01-15 13:09:42,289 - __main__ - INFO - The hourly data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2024-01-15 18:00:00
 2024-01-15 14:04:08,426 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> nise gwal
+2024-01-15 15:05:40,406 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> nise gwal
