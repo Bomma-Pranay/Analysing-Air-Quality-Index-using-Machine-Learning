@@ -1,1 +1,23 @@
 2024-01-15 00:31:19,595 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> nise gwal
+2024-01-15 01:53:23,234 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> nise gwal
+2024-01-15 01:53:25,824 - __main__ - INFO - Calling writeData & retrain_model functions.
+2024-01-15 01:53:25,830 - __main__ - INFO - df_api columns Index(['AQI'], dtype='object')
+2024-01-15 01:53:25,830 - __main__ - INFO - today=> 2024-01-15 & yesterday=> 2024-01-14
+2024-01-15 01:53:25,832 - __main__ - INFO - temp_daily_aqi columns Index(['Unnamed: 0', 'Date', 'AQI'], dtype='object')
+2024-01-15 01:53:25,835 - __main__ - INFO - temp_daily_aqi[2024-01-14]=> Empty DataFrame
+Columns: [Unnamed: 0, AQI]
+Index: []
+2024-01-15 01:53:25,835 - __main__ - INFO - Index => 1410, yesterday => 2024-01-14 & AQI => 286.0
+2024-01-15 01:53:25,835 - __main__ - INFO - Daily AQI data has been written to data/cleaned_data/Forecasting_time_series/sector_51_daily_aqi.csv
+2024-01-15 01:53:25,836 - __main__ - INFO - Index => 1410, yesterday => 2024-01-14 & AQI => 286.0
+2024-01-15 01:53:25,836 - __main__ - INFO - Daily AQI data has been written to static/data/sector_51_daily_aqi.csv
+2024-01-15 01:53:25,841 - __main__ - INFO - Re-training the model & train_end is 2024-01-09 00:00:00
+2024-01-15 01:53:27,180 - __main__ - INFO - Retrained the model & MAPE is 25.98%
+2024-01-15 01:53:28,643 - __main__ - INFO - Forecast=> 2024-01-15    293.025653
+2024-01-16    288.646163
+2024-01-17    279.425695
+2024-01-18    278.717100
+2024-01-19    278.116768
+Freq: D, Name: predicted_mean, dtype: float64
+2024-01-15 01:53:28,644 - __main__ - INFO - The forecast data has been written to data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv
+2024-01-15 01:53:28,644 - __main__ - INFO - The forecast data has been written to static/data/forecast_sector_51_daily_aqi.csv
