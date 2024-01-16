@@ -5,7 +5,7 @@
 - Automated the process through a **GitHub Actions-enabled Cron Job** running every hour, leveraging real-time API call to assimilate new hourly AQI data and **retrain the model daily** at 1 AM.
 - Deployed on **Netlify** and triggered auto-deployment. Implemented logging and exception handling for debugging and error tracking.
 - **Future ideas:** Expanding to other 5+ major Indian cities and integrating with a relational database for scalability.
-- **Link: http://aircastaqi.netlify.app**
+- **Link: http://AirCastAQI.netlify.app**
 
 ## Architecture & more...
 ![AirCast Architecture PNG](https://github.com/Bomma-Pranay/Analysing-Air-Quality-Index-using-Machine-Learning/assets/62324691/0c4d7662-4d3b-4f51-bf7c-6bd94459bbfe)
@@ -36,7 +36,7 @@
 - Collected & compiled hourly data for 4 stations in Gurugram from **[CPCB](https://airquality.cpcb.gov.in/ccr/#/caaqm-dashboard-all/caaqm-landing)**.
 - **Resolved 30% of missing values** using appropriate imputation techniques by performing comprehensive EDA using Pandas, Matplotlib, and Seaborn.
 - Exported the best kNN model using **Pickle** & deployed **Flask app on Render** for real-time AQI prediction.
-- **Link: https://aqi-calculator.onrender.com/**
+- **Link: https://AQI-Calculator.onrender.com/**
 
 ## Architecture & more...
 ![AQI_Calculator Architecture PNG](https://github.com/Bomma-Pranay/Analysing-Air-Quality-Index-using-Machine-Learning/assets/62324691/ed32a56d-bcb5-4cac-8ccc-d740a84cf1cc)
