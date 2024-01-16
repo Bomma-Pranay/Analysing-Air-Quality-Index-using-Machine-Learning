@@ -39,6 +39,7 @@
 - **Resolved 30% of missing values** using appropriate imputation techniques by performing comprehensive EDA using Pandas, Matplotlib, and Seaborn.
 - Exported the best kNN model using **Pickle** & deployed **Flask app on Render** for real-time AQI prediction.
 - **Link: https://AQI-Calculator.onrender.com/**
+  
 ![AQI Calculator Website](https://github.com/Bomma-Pranay/Analysing-Air-Quality-Index-using-Machine-Learning/assets/62324691/f02c2056-e2e3-4310-8aff-c2ef8959e4e2)
 
 - **Documentation:**: https://docs.google.com/document/d/1-wDKgZj5Ex0wCB2Qte3kWNOCw189PQTXl2EUiyUBHxg/edit?usp=sharing
