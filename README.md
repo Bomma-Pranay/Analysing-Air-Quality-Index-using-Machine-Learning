@@ -8,6 +8,7 @@
 - **Link: http://aircastaqi.netlify.app**
 
 # Architecture & more...
+![AirCast Architecture PNG](https://github.com/Bomma-Pranay/Analysing-Air-Quality-Index-using-Machine-Learning/assets/62324691/0c4d7662-4d3b-4f51-bf7c-6bd94459bbfe)
 
 - ### The Story:
   - After completing the AQI Calculator project in May 2023, an idea sprouted in my brain - "We have the advantage of live data, can we make use of it and re-train the model every day to forecast AQI?"
