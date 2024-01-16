@@ -1233,14 +1233,16 @@
 							background-clip: text;
 							background-size: 400% 400%;
 							font-size: 25px;
-							-webkit-text-fill-color: transparent;" href="https://aircastaqi.netlify.app/" target="_blank">AirCast - https://aircastaqi.netlify.app/</a>
+							-webkit-text-fill-color: transparent;" href="https://aircastaqi.netlify.app/" target="_blank">AirCast - https://AirCastAQI.netlify.app/</a>
 
 						</h4>
-
-						<iframe id="aircast-iframe" src="https://aircastaqi.netlify.app/"
+						<a href="https://aircastaqi.netlify.app/" loading="lazy" target="_blank">
+							<img src="{{ url_for('static', filename='img/AirCast Website.png') }}" loading="lazy" alt="" style="border:0; width: -webkit-fill-available; border-radius: 25px;">
+						</a>
+						<!-- <iframe id="aircast-iframe" src="https://aircastaqi.netlify.app/"
 						height="650" style="border:0; width: -webkit-fill-available; border-radius: 25px; " allowfullscreen=""
 						loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-						</iframe>
+						</iframe> -->
 					</div>
 				</div>
 				<p style="margin: 1em;"></p>
@@ -1314,7 +1316,7 @@
 					<div class="row">
 						<div class="col" style="text-align: center;">
 							<!-- <img src="AQI_Calculator_Flow_Chart_Dark_Background_Sketch.svg" alt="" style="height: 100%; width: 100%;"> -->
-							<img src="{{ url_for('static', filename='img/AQI_Calculator_Flow_Chart_Dark_Background_Sketch.svg') }}" alt="">
+							<img src="{{ url_for('static', filename='img/AQI_Calculator_Flow_Chart_Dark_Background_Sketch.svg') }}" loading="lazy" alt="">
 						</div>
 						<div class="col" style="font-size: 18px; text-align: left;">
 							<h3 style="text-align: center; font-size: 30px; font-weight: bold;">AQI Calculator</h3>
