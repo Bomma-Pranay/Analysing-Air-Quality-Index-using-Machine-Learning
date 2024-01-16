@@ -7,6 +7,8 @@
 - **Future ideas:** Expanding to other 5+ major Indian cities and integrating with a relational database for scalability.
 - **Link: http://AirCastAQI.netlify.app**
 
+![AirCast Website](https://github.com/Bomma-Pranay/Analysing-Air-Quality-Index-using-Machine-Learning/assets/62324691/837cce45-3ac7-4a5a-90c8-b8210dec9edd)
+
 ## Architecture & more...
 ![AirCast Architecture PNG](https://github.com/Bomma-Pranay/Analysing-Air-Quality-Index-using-Machine-Learning/assets/62324691/0c4d7662-4d3b-4f51-bf7c-6bd94459bbfe)
 
@@ -37,6 +39,8 @@
 - **Resolved 30% of missing values** using appropriate imputation techniques by performing comprehensive EDA using Pandas, Matplotlib, and Seaborn.
 - Exported the best kNN model using **Pickle** & deployed **Flask app on Render** for real-time AQI prediction.
 - **Link: https://AQI-Calculator.onrender.com/**
+
+![AQI Calculator Website](https://github.com/Bomma-Pranay/Analysing-Air-Quality-Index-using-Machine-Learning/assets/62324691/f02c2056-e2e3-4310-8aff-c2ef8959e4e2)
 
 ## Architecture & more...
 ![AQI_Calculator Architecture PNG](https://github.com/Bomma-Pranay/Analysing-Air-Quality-Index-using-Machine-Learning/assets/62324691/ed32a56d-bcb5-4cac-8ccc-d740a84cf1cc)
