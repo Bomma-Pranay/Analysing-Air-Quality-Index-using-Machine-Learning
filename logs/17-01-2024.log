@@ -35,3 +35,5 @@ Index: []
 Freq: D, Name: predicted_mean, dtype: float64
 2024-01-17 01:49:33,271 - __main__ - INFO - The forecast data has been written to data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv
 2024-01-17 01:49:33,318 - __main__ - INFO - The forecast data has been written to static/data/forecast_sector_51_daily_aqi.csv
+2024-01-17 02:22:57,508 - __main__ - INFO - station=> nise gwal, result => ['200', 'NISE Gwal Pahari, Gurugram, India', Timestamp('2024-01-17 04:00:00')]
+2024-01-17 02:22:57,508 - __main__ - INFO - The hourly data has been written to data/cron_job_data/nise_cron_output.csv with Timestamp: 2024-01-17 04:00:00
