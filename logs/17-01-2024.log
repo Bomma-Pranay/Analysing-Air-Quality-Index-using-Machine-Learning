@@ -6,3 +6,32 @@
 2024-01-17 00:30:29,536 - __main__ - INFO - The hourly data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2024-01-17 05:00:00
 2024-01-17 00:30:30,009 - __main__ - INFO - station=> Vikas Sadan, result => ['173', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2024-01-17 05:00:00')]
 2024-01-17 00:30:30,009 - __main__ - INFO - The hourly data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2024-01-17 05:00:00
+2024-01-17 01:49:28,345 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['166', 'Sector-51, Gurugram, India', Timestamp('2024-01-17 07:00:00')]
+2024-01-17 01:49:28,346 - __main__ - INFO - The hourly data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2024-01-17 07:00:00
+2024-01-17 01:49:28,988 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['166', 'Sector-51, Gurugram, India', Timestamp('2024-01-17 07:00:00')]
+2024-01-17 01:49:28,988 - __main__ - INFO - The hourly data has been written to static/data/sector_51_cron_output.csv with Timestamp: 2024-01-17 07:00:00
+2024-01-17 01:49:29,628 - __main__ - INFO - station=> Teri Gram, result => ['165', 'Teri Gram, Gurugram, India', Timestamp('2024-01-17 07:00:00')]
+2024-01-17 01:49:29,628 - __main__ - INFO - The hourly data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2024-01-17 07:00:00
+2024-01-17 01:49:30,273 - __main__ - INFO - station=> Vikas Sadan, result => ['175', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2024-01-17 07:00:00')]
+2024-01-17 01:49:30,273 - __main__ - INFO - The hourly data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2024-01-17 07:00:00
+2024-01-17 01:49:30,274 - __main__ - INFO - Calling writeData & retrain_model functions.
+2024-01-17 01:49:30,280 - __main__ - INFO - df_api columns Index(['AQI'], dtype='object')
+2024-01-17 01:49:30,280 - __main__ - INFO - today=> 2024-01-17 & yesterday=> 2024-01-16
+2024-01-17 01:49:30,282 - __main__ - INFO - temp_daily_aqi columns Index(['Unnamed: 0', 'Date', 'AQI'], dtype='object')
+2024-01-17 01:49:30,284 - __main__ - INFO - temp_daily_aqi[2024-01-16]=> Empty DataFrame
+Columns: [Unnamed: 0, AQI]
+Index: []
+2024-01-17 01:49:30,285 - __main__ - INFO - Index => 1412, yesterday => 2024-01-16 & AQI => 206.0
+2024-01-17 01:49:30,285 - __main__ - INFO - Daily AQI data has been written to data/cleaned_data/Forecasting_time_series/sector_51_daily_aqi.csv
+2024-01-17 01:49:30,286 - __main__ - INFO - Index => 1412, yesterday => 2024-01-16 & AQI => 206.0
+2024-01-17 01:49:30,286 - __main__ - INFO - Daily AQI data has been written to static/data/sector_51_daily_aqi.csv
+2024-01-17 01:49:30,291 - __main__ - INFO - Re-training the model & train_end is 2024-01-11 00:00:00
+2024-01-17 01:49:31,769 - __main__ - INFO - Retrained the model & MAPE is 33.32%
+2024-01-17 01:49:33,270 - __main__ - INFO - Forecast=> 2024-01-17    218.715361
+2024-01-18    224.333329
+2024-01-19    229.410277
+2024-01-20    227.122097
+2024-01-21    213.509850
+Freq: D, Name: predicted_mean, dtype: float64
+2024-01-17 01:49:33,271 - __main__ - INFO - The forecast data has been written to data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv
+2024-01-17 01:49:33,318 - __main__ - INFO - The forecast data has been written to static/data/forecast_sector_51_daily_aqi.csv
