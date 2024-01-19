@@ -15,7 +15,7 @@ from statsmodels.tsa.arima.model import ARIMA
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 
 # Metrics for model evaluation
-from sklearn.metrics import mean_absolute_percentage_error
+from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error
 
 # NISE
 NISE = "nise gwal"
@@ -231,6 +231,11 @@ def retrain_model(order, seasonal_order, station_daily_aqi):
     MAPE = round(mean_absolute_percentage_error(test_data, predictions) * 100, 2)  # Round it off to two decimal points
     print(f"\n\nMAPE=> {MAPE}")
     logger.info(f'Retrained the model & MAPE is {MAPE}%')
+
+    # Calculate MAE
+    MAE = mean_absolute_error(test_data, predictions)
+    print(f"\n\nMAE=> {MAE}")
+    logger.info(f'Retrained the model & MAE is {MAE}%')
 
     train_data = df.loc[:, 'AQI']
     model = SARIMAX(train_data, order=order, seasonal_order=seasonal_order)
