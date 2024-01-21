@@ -58,3 +58,11 @@ Freq: D, Name: predicted_mean, dtype: float64
 2024-01-21 04:07:45,535 - __main__ - INFO - The hourly data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2024-01-21 09:00:00
 2024-01-21 04:07:46,019 - __main__ - INFO - station=> Vikas Sadan, result => ['99', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2024-01-21 09:00:00')]
 2024-01-21 04:07:46,020 - __main__ - INFO - The hourly data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2024-01-21 09:00:00
+2024-01-21 05:41:28,616 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['212', 'Sector-51, Gurugram, India', Timestamp('2024-01-21 11:00:00')]
+2024-01-21 05:41:28,616 - __main__ - INFO - The hourly data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2024-01-21 11:00:00
+2024-01-21 05:41:29,273 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['212', 'Sector-51, Gurugram, India', Timestamp('2024-01-21 11:00:00')]
+2024-01-21 05:41:29,273 - __main__ - INFO - The hourly data has been written to static/data/sector_51_cron_output.csv with Timestamp: 2024-01-21 11:00:00
+2024-01-21 05:41:29,904 - __main__ - INFO - station=> Teri Gram, result => ['158', 'Teri Gram, Gurugram, India', Timestamp('2024-01-21 10:00:00')]
+2024-01-21 05:41:29,904 - __main__ - INFO - The hourly data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2024-01-21 10:00:00
+2024-01-21 05:41:30,562 - __main__ - INFO - station=> Vikas Sadan, result => ['98', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2024-01-21 10:00:00')]
+2024-01-21 05:41:30,562 - __main__ - INFO - The hourly data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2024-01-21 10:00:00
