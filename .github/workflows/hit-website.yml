@@ -18,4 +18,4 @@ jobs:
 
     - name: Hit the website
       run: |
-        curl -sS https://aircast-and-aqi-calculator.onrender.com
+        curl -sS https://AQI-Calculator.onrender.com
