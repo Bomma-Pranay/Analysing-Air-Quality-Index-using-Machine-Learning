@@ -30,3 +30,13 @@ Index: []
 Freq: D, Name: predicted_mean, dtype: float64
 2024-01-25 01:52:55,370 - __main__ - INFO - The forecast data has been written to data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv
 2024-01-25 01:52:55,371 - __main__ - INFO - The forecast data has been written to static/data/forecast_sector_51_daily_aqi.csv
+2024-01-25 03:07:15,909 - __main__ - INFO - station=> nise gwal, result => ['159', 'NISE Gwal Pahari, Gurugram, India', Timestamp('2024-01-25 08:00:00')]
+2024-01-25 03:07:15,909 - __main__ - INFO - The hourly data has been written to data/cron_job_data/nise_cron_output.csv with Timestamp: 2024-01-25 08:00:00
+2024-01-25 03:07:16,612 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['164', 'Sector-51, Gurugram, India', Timestamp('2024-01-25 08:00:00')]
+2024-01-25 03:07:16,613 - __main__ - INFO - The hourly data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2024-01-25 08:00:00
+2024-01-25 03:07:17,299 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['164', 'Sector-51, Gurugram, India', Timestamp('2024-01-25 08:00:00')]
+2024-01-25 03:07:17,299 - __main__ - INFO - The hourly data has been written to static/data/sector_51_cron_output.csv with Timestamp: 2024-01-25 08:00:00
+2024-01-25 03:07:18,026 - __main__ - INFO - station=> Teri Gram, result => ['163', 'Teri Gram, Gurugram, India', Timestamp('2024-01-25 08:00:00')]
+2024-01-25 03:07:18,027 - __main__ - INFO - The hourly data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2024-01-25 08:00:00
+2024-01-25 03:07:18,711 - __main__ - INFO - station=> Vikas Sadan, result => ['92', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2024-01-25 08:00:00')]
+2024-01-25 03:07:18,711 - __main__ - INFO - The hourly data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2024-01-25 08:00:00
