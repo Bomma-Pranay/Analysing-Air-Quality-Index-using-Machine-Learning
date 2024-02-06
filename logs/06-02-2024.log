@@ -98,3 +98,13 @@ Freq: D, Name: predicted_mean, dtype: float64
 2024-02-06 12:10:48,755 - __main__ - INFO - The hourly data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2024-02-06 17:00:00
 2024-02-06 12:10:49,218 - __main__ - INFO - station=> Vikas Sadan, result => ['147', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2024-02-06 17:00:00')]
 2024-02-06 12:10:49,218 - __main__ - INFO - The hourly data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2024-02-06 17:00:00
+2024-02-06 15:05:06,086 - __main__ - INFO - station=> nise gwal, result => ['80', 'NISE Gwal Pahari, Gurugram, India', Timestamp('2024-02-06 18:00:00')]
+2024-02-06 15:05:06,086 - __main__ - INFO - The hourly data has been written to data/cron_job_data/nise_cron_output.csv with Timestamp: 2024-02-06 18:00:00
+2024-02-06 15:05:06,746 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['157', 'Sector-51, Gurugram, India', Timestamp('2024-02-06 20:00:00')]
+2024-02-06 15:05:06,746 - __main__ - INFO - The hourly data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2024-02-06 20:00:00
+2024-02-06 15:05:07,422 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['157', 'Sector-51, Gurugram, India', Timestamp('2024-02-06 20:00:00')]
+2024-02-06 15:05:07,423 - __main__ - INFO - The hourly data has been written to static/data/sector_51_cron_output.csv with Timestamp: 2024-02-06 20:00:00
+2024-02-06 15:05:08,138 - __main__ - INFO - station=> Teri Gram, result => ['101', 'Teri Gram, Gurugram, India', Timestamp('2024-02-06 20:00:00')]
+2024-02-06 15:05:08,138 - __main__ - INFO - The hourly data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2024-02-06 20:00:00
+2024-02-06 15:05:08,811 - __main__ - INFO - station=> Vikas Sadan, result => ['149', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2024-02-06 20:00:00')]
+2024-02-06 15:05:08,811 - __main__ - INFO - The hourly data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2024-02-06 20:00:00
