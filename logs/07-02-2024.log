@@ -101,3 +101,4 @@ Freq: D, Name: predicted_mean, dtype: float64
 2024-02-07 21:03:08,701 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> Teri Gram
 2024-02-07 21:03:09,375 - __main__ - INFO - station=> Vikas Sadan, result => ['159', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2024-02-08 02:00:00')]
 2024-02-07 21:03:09,375 - __main__ - INFO - The hourly data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2024-02-08 02:00:00
+2024-02-07 22:03:10,222 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> Teri Gram
