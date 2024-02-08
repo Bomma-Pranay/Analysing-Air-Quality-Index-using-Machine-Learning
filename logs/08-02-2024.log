@@ -34,3 +34,6 @@ Index: []
 Freq: D, Name: predicted_mean, dtype: float64
 2024-02-08 01:38:08,089 - __main__ - INFO - The forecast data has been written to data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv
 2024-02-08 01:38:08,089 - __main__ - INFO - The forecast data has been written to static/data/forecast_sector_51_daily_aqi.csv
+2024-02-08 02:12:48,679 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> Teri Gram
+2024-02-08 02:12:49,360 - __main__ - INFO - station=> Vikas Sadan, result => ['149', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2024-02-08 07:00:00')]
+2024-02-08 02:12:49,360 - __main__ - INFO - The hourly data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2024-02-08 07:00:00
