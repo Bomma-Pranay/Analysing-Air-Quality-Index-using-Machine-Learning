@@ -2,7 +2,7 @@ name: Hit Website
 
 on:
   schedule:
-    - cron: '*/14 * * * *'
+    - cron: '*/59 * * * *'
   workflow_dispatch:
 
 env:
