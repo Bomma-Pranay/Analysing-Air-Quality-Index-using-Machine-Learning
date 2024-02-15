@@ -149,3 +149,4 @@ Freq: D, Name: predicted_mean, dtype: float64
 2024-02-15 20:02:36,576 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> nise gwal
 2024-02-15 21:02:42,777 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> nise gwal
 2024-02-15 22:02:44,269 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> nise gwal
+2024-02-15 23:04:21,312 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> nise gwal
