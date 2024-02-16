@@ -65,3 +65,12 @@ Freq: D, Name: predicted_mean, dtype: float64
 2024-02-16 04:07:24,568 - __main__ - INFO - The hourly data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2024-02-16 09:00:00
 2024-02-16 04:07:25,036 - __main__ - INFO - station=> Vikas Sadan, result => ['168', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2024-02-16 09:00:00')]
 2024-02-16 04:07:25,037 - __main__ - INFO - The hourly data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2024-02-16 09:00:00
+2024-02-16 05:03:35,637 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> nise gwal
+2024-02-16 05:03:36,299 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['273', 'Sector-51, Gurugram, India', Timestamp('2024-02-16 10:00:00')]
+2024-02-16 05:03:36,299 - __main__ - INFO - The hourly data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2024-02-16 10:00:00
+2024-02-16 05:03:36,975 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['273', 'Sector-51, Gurugram, India', Timestamp('2024-02-16 10:00:00')]
+2024-02-16 05:03:36,975 - __main__ - INFO - The hourly data has been written to static/data/sector_51_cron_output.csv with Timestamp: 2024-02-16 10:00:00
+2024-02-16 05:03:37,637 - __main__ - INFO - station=> Teri Gram, result => ['255', 'Teri Gram, Gurugram, India', Timestamp('2024-02-16 10:00:00')]
+2024-02-16 05:03:37,637 - __main__ - INFO - The hourly data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2024-02-16 10:00:00
+2024-02-16 05:03:38,313 - __main__ - INFO - station=> Vikas Sadan, result => ['174', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2024-02-16 10:00:00')]
+2024-02-16 05:03:38,313 - __main__ - INFO - The hourly data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2024-02-16 10:00:00
