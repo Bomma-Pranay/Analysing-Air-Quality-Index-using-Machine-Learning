@@ -1,1 +1,30 @@
 2024-02-17 00:27:24,608 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> nise gwal
+2024-02-17 01:37:25,211 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> nise gwal
+2024-02-17 01:37:25,678 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['444', 'Sector-51, Gurugram, India', Timestamp('2024-02-17 00:00:00')]
+2024-02-17 01:37:25,678 - __main__ - INFO - The hourly data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2024-02-17 00:00:00
+2024-02-17 01:37:26,142 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['444', 'Sector-51, Gurugram, India', Timestamp('2024-02-17 00:00:00')]
+2024-02-17 01:37:26,142 - __main__ - INFO - The hourly data has been written to static/data/sector_51_cron_output.csv with Timestamp: 2024-02-17 00:00:00
+2024-02-17 01:37:26,610 - __main__ - INFO - station=> Teri Gram, result => ['277', 'Teri Gram, Gurugram, India', Timestamp('2024-02-17 00:00:00')]
+2024-02-17 01:37:26,610 - __main__ - INFO - The hourly data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2024-02-17 00:00:00
+2024-02-17 01:37:27,073 - __main__ - INFO - Calling writeData & retrain_model functions.
+2024-02-17 01:37:27,079 - __main__ - INFO - df_api columns Index(['AQI'], dtype='object')
+2024-02-17 01:37:27,079 - __main__ - INFO - today=> 2024-02-17 & yesterday=> 2024-02-16
+2024-02-17 01:37:27,081 - __main__ - INFO - temp_daily_aqi columns Index(['Unnamed: 0', 'Date', 'AQI'], dtype='object')
+2024-02-17 01:37:27,083 - __main__ - INFO - temp_daily_aqi[2024-02-16]=> Empty DataFrame
+Columns: [Unnamed: 0, AQI]
+Index: []
+2024-02-17 01:37:27,084 - __main__ - INFO - Index => 1443, yesterday => 2024-02-16 & AQI => 230.0
+2024-02-17 01:37:27,084 - __main__ - INFO - Daily AQI data has been written to data/cleaned_data/Forecasting_time_series/sector_51_daily_aqi.csv
+2024-02-17 01:37:27,084 - __main__ - INFO - Index => 1443, yesterday => 2024-02-16 & AQI => 230.0
+2024-02-17 01:37:27,085 - __main__ - INFO - Daily AQI data has been written to static/data/sector_51_daily_aqi.csv
+2024-02-17 01:37:27,089 - __main__ - INFO - Re-training the model & train_end is 2024-02-11 00:00:00
+2024-02-17 01:37:28,519 - __main__ - INFO - Retrained the model & MAPE is 32.83%
+2024-02-17 01:37:28,520 - __main__ - INFO - Retrained the model & MAE is 75.21317565539786%
+2024-02-17 01:37:29,698 - __main__ - INFO - Forecast=> 2024-02-17    237.505343
+2024-02-18    214.151485
+2024-02-19    213.523015
+2024-02-20    216.355932
+2024-02-21    213.906068
+Freq: D, Name: predicted_mean, dtype: float64
+2024-02-17 01:37:29,699 - __main__ - INFO - The forecast data has been written to data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv
+2024-02-17 01:37:29,699 - __main__ - INFO - The forecast data has been written to static/data/forecast_sector_51_daily_aqi.csv
