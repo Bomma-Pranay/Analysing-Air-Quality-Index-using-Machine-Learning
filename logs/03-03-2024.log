@@ -33,3 +33,6 @@ Freq: D, Name: predicted_mean, dtype: float64
 2024-03-03 02:14:20,399 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> nise gwal
 2024-03-03 02:17:00,419 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> nise gwal
 2024-03-03 02:33:17,957 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> nise gwal
+2024-03-03 02:46:39,333 - __main__ - INFO - setData function - AQI is not an integer. Exception ValueError has occured for station=> nise gwal
+2024-03-03 02:46:41,223 - __main__ - INFO - station=> Teri Gram, result => ['131', 'Teri Gram, Gurugram, India', Timestamp('2024-03-03 08:00:00')]
+2024-03-03 02:46:41,223 - __main__ - INFO - The hourly data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2024-03-03 08:00:00
