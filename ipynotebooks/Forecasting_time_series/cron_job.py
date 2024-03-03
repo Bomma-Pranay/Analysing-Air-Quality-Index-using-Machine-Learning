@@ -81,7 +81,8 @@ def setData(station, output_file, logger, TOKEN):
             try:
                 int(result[0])
             except Exception as exception:
-                logger.info(f"setData function - AQI is not an integer. Exception {type(exception).__name__} has occured for station=> {station}")
+                # logger.info(f"setData function - AQI is not an integer. Exception {type(exception).__name__} has occured for station=> {station}")
+                print(f"setData function - AQI is not an integer. Exception {type(exception).__name__} has occured for station=> {station}")
                 return
             
             # Write to the file only when (station, time) is not already existing in the file.
