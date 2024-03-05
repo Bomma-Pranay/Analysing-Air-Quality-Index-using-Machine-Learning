@@ -28,3 +28,29 @@ Index: []
 Freq: D, Name: predicted_mean, dtype: float64
 2024-03-05 01:16:55,135 - __main__ - INFO - The forecast data has been written to data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv
 2024-03-05 01:16:55,135 - __main__ - INFO - The forecast data has been written to static/data/forecast_sector_51_daily_aqi.csv
+2024-03-05 01:59:22,337 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['166', 'Sector-51, Gurugram, India', Timestamp('2024-03-05 07:00:00')]
+2024-03-05 01:59:22,337 - __main__ - INFO - The hourly data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2024-03-05 07:00:00
+2024-03-05 01:59:23,037 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['166', 'Sector-51, Gurugram, India', Timestamp('2024-03-05 07:00:00')]
+2024-03-05 01:59:23,037 - __main__ - INFO - The hourly data has been written to static/data/sector_51_cron_output.csv with Timestamp: 2024-03-05 07:00:00
+2024-03-05 01:59:23,749 - __main__ - INFO - station=> Teri Gram, result => ['161', 'Teri Gram, Gurugram, India', Timestamp('2024-03-05 07:00:00')]
+2024-03-05 01:59:23,749 - __main__ - INFO - The hourly data has been written to data/cron_job_data/teri_gram_cron_output.csv with Timestamp: 2024-03-05 07:00:00
+2024-03-05 01:59:24,441 - __main__ - INFO - station=> Vikas Sadan, result => ['49', 'Vikas Sadan Gurgaon, Gurgaon, India', Timestamp('2024-03-05 07:00:00')]
+2024-03-05 01:59:24,441 - __main__ - INFO - The hourly data has been written to data/cron_job_data/vikas_sadan_cron_output.csv with Timestamp: 2024-03-05 07:00:00
+2024-03-05 01:59:24,442 - __main__ - INFO - Calling writeData & retrain_model functions.
+2024-03-05 01:59:24,448 - __main__ - INFO - df_api columns Index(['AQI'], dtype='object')
+2024-03-05 01:59:24,449 - __main__ - INFO - today=> 2024-03-05 & yesterday=> 2024-03-04
+2024-03-05 01:59:24,451 - __main__ - INFO - temp_daily_aqi columns Index(['Unnamed: 0', 'Date', 'AQI'], dtype='object')
+2024-03-05 01:59:24,458 - __main__ - INFO - temp_daily_aqi[2024-03-04]=>             Unnamed: 0    AQI
+Date                         
+2024-03-04        1460  154.0
+2024-03-05 01:59:24,462 - __main__ - INFO - Re-training the model & train_end is 2024-02-28 00:00:00
+2024-03-05 01:59:25,826 - __main__ - INFO - Retrained the model & MAPE is 34.04%
+2024-03-05 01:59:25,826 - __main__ - INFO - Retrained the model & MAE is 38.43797578277792%
+2024-03-05 01:59:27,140 - __main__ - INFO - Forecast=> 2024-03-05    157.149091
+2024-03-06    161.149283
+2024-03-07    170.040300
+2024-03-08    182.724521
+2024-03-09    198.232879
+Freq: D, Name: predicted_mean, dtype: float64
+2024-03-05 01:59:27,140 - __main__ - INFO - The forecast data has been written to data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv
+2024-03-05 01:59:27,141 - __main__ - INFO - The forecast data has been written to static/data/forecast_sector_51_daily_aqi.csv
