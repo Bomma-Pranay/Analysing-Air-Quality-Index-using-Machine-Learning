@@ -40,7 +40,8 @@ VIKAS_SADAN = "Vikas Sadan"
 VIKAS_SADAN_STATION = "Vikas Sadan Gurgaon"
 VIKAS_SADAN_OUTPUT = "data/cron_job_data/vikas_sadan_cron_output"
 
-stations = [(NISE,  NISE_OUTPUT), (SECTOR_51, SECTOR_51_OUTPUT), (SECTOR_51, SECTOR_51_OUTPUT_FLASK), (TERI_GRAM, TERI_GRAM_OUTPUT), (VIKAS_SADAN, VIKAS_SADAN_OUTPUT)]
+# stations = [(NISE,  NISE_OUTPUT), (SECTOR_51, SECTOR_51_OUTPUT), (SECTOR_51, SECTOR_51_OUTPUT_FLASK), (TERI_GRAM, TERI_GRAM_OUTPUT), (VIKAS_SADAN, VIKAS_SADAN_OUTPUT)]
+stations = [(SECTOR_51, SECTOR_51_OUTPUT), (SECTOR_51, SECTOR_51_OUTPUT_FLASK)]
 
 # We have selected best model based on different combinations - See Modelling block in ipython notebook.
 ORDER, SEASONAL_ORDER = (1, 0, 1), (1, 0, 1, 7)
