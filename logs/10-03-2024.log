@@ -24,3 +24,7 @@ Freq: D, Name: predicted_mean, dtype: float64
 2024-03-10 11:00:14,517 - __main__ - INFO - The hourly data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2024-03-10 16:00:00
 2024-03-10 11:00:15,506 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['162', 'Sector-51, Gurugram, India', Timestamp('2024-03-10 16:00:00')]
 2024-03-10 11:00:15,506 - __main__ - INFO - The hourly data has been written to static/data/sector_51_cron_output.csv with Timestamp: 2024-03-10 16:00:00
+2024-03-10 15:46:31,807 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['171', 'Sector-51, Gurugram, India', Timestamp('2024-03-10 21:00:00')]
+2024-03-10 15:46:31,807 - __main__ - INFO - The hourly data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2024-03-10 21:00:00
+2024-03-10 15:46:32,271 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['171', 'Sector-51, Gurugram, India', Timestamp('2024-03-10 21:00:00')]
+2024-03-10 15:46:32,271 - __main__ - INFO - The hourly data has been written to static/data/sector_51_cron_output.csv with Timestamp: 2024-03-10 21:00:00
