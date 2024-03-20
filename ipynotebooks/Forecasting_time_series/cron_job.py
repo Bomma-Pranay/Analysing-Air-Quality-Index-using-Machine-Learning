@@ -299,5 +299,5 @@ if __name__ == "__main__":
         retrain_model(ORDER, SEASONAL_ORDER, SECTOR_51_DAILY_AQI)
 #         for station, station_location in stations:
 #             writeData(station_location)
-    response = requests.get("https://AQI-Calculator.onrender.com")
-    print(f"response.status_code {response.status_code}")
+    # response = requests.get("https://AQI-Calculator.onrender.com")
+    # print(f"response.status_code {response.status_code}")
