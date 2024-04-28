@@ -174,7 +174,7 @@ def writeData(station_hourly_aqi, station_daily_aqi):
                 print(f'Index => {index}, yesterday => {yesterday} & AQI => {aqi}')
                 logger.info(f'Index => {index}, yesterday => {yesterday} & AQI => {aqi}')
                 if np.isnan(df_api[yesterday:yesterday].AQI.values[0]): # If NaN, take yesterday's value.
-                    aqi = temp_daily_aqi.iloc[-2,2]
+                    aqi = temp_daily_aqi.iloc[-1,1]
                 csv_writer.writerow([index, yesterday, aqi])
                 print(f'Daily AQI data has been written to {station_daily_aqi}')
                 logger.info(f'Daily AQI data has been written to {station_daily_aqi}')
@@ -188,7 +188,7 @@ def writeData(station_hourly_aqi, station_daily_aqi):
                 print(f'Index => {index}, yesterday => {yesterday} & AQI => {aqi}')
                 logger.info(f'Index => {index}, yesterday => {yesterday} & AQI => {aqi}')
                 if np.isnan(df_api[yesterday:yesterday].AQI.values[0]): # If NaN, take yesterday's value.
-                    aqi = temp_daily_aqi.iloc[-2,2]
+                    aqi = temp_daily_aqi.iloc[-1,1]
                 csv_writer.writerow([index, yesterday, aqi])
                 print(f'Daily AQI data has been written to {SECTOR_51_DAILY_AQI_FLASK}')
                 logger.info(f'Daily AQI data has been written to {SECTOR_51_DAILY_AQI_FLASK}')
@@ -237,7 +237,7 @@ def retrain_model(order, seasonal_order, station_daily_aqi):
     # Calculate MAE
     MAE = mean_absolute_error(test_data, predictions)
     print(f"\n\nMAE=> {MAE}")
-    logger.info(f'Retrained the model & MAE is {MAE}%')
+    logger.info(f'Retrained the model & MAE is {MAE}')
 
     train_data = df.loc[:, 'AQI']
     model = SARIMAX(train_data, order=order, seasonal_order=seasonal_order)
