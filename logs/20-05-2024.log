@@ -2,3 +2,29 @@
 2024-05-20 00:33:20,737 - __main__ - INFO - The hourly data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2024-05-20 05:00:00
 2024-05-20 00:33:21,368 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['176', 'Sector-51, Gurugram, India', Timestamp('2024-05-20 05:00:00')]
 2024-05-20 00:33:21,368 - __main__ - INFO - The hourly data has been written to static/data/sector_51_cron_output.csv with Timestamp: 2024-05-20 05:00:00
+2024-05-20 01:49:11,285 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['174', 'Sector-51, Gurugram, India', Timestamp('2024-05-20 07:00:00')]
+2024-05-20 01:49:11,285 - __main__ - INFO - The hourly data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2024-05-20 07:00:00
+2024-05-20 01:49:12,220 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['174', 'Sector-51, Gurugram, India', Timestamp('2024-05-20 07:00:00')]
+2024-05-20 01:49:12,220 - __main__ - INFO - The hourly data has been written to static/data/sector_51_cron_output.csv with Timestamp: 2024-05-20 07:00:00
+2024-05-20 01:49:12,221 - __main__ - INFO - Calling writeData & retrain_model functions.
+2024-05-20 01:49:12,229 - __main__ - INFO - df_api columns Index(['AQI'], dtype='object')
+2024-05-20 01:49:12,230 - __main__ - INFO - today=> 2024-05-20 & yesterday=> 2024-05-19
+2024-05-20 01:49:12,231 - __main__ - INFO - temp_daily_aqi columns Index(['Unnamed: 0', 'Date', 'AQI'], dtype='object')
+2024-05-20 01:49:12,234 - __main__ - INFO - temp_daily_aqi[2024-05-19]=> Empty DataFrame
+Columns: [Unnamed: 0, AQI]
+Index: []
+2024-05-20 01:49:12,234 - __main__ - INFO - Index => 1536, yesterday => 2024-05-19 & AQI => 218.0
+2024-05-20 01:49:12,235 - __main__ - INFO - Daily AQI data has been written to data/cleaned_data/Forecasting_time_series/sector_51_daily_aqi.csv
+2024-05-20 01:49:12,235 - __main__ - INFO - Index => 1536, yesterday => 2024-05-19 & AQI => 218.0
+2024-05-20 01:49:12,235 - __main__ - INFO - Daily AQI data has been written to static/data/sector_51_daily_aqi.csv
+2024-05-20 01:49:12,240 - __main__ - INFO - Re-training the model & train_end is 2024-05-14 00:00:00
+2024-05-20 01:49:13,392 - __main__ - INFO - Retrained the model & MAPE is 29.8%
+2024-05-20 01:49:13,392 - __main__ - INFO - Retrained the model & MAE is 88.58788949304092
+2024-05-20 01:49:14,620 - __main__ - INFO - Forecast=> 2024-05-20    219.611470
+2024-05-21    215.466515
+2024-05-22    219.427937
+2024-05-23    214.755001
+2024-05-24    220.063174
+Freq: D, Name: predicted_mean, dtype: float64
+2024-05-20 01:49:14,621 - __main__ - INFO - The forecast data has been written to data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv
+2024-05-20 01:49:14,621 - __main__ - INFO - The forecast data has been written to static/data/forecast_sector_51_daily_aqi.csv
