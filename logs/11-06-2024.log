@@ -1,0 +1,4 @@
+2024-06-11 00:33:30,929 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['367', 'Sector-51, Gurugram, India', Timestamp('2024-06-11 05:00:00')]
+2024-06-11 00:33:30,930 - __main__ - INFO - The hourly data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2024-06-11 05:00:00
+2024-06-11 00:33:31,393 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['367', 'Sector-51, Gurugram, India', Timestamp('2024-06-11 05:00:00')]
+2024-06-11 00:33:31,393 - __main__ - INFO - The hourly data has been written to static/data/sector_51_cron_output.csv with Timestamp: 2024-06-11 05:00:00
