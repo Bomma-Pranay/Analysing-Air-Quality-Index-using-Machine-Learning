@@ -28,3 +28,7 @@ Index: []
 Freq: D, Name: predicted_mean, dtype: float64
 2024-07-05 01:54:53,292 - __main__ - INFO - The forecast data has been written to data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv
 2024-07-05 01:54:53,293 - __main__ - INFO - The forecast data has been written to static/data/forecast_sector_51_daily_aqi.csv
+2024-07-05 03:08:57,626 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['148', 'Sector-51, Gurugram, India', Timestamp('2024-07-05 08:00:00')]
+2024-07-05 03:08:57,627 - __main__ - INFO - The hourly data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2024-07-05 08:00:00
+2024-07-05 03:08:58,292 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['148', 'Sector-51, Gurugram, India', Timestamp('2024-07-05 08:00:00')]
+2024-07-05 03:08:58,292 - __main__ - INFO - The hourly data has been written to static/data/sector_51_cron_output.csv with Timestamp: 2024-07-05 08:00:00
