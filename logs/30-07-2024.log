@@ -1,0 +1,17 @@
+2024-07-30 07:40:08,296 - __main__ - INFO - df_api columns Index(['AQI'], dtype='object')
+2024-07-30 07:40:08,296 - __main__ - INFO - today=> 2024-07-30 & yesterday=> 2024-07-29
+2024-07-30 07:40:08,298 - __main__ - INFO - temp_daily_aqi columns Index(['Unnamed: 0', 'Date', 'AQI'], dtype='object')
+2024-07-30 07:40:08,304 - __main__ - INFO - temp_daily_aqi[2024-07-29]=>             Unnamed: 0    AQI
+Date                         
+2024-07-29        1607  113.0
+2024-07-30 07:40:08,309 - __main__ - INFO - Re-training the model & train_end is 2024-07-24 00:00:00
+2024-07-30 07:40:10,109 - __main__ - INFO - Retrained the model & MAPE is 38.06%
+2024-07-30 07:40:10,109 - __main__ - INFO - Retrained the model & MAE is 49.19829839720851
+2024-07-30 07:40:11,777 - __main__ - INFO - Forecast=> 2024-07-30    127.725543
+2024-07-31    137.849509
+2024-08-01    146.416286
+2024-08-02    152.205955
+2024-08-03    169.199841
+Freq: D, Name: predicted_mean, dtype: float64
+2024-07-30 07:40:11,778 - __main__ - INFO - The forecast data has been written to data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv
+2024-07-30 07:40:11,779 - __main__ - INFO - The forecast data has been written to static/data/forecast_sector_51_daily_aqi.csv
