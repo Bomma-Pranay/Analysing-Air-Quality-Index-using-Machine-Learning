@@ -22,3 +22,20 @@
 2024-08-04 06:10:19,590 - __main__ - INFO - The hourly data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2024-08-04 11:00:00
 2024-08-04 06:10:20,231 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['78', 'Sector-51, Gurugram, India', Timestamp('2024-08-04 11:00:00')]
 2024-08-04 06:10:20,231 - __main__ - INFO - The hourly data has been written to static/data/sector_51_cron_output.csv with Timestamp: 2024-08-04 11:00:00
+2024-08-04 11:54:47,526 - __main__ - INFO - df_api columns Index(['AQI'], dtype='object')
+2024-08-04 11:54:47,527 - __main__ - INFO - today=> 2024-08-04 & yesterday=> 2024-08-03
+2024-08-04 11:54:47,529 - __main__ - INFO - temp_daily_aqi columns Index(['Unnamed: 0', 'Date', 'AQI'], dtype='object')
+2024-08-04 11:54:47,535 - __main__ - INFO - temp_daily_aqi[2024-08-03]=>             Unnamed: 0   AQI
+Date                        
+2024-08-03        1612  87.0
+2024-08-04 11:54:47,540 - __main__ - INFO - Re-training the model & train_end is 2024-07-29 00:00:00
+2024-08-04 11:54:49,421 - __main__ - INFO - Retrained the model & MAPE is 49.99%
+2024-08-04 11:54:49,421 - __main__ - INFO - Retrained the model & MAE is 45.079426906486866
+2024-08-04 11:54:51,548 - __main__ - INFO - Forecast=> 2024-08-04     92.669595
+2024-08-05    109.879458
+2024-08-06    115.652868
+2024-08-07    126.876353
+2024-08-08    135.557032
+Freq: D, Name: predicted_mean, dtype: float64
+2024-08-04 11:54:51,549 - __main__ - INFO - The forecast data has been written to data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv
+2024-08-04 11:54:51,550 - __main__ - INFO - The forecast data has been written to static/data/forecast_sector_51_daily_aqi.csv
