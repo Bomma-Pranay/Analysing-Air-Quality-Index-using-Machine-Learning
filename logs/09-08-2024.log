@@ -50,3 +50,7 @@
 2024-08-09 13:12:44,468 - __main__ - INFO - The hourly data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2024-08-09 18:00:00
 2024-08-09 13:12:45,155 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['100', 'Sector-51, Gurugram, India', Timestamp('2024-08-09 18:00:00')]
 2024-08-09 13:12:45,155 - __main__ - INFO - The hourly data has been written to static/data/sector_51_cron_output.csv with Timestamp: 2024-08-09 18:00:00
+2024-08-09 14:08:08,716 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['75', 'Sector-51, Gurugram, India', Timestamp('2024-08-09 19:00:00')]
+2024-08-09 14:08:08,716 - __main__ - INFO - The hourly data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2024-08-09 19:00:00
+2024-08-09 14:08:09,209 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['75', 'Sector-51, Gurugram, India', Timestamp('2024-08-09 19:00:00')]
+2024-08-09 14:08:09,209 - __main__ - INFO - The hourly data has been written to static/data/sector_51_cron_output.csv with Timestamp: 2024-08-09 19:00:00
