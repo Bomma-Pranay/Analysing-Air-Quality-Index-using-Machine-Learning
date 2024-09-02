@@ -2,7 +2,7 @@ name: Collect data
 
 on:
   schedule:
-    - cron: "*/90 * * * *"
+    - cron: "*/900 * * * *"
   workflow_dispatch:
 
 env:
