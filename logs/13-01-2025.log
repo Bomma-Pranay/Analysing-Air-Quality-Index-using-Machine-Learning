@@ -1,0 +1,25 @@
+2025-01-13 01:18:26,997 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['173', 'Sector-51, Gurugram, India', Timestamp('2025-01-13 06:00:00')]
+2025-01-13 01:18:26,997 - __main__ - INFO - The hourly data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2025-01-13 06:00:00
+2025-01-13 01:18:27,607 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['173', 'Sector-51, Gurugram, India', Timestamp('2025-01-13 06:00:00')]
+2025-01-13 01:18:27,608 - __main__ - INFO - The hourly data has been written to static/data/sector_51_cron_output.csv with Timestamp: 2025-01-13 06:00:00
+2025-01-13 01:18:27,668 - __main__ - INFO - df_api columns Index(['AQI'], dtype='object')
+2025-01-13 01:18:27,668 - __main__ - INFO - today=> 2025-01-13 & yesterday=> 2025-01-12
+2025-01-13 01:18:27,670 - __main__ - INFO - temp_daily_aqi columns Index(['Unnamed: 0', 'Date', 'AQI'], dtype='object')
+2025-01-13 01:18:27,673 - __main__ - INFO - temp_daily_aqi[2025-01-12]=> Empty DataFrame
+Columns: [Unnamed: 0, AQI]
+Index: []
+2025-01-13 01:18:27,673 - __main__ - INFO - Index => 1774, yesterday => 2025-01-12 & AQI => 103.0
+2025-01-13 01:18:27,674 - __main__ - INFO - Daily AQI data has been written to data/cleaned_data/Forecasting_time_series/sector_51_daily_aqi.csv
+2025-01-13 01:18:27,674 - __main__ - INFO - Index => 1774, yesterday => 2025-01-12 & AQI => 103.0
+2025-01-13 01:18:27,674 - __main__ - INFO - Daily AQI data has been written to static/data/sector_51_daily_aqi.csv
+2025-01-13 01:18:27,679 - __main__ - INFO - Re-training the model & train_end is 2025-01-07 00:00:00
+2025-01-13 01:18:29,018 - __main__ - INFO - Retrained the model & MAPE is 37.59%
+2025-01-13 01:18:29,019 - __main__ - INFO - Retrained the model & MAE is 53.05098543000888
+2025-01-13 01:18:30,634 - __main__ - INFO - Forecast=> 2025-01-13    138.976186
+2025-01-14    138.814801
+2025-01-15    146.607219
+2025-01-16    156.378073
+2025-01-17    154.312132
+Freq: D, Name: predicted_mean, dtype: float64
+2025-01-13 01:18:30,634 - __main__ - INFO - The forecast data has been written to data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv
+2025-01-13 01:18:30,635 - __main__ - INFO - The forecast data has been written to static/data/forecast_sector_51_daily_aqi.csv
