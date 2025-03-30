@@ -300,8 +300,8 @@ if __name__ == "__main__":
     yesterday_present = daily_AQI.index[-1] == pd.Timestamp(yesterday)
 
     if (not yesterday_present) or (datetime.now().hour == 1):     # It means 1 AM IST (20 is GitHub action runner time)
-        print(f"Calling writeData & retrain_model functions. Time => {datetime.now().hour} | yesterday_present=> {yesterday_present} ")
-        logger.info("Calling writeData & retrain_model functions. Time=> ",datetime.now().hour, "yesterday_present => ",yesterday_present)
+        print("Calling writeData & retrain_model functions. Time => ", datetime.now().hour, " yesterday_present=> ", yesterday_present)
+        logger.info("Calling writeData & retrain_model functions.")
         writeData(SECTOR_51_OUTPUT, SECTOR_51_DAILY_AQI)
         retrain_model(ORDER, SEASONAL_ORDER, SECTOR_51_DAILY_AQI)
 #         for station, station_location in stations:
