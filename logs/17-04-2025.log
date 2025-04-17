@@ -1,0 +1,16 @@
+2025-04-17 07:00:45,969 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['68', 'Sector-51, Gurugram, India', Timestamp('2025-04-16 21:00:00')]
+2025-04-17 07:00:45,969 - __main__ - INFO - The hourly data has been written to data/cron_job_data/sector_51_cron_output.csv with Timestamp: 2025-04-16 21:00:00
+2025-04-17 07:00:46,592 - __main__ - INFO - station=> Sector-51, Gurugram, result => ['68', 'Sector-51, Gurugram, India', Timestamp('2025-04-16 21:00:00')]
+2025-04-17 07:00:46,592 - __main__ - INFO - The hourly data has been written to static/data/sector_51_cron_output.csv with Timestamp: 2025-04-16 21:00:00
+2025-04-17 07:00:46,599 - __main__ - INFO - Calling writeData & retrain_model functions.
+2025-04-17 07:00:46,609 - __main__ - INFO - df_api columns Index(['AQI'], dtype='object')
+2025-04-17 07:00:46,609 - __main__ - INFO - today=> 2025-04-17 & yesterday=> 2025-04-16
+2025-04-17 07:00:46,610 - __main__ - INFO - temp_daily_aqi columns Index(['Unnamed: 0', 'Date', 'AQI'], dtype='object')
+2025-04-17 07:00:46,613 - __main__ - INFO - temp_daily_aqi[2025-04-16]=> Empty DataFrame
+Columns: [Unnamed: 0, AQI]
+Index: []
+2025-04-17 07:00:46,613 - __main__ - INFO - Index => 1860, yesterday => 2025-04-16 & AQI => 68.0
+2025-04-17 07:00:46,613 - __main__ - INFO - Daily AQI data has been written to data/cleaned_data/Forecasting_time_series/sector_51_daily_aqi.csv
+2025-04-17 07:00:46,613 - __main__ - INFO - Index => 1860, yesterday => 2025-04-16 & AQI => 68.0
+2025-04-17 07:00:46,613 - __main__ - INFO - Daily AQI data has been written to static/data/sector_51_daily_aqi.csv
+2025-04-17 07:00:46,617 - __main__ - INFO - Re-training the model & train_end is 2025-04-11 00:00:00
