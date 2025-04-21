@@ -93,3 +93,22 @@ Index: []
 Freq: D, Name: predicted_mean, dtype: float64
 2025-04-21 16:21:33,766 - __main__ - INFO - The forecast data has been written to data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv
 2025-04-21 16:21:33,766 - __main__ - INFO - The forecast data has been written to static/data/forecast_sector_51_daily_aqi.csv
+2025-04-21 20:19:44,250 - __main__ - INFO - Calling writeData & retrain_model functions.
+2025-04-21 20:19:44,259 - __main__ - INFO - df_api columns Index(['AQI'], dtype='object')
+2025-04-21 20:19:44,259 - __main__ - INFO - today=> 2025-04-21 & yesterday=> 2025-04-20
+2025-04-21 20:19:44,261 - __main__ - INFO - temp_daily_aqi columns Index(['Unnamed: 0', 'Date', 'AQI'], dtype='object')
+2025-04-21 20:19:44,264 - __main__ - INFO - temp_daily_aqi[2025-04-20]=> Empty DataFrame
+Columns: [Unnamed: 0, AQI]
+Index: []
+2025-04-21 20:19:44,264 - __main__ - INFO - writeData function - Exception IndexError has occured for station=> data/cleaned_data/Forecasting_time_series/sector_51_daily_aqi.csv
+2025-04-21 20:19:44,270 - __main__ - INFO - Re-training the model & train_end is 2025-04-11 00:00:00
+2025-04-21 20:19:45,737 - __main__ - INFO - Retrained the model & MAPE is 41.51%
+2025-04-21 20:19:45,738 - __main__ - INFO - Retrained the model & MAE is 36.587582434823844
+2025-04-21 20:19:47,026 - __main__ - INFO - Forecast=> 2025-04-17     99.668794
+2025-04-18    102.772631
+2025-04-19    118.609126
+2025-04-20    119.157166
+2025-04-21    140.485967
+Freq: D, Name: predicted_mean, dtype: float64
+2025-04-21 20:19:47,026 - __main__ - INFO - The forecast data has been written to data/cleaned_data/Forecasting_time_series/forecast_sector_51_daily_aqi.csv
+2025-04-21 20:19:47,027 - __main__ - INFO - The forecast data has been written to static/data/forecast_sector_51_daily_aqi.csv
